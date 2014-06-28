@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: yes
+
+  tasks:
+  - apt: name=nodejs state=present
+  - apt: name=npm state=present
+  - apt: name=nginx state=present
+  - apt: name=mongodb state=present
+  - npm: path={{ nodejs_app_path }}
