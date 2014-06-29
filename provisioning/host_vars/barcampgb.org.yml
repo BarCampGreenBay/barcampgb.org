@@ -1,3 +1,4 @@
 ---
 app_path: /var/www
 node_env: production
+node_path: /usr/bin/env node

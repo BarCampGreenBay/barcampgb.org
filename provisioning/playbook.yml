@@ -6,12 +6,14 @@
     api:
       service: bcgb-api
       description: BarCamp Green Bay api server
-      script: api/server.js
+      path: api
+      script: server.js
       port: 8000
     web:
       service: bcgb-web
       description: BarCamp Green Bay web server
-      script: web/server.js
+      path: web
+      script: server.js
       port: 8002
 
   roles:
@@ -21,13 +23,15 @@
   - role: nodejs-service
     service: "{{ api.service }}"
     description: "{{ api.description }}"
-    script_path: "{{ app_path }}/{{ api.script }}"
+    service_app_path: "{{ app_path }}/{{ api.path }}"
+    script_path: "{{ service_app_path }}/{{ api.script }}"
     port: "{{ api.port }}"
 
   - role: nodejs-service
     service: "{{ web.service }}"
     description: "{{ web.description }}"
-    script_path: "{{ app_path }}/{{ web.script }}"
+    service_app_path: "{{ app_path }}/{{ web.path }}"
+    script_path: "{{ service_app_path }}/{{ web.script }}"
     port: "{{ web.port }}"
 
   - role: nginx

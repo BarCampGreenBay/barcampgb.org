@@ -2,8 +2,14 @@
 - name: Install nodejs
   apt: name=nodejs state=present
 
+- name: Install nodejs-legacy so nodejs is linked to node
+  apt: name=nodejs-legacy state=present
+
 - name: Install npm
   apt: name=npm state=present
+
+- name: Install node-dev for easy development
+  npm: name=node-dev state=present global=yes
 
 - name: Ensure nodejs group exists
   group: name=nodejs state=present system=yes

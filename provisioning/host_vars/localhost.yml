@@ -1,3 +1,4 @@
 ---
 app_path: /vagrant/src
 node_env: development
+node_path: /usr/bin/env node-dev
