@@ -1,2 +1,3 @@
 ---
-nodejs_app_path: "/vagrant/src"
+app_path: /vagrant/src
+env: development

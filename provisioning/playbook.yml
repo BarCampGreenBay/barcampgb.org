@@ -1,10 +1,27 @@
 ---
-- hosts: all
+- hosts: web
+  sudo: yes
   gather_facts: yes
+  vars:
+    api:
+      service: bcgb-api
+      description: BarCamp Green Bay api server
+      script: api/server.js
+    web:
+      service: bcgb-web
+      description: BarCamp Green Bay web server
+      script: web/server.js
 
-  tasks:
-  - apt: name=nodejs state=present
-  - apt: name=npm state=present
-  - apt: name=nginx state=present
-  - apt: name=mongodb state=present
-  - npm: path={{ nodejs_app_path }}
+  roles:
+
+  - nodejs-app
+
+  - role: nodejs-service
+    service: "{{ api.service }}"
+    description: "{{ api.description }}"
+    script_path: "{{ app_path }}/{{ api.script }}"
+
+  - role: nodejs-service
+    service: "{{ web.service }}"
+    description: "{{ web.description }}"
+    script_path: "{{ app_path }}/{{ web.script }}"

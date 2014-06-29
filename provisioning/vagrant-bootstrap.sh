@@ -1,4 +1,4 @@
+ROOT=/vagrant/provisioning
 sudo apt-get upgrade
 sudo apt-get install -y ansible
-cd /vagrant/provisioning
-ansible-playbook -i hosts-dev playbook.yml
+ansible-playbook -i $ROOT/hosts-dev $ROOT/playbook.yml

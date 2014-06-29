@@ -2,4 +2,4 @@ var http = require('http');
 var app = require('./app');
 var server = http.createServer(app);
 
-server.listen(process.env.API_PORT || 8000);
+server.listen(process.env.WEB_PORT || 8002);

@@ -1,0 +1,12 @@
+---
+- name: Install nodejs
+  apt: name=nodejs state=present
+
+- name: Install npm
+  apt: name=npm state=present
+
+- name: Ensure nodejs group exists
+  group: name=nodejs state=present system=yes
+
+- name: Ensure nodejs user exists
+  user: name=nodejs group=nodejs createhome=no shell=/bin/false system=yes state=present

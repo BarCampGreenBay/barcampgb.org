@@ -1,0 +1,21 @@
+description "{{ description }}"
+
+stop on shutdown
+
+respawn
+respawn limit 20 5
+
+script
+    echo $$ > /var/run/{{ service }}.pid
+    exec sudo -u nodejs NODE_ENV={{ env }} {{ node_path }} {{ script_path }} >> /var/log/nodejs/{{ service }}.log 2>&1
+end script
+
+pre-start script
+    mkdir -p /var/log/nodejs
+    echo "\n[`date -u +%Y-%m-%dT%T.%3NZ`] (sys) Starting" >> /var/log/nodejs/{{ service }}.log
+end script
+
+pre-stop script
+    rm /var/run/{{ service }}.pid
+    echo "[`date -u +%Y-%m-%dT%T.%3NZ`] (sys) Stopping\n" >> /var/log/nodejs/{{ service }}.log
+end script
