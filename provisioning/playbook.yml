@@ -7,10 +7,12 @@
       service: bcgb-api
       description: BarCamp Green Bay api server
       script: api/server.js
+      port: 8000
     web:
       service: bcgb-web
       description: BarCamp Green Bay web server
       script: web/server.js
+      port: 8002
 
   roles:
 
@@ -20,8 +22,33 @@
     service: "{{ api.service }}"
     description: "{{ api.description }}"
     script_path: "{{ app_path }}/{{ api.script }}"
+    port: "{{ api.port }}"
 
   - role: nodejs-service
     service: "{{ web.service }}"
     description: "{{ web.description }}"
     script_path: "{{ app_path }}/{{ web.script }}"
+    port: "{{ web.port }}"
+
+  - role: nginx
+    nginx_sites:
+      default:
+        - listen 80
+        - server_name barcampgb.org localhost
+        - root {{ app_path }}
+        - location / {
+            proxy_pass http://127.0.0.1:{{ web.port }}/;
+          }
+        - location /api {
+            proxy_pass http://127.0.0.1:{{ api.port }}/;
+          }
+    nginx_configs:
+      proxy:
+        - proxy_set_header X-Real-IP $remote_addr
+        - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+        - proxy_set_header Host $http_host
+        - proxy_set_header X-NginX-Proxy true
+        - proxy_redirect off
+        - proxy_http_version 1.1
+        - proxy_set_header Upgrade $http_upgrade
+        - proxy_set_header Connection "upgrade"
