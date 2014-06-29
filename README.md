@@ -22,7 +22,7 @@ BarCamp Green Bay web site.
 ## TODO
 
 - [x] vagrant development environment
-  - [ ] proper shared folder
+  - [ ] proper shared folder - [#1](https://github.com/BarCampGreenBay/barcampgb.org/issues/1)
 - [x] ansible provisioning
 - [x] nginx proxy
 - [x] multiple node processes
