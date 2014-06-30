@@ -1,3 +1,0 @@
----
-- name: Install node app dependencies
-  npm: path={{ app_path }}
