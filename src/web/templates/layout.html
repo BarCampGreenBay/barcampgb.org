@@ -2,6 +2,10 @@
 <html>
 <head>
 	<title>Home</title>
+	<script src="/vendor/platform/platform.js"></script>
+	{% for component in vendor_components %}
+    	<link rel="import" href="/vendor/{{ component }}/{{ component }}.html">
+    {% endfor %}
 </head>
 <body>
 	{% block body %}{% endblock %}
