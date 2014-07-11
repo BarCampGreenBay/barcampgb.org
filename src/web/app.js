@@ -4,10 +4,10 @@ var app = express();
 
 module.exports = app;
 
-nunjucks.configure(__dirname + '/views', {
+nunjucks.configure(__dirname, {
 	express: app
 });
 
 app.route('/').get(function(req, res) {
-	res.render('index.html');
+	res.render('views/index.html');
 });

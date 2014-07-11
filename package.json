@@ -5,7 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "src/server.js"
+    "dev-web": "node-dev src/web/server.js",
+    "dev-api": "node-dev src/api/server.js"
   },
   "author": "",
   "license": "MIT",
@@ -13,5 +14,8 @@
     "express": "^4.4.5",
     "nunjucks": "~1.0.5",
     "passport": "~0.2.0"
+  },
+  "devDependencies": {
+    "node-dev": "^2.3.0"
   }
 }
