@@ -1,0 +1,15 @@
+{
+  "name": "barcampgb.org",
+  "version": "0.0.1",
+  "homepage": "https://github.com/BarCampGreenBay/barcampgb.org",
+  "authors": [
+    "Chris Jaure <chrisjaure@gmail.com>"
+  ],
+  "description": "BarCamp Green Bay app code",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.3",
+    "core-elements": "Polymer/core-elements#~0.3.3"
+  }
+}
