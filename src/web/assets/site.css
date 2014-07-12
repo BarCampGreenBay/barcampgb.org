@@ -1,0 +1,27 @@
+site-banner {
+	background: #025bac url(/assets/images/block-intro-bg.png);
+	background-size: contain;
+	background-attachment: fixed;
+}
+
+.main-header {
+	/*background: #025bac;*/
+	color: #fff;
+	margin: 0;
+}
+
+.main-header h1 {
+	margin: 0;
+	text-align: center;
+}
+
+/*.main-header.shrink {
+	height: 0px;
+}*/
+.main-article {
+	background: #fff;
+	padding: 1em;
+}
+.main-toolbar {
+	height: 65px;
+}

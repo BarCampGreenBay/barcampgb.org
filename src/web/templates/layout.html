@@ -2,12 +2,33 @@
 <html>
 <head>
 	<title>Home</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<script src="/vendor/platform/platform.js"></script>
-	{% for component in vendor_components %}
-    	<link rel="import" href="/vendor/{{ component }}/{{ component }}.html">
-    {% endfor %}
+	{% for component in components.vendor %}
+		<link rel="import" href="/vendor/{{ component }}/{{ component }}.html">
+	{%- endfor %}
+	{% for component in components.user %}
+		<link rel="import" href="/assets/components/{{ component }}/{{ component }}.html">
+	{%- endfor %}
+	<!-- <link rel="import" href="/assets/components/site-components.html"> -->
+	<link rel="stylesheet" type="text/css" href="/assets/site.css">
 </head>
-<body>
-	{% block body %}{% endblock %}
+<body fullbleed unresolved>
+	<scroll-area>
+		<site-banner shortname="BCGB">
+			<core-toolbar class="fixed main-toolbar">
+				<core-icon-button icon="menu"></core-icon-button>
+				<span flex>&nbsp;</span>
+				<core-icon-button icon="menu"></core-icon-button>
+			</core-toolbar>
+			<header class="main-header">
+				<h1><img height="200" src="/assets/images/logo-white.png" /></h1>
+			</header>
+		</site-banner>
+		<article class="main-article">
+			{% block body %}{% endblock %}
+		</article>
+
+	</scroll-area>
 </body>
 </html>
