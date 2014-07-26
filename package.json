@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.4.5",
+    "mongoose": "^3.8.13",
     "nunjucks": "~1.0.5",
     "passport": "~0.2.0"
   },
