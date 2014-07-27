@@ -4,7 +4,8 @@
   "description": "BarCamp Green Bay website",
   "main": "src/server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jasmine-node tests/",
+    "autotest": "jasmine-node tests/ --autotest",
     "dev-web": "node-dev src/web/server.js",
     "dev-api": "node-dev src/api/server.js"
   },
@@ -17,14 +18,7 @@
     "passport": "~0.2.0"
   },
   "devDependencies": {
-    "jest-cli": "^0.1.17",
+    "jasmine-node": "^1.14.5",
     "node-dev": "^2.3.0"
-  },
-  "jest": {
-    "testDirectoryName": "tests",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/bower_components/"
-    ]
   }
 }

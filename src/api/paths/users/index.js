@@ -2,7 +2,8 @@ var User = require('./model');
 
 module.exports = function() {
 
-	this.params = ':user_id';
+	this.root = '/users';
+	this.route = '/:user_id';
 
 	this.before = [
 		function getUser (req, res, next) {

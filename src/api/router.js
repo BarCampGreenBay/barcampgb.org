@@ -1,8 +1,7 @@
-var fs = require('fs');
 var express = require('express');
 function createRouterFromController (controller) {
 	var router = express.Router();
-	var route = router.route('/' + (controller.params? controller.params : ''));
+	var route = router.route(controller.route);
 	var middleware = controller.before;
 	if (middleware) {
 		if (!Array.isArray(middleware)) {
@@ -19,9 +18,8 @@ function createRouterFromController (controller) {
 	});
 	return router;
 }
-exports.attachPaths = function(app) {
-	fs.readdirSync(__dirname + '/paths').forEach(function(dir) {
-		var controller = require('./paths/' + dir);
-		app.use('/' + dir, createRouterFromController(new controller()));
+exports.attachRoutes = function(controllers, app) {
+	controllers.forEach(function(controller) {
+		app.use(controller.root, createRouterFromController(controller));
 	});
 };

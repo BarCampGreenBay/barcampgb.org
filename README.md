@@ -7,12 +7,13 @@ BarCamp Green Bay app code.
 
 1. clone this repo
 2. `npm install`
-3. `npm run dev-web` for web server, go to localhost:8002
-4. `npm run dev-api` for api server (in progress)
+3. `npm run dev-web` for web server, runs on 8002
+4. `npm run dev-api` for api server, runs on 8000
+5. `npm test` to run the tests
 
 ## TODO
 
 - [x] set up polymer
-- [ ] document existing features
+- [x] document existing features
 - [ ] ???
 - [ ] profit!
