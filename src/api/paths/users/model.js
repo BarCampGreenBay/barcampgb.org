@@ -3,6 +3,6 @@ var db = require('../../db.js');
 var schema = mongoose.Schema({
 	name: String
 });
-var model = db.model('User', schema);
+var model = db.connection.model('User', schema);
 
 module.exports = model;

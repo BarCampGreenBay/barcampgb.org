@@ -20,9 +20,11 @@ module.exports = function() {
 
 	this.get = function(req, res, next) {
 		if (!req.user) {
-			return res.status(404).json({
+			res.status(404);
+			res.json({
 				error: 'User ' + req.params.user_id + ' not found.'
 			});
+			return;
 		}
 		res.json(req.user);
 	};

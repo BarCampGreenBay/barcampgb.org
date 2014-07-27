@@ -15,6 +15,7 @@ app.use(function(req, res, next) {
 	next();
 });
 
+db.connect();
 controllers = fs.readdirSync(__dirname + '/paths').map(function(dir) {
 	var Controller = require('./paths/' + dir);
 	return new Controller();
