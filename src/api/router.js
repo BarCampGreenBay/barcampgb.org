@@ -1,8 +1,10 @@
 var express = require('express');
 function createRouterFromController (controller) {
 	var router = express.Router();
-	var route = router.route(controller.route);
 	var middleware = controller.before;
+	var actions = Object.keys(controller);
+	var routeRegex = new RegExp('^(get|put|delete|post)([A-Z].*)?$');
+
 	if (middleware) {
 		if (!Array.isArray(middleware)) {
 			middleware = [middleware];
@@ -11,11 +13,20 @@ function createRouterFromController (controller) {
 			router.use(fn);
 		});
 	}
-	['get', 'put', 'delete', 'post'].forEach(function(verb) {
-		if (controller[verb]) {
-			route[verb](controller[verb]);
+
+	actions.forEach(function(action) {
+		var verb, route, match;
+		match = routeRegex.exec(action);
+		route = controller.route;
+		if (match) {
+			verb = match[1];
+			if (match[2]) {
+				route += '/' + match[2].toLowerCase();
+			}
+			router[verb](route, controller[action]);
 		}
 	});
+
 	return router;
 }
 exports.attachRoutes = function(controllers, app) {

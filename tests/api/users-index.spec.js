@@ -14,7 +14,7 @@ describe('users controller', function() {
 		expect(controller.route).toEqual('/:user_id');
 	});
 	describe('middleware', function() {
-		it('should try to find user', function() {
+		it('should try to find user and return error json if not available', function() {
 			var req = {
 				params: {
 					user_id: 'id'
@@ -25,7 +25,8 @@ describe('users controller', function() {
 			expect(User.findById).toHaveBeenCalledWith('id', jasmine.any(Function));
 			User.findById.mostRecentCall.args[1](true);
 			expect(req.user).toBeUndefined();
-			expect(nextMock).toHaveBeenCalled();
+			expect(resMock.json).toHaveBeenCalledWith({ error: 'User id not found.' });
+			expect(resMock.status).toHaveBeenCalledWith(404);
 		});
 		it('should set user if available', function() {
 			var req = {
@@ -38,7 +39,7 @@ describe('users controller', function() {
 			User.findById.mostRecentCall.args[1](null, 'user');
 			expect(req.user).toEqual('user');
 			expect(nextMock).toHaveBeenCalled();
-		});	
+		});
 	});
 	describe('get', function() {
 		it('should return user json if available', function() {
@@ -47,16 +48,6 @@ describe('users controller', function() {
 			};
 			controller.get(req, resMock, nextMock);
 			expect(resMock.json).toHaveBeenCalledWith(req.user);
-		});
-		it('should return json error if user not available', function() {
-			var req = {
-				params: {
-					user_id: 'id'
-				}
-			};
-			controller.get(req, resMock, nextMock);
-			expect(resMock.json).toHaveBeenCalledWith({ error: 'User id not found.' });
-			expect(resMock.status).toHaveBeenCalledWith(404);
 		});
 	});
 });

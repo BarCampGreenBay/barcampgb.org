@@ -17,19 +17,15 @@ describe('router.js', function() {
 		router.attachRoutes([controller], app);
 		expect(app.use.mostRecentCall.args[0]).toEqual(controller.root);
 	});
-	it('should route on controller.route', function() {
-		router.attachRoutes([controller], app);
-		expect(getRoute(app).stack[0].route.path).toEqual(controller.route);
-	});
 	it('should add single middleware', function() {
 		controller.before = function() {};
 		router.attachRoutes([controller], app);
-		expect(getRoute(app).stack.length).toBe(2);
+		expect(getRoute(app).stack.length).toBe(1);
 	});
 	it('should add multiple middleware', function() {
 		controller.before = [function() {}, function() {}];
 		router.attachRoutes([controller], app);
-		expect(getRoute(app).stack.length).toBe(3);
+		expect(getRoute(app).stack.length).toBe(2);
 	});
 	it('should add controller.get', function() {
 		controller.get = function() {};
@@ -50,5 +46,11 @@ describe('router.js', function() {
 		controller.delete = function() {};
 		router.attachRoutes([controller], app);
 		expect(getRoute(app).stack[0].route.methods.delete).toBe(true);
+	});
+	it('should add custom routes', function() {
+		controller.getAThing = function() {};
+		router.attachRoutes([controller], app);
+		expect(getRoute(app).stack[0].route.methods.get).toBe(true);
+		expect(getRoute(app).stack[0].route.path).toEqual('/route/athing');
 	});
 });
