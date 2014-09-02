@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
 var db = require('../../db.js');
 var schema = mongoose.Schema({
-	name: String
+	name: String,
+	email: String,
+	admin: Boolean
 });
-var model = db.connection.model('User', schema);
 
-module.exports = model;
+module.exports = function(db) {
+	return db.connection.model('User', schema);
+};

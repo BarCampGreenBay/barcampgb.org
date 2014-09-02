@@ -1,7 +1,8 @@
-var User = require('./model');
 var email = require('../../email.js');
 
-module.exports = function() {
+module.exports = function(db) {
+
+	var User = require('./model')(db);
 
 	this.root = '/users';
 	this.route = '/:user_id';

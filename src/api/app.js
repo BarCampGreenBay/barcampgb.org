@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
 db.connect();
 controllers = fs.readdirSync(__dirname + '/resources').map(function(dir) {
 	var Controller = require('./resources/' + dir);
-	return new Controller();
+	return new Controller(db);
 });
 router.attachRoutes(controllers, app);
 
