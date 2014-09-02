@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "BarCamp Green Bay website",
   "main": "src/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:BarCampGreenBay/barcampgb.org.git"
+  },
   "scripts": {
     "test": "jasmine-node tests/",
     "autotest": "jasmine-node tests/ --autotest",
