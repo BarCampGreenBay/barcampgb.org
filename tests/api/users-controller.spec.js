@@ -2,7 +2,7 @@ var db = require('../../src/api/db');
 var User = require('../../src/api/resources/users/model')(db);
 describe('users controller', function() {
 	var resMock, nextMock;
-	var Controller = require('../../src/api/resources/users');
+	var Controller = require('../../src/api/resources/users/controller');
 	var controller = new Controller(db);
 	beforeEach(function() {
 		resMock = jasmine.createSpyObj('res', ['json', 'status']);
