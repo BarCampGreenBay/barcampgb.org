@@ -27,6 +27,11 @@ describe('router.js', function() {
 		router.attachRoutes([controller], app);
 		expect(getRoute(app).stack.length).toBe(2);
 	});
+	it('should add middleware that responds to route', function() {
+		controller.before = function() {};
+		router.attachRoutes([controller], app);
+		expect(getRoute(app).stack[0].regexp).toMatch(/\/route\\/);
+	});
 	it('should add controller.get', function() {
 		controller.get = function() {};
 		router.attachRoutes([controller], app);

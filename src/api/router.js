@@ -10,7 +10,7 @@ function createRouterFromController (controller) {
 			middleware = [middleware];
 		}
 		middleware.forEach(function(fn) {
-			router.use(fn);
+			router.use(controller.route, fn);
 		});
 	}
 
