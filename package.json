@@ -11,7 +11,9 @@
     "test": "jasmine-node tests/",
     "autotest": "jasmine-node tests/ --autotest",
     "dev-web": "node-dev src/web/server.js",
-    "dev-api": "node-dev src/api/server.js"
+    "debug-web": "node-debug src/web/server.js",
+    "dev-api": "node-dev src/api/server.js",
+    "debug-api": "node-debug src/api/server.js"
   },
   "author": "",
   "license": "MIT",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "jasmine-node": "^1.14.5",
     "node-dev": "^2.3.0",
+    "node-inspector": "^0.7.4",
     "proxyquire": "^1.0.1"
   }
 }
