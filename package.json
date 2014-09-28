@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",
+    "mockgoose": "^1.10.7",
     "node-dev": "^2.3.0",
     "node-inspector": "^0.7.4",
     "proxyquire": "^1.0.1"

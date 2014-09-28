@@ -1,9 +1,10 @@
 var nunjucks = require('nunjucks');
 var express = require('express');
 var passport = require('passport');
+var app = express();
+var config = require('../config');
 var db = require('../modules/db');
 var routes = require('./routes');
-var app = express();
 var components = require('./modules/polymer_components');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
@@ -18,6 +19,9 @@ nunjucks.configure(__dirname, {
 app.locals.components = components;
 
 db.connect();
+if (config.env.dev) {
+	require('../bootstrap').db(db);
+}
 
 app.use(session({ secret: 'lmnopia' }));
 // parse application/x-www-form-urlencoded
@@ -30,7 +34,7 @@ app.use(flash());
 
 // catch db connection errors
 app.use(function(req, res, next) {
-	if (db.readyState !== 1 && app.get('env') !== 'development') {
+	if (db.readyState !== 1 && config.env.prod) {
 		return res.status(500).send('No database connection.');
 	}
 	next();
