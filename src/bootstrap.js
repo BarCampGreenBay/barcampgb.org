@@ -1,3 +1,5 @@
+var log = require('./modules/log');
+
 exports.db = function(db) {
 	var User = require('./api/user')(db);
 	var testUser = new User({
@@ -6,6 +8,6 @@ exports.db = function(db) {
 		admin: true
 	});
 	User.register(testUser, 'test', function() {
-		console.log('test user created');
+		log.info('test user created');
 	});
 };

@@ -1,9 +1,10 @@
 var nodemailer = require('nodemailer');
+var log = require('./log');
 var config = require('../config.js').email;
 var transport;
 
 if (!config.user || !config.password) {
-	console.error('Email error: no username or password.');
+	log.error('Email error: no username or password.');
 }
 
 transport = nodemailer.createTransport({
