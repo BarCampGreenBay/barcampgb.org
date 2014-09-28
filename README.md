@@ -7,8 +7,7 @@ BarCamp Green Bay app code.
 
 1. clone this repo
 2. `npm install`
-3. `npm run dev-web` for web server, runs on 8002
-4. `npm run dev-api` for api server, runs on 8000
+4. `npm run dev` for web server, runs on 8000
 5. `npm test` to run the tests
 
 ## TODO
