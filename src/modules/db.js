@@ -1,10 +1,9 @@
 var mongoose = require('mongoose');
-var dbHost = 'localhost';
-var dbName = 'bcgb';
 var db = mongoose.createConnection();
+var config = require('../config.js').db;
 
-function connect (argument) {
-	db.open(dbHost, dbName);
+function connect () {
+	db.open(config.host, config.name);
 	db.on('error', console.error.bind(console, 'mongodb connection error:'));
 }
 

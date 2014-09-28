@@ -18,13 +18,16 @@
 		<site-banner shortname="BCGB">
 			<core-toolbar class="fixed main-toolbar">
 				<core-icon-button icon="menu"></core-icon-button>
-				<span flex>&nbsp;</span>
+				<span flex>Welcome {{ user.username }}&nbsp;</span>
 				<core-icon-button icon="menu"></core-icon-button>
 			</core-toolbar>
 			<header class="main-header">
 				<h1><img height="200" src="/assets/images/logo-white.png" /></h1>
 			</header>
 		</site-banner>
+		{% for error in errors %}
+			<div class="error">{{ error }}</div>
+		{% endfor %}
 		<article class="main-article">
 			{% block body %}{% endblock %}
 		</article>

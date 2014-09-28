@@ -10,20 +10,25 @@
   "scripts": {
     "test": "jasmine-node tests/",
     "autotest": "jasmine-node tests/ --autotest",
-    "dev-web": "node-dev src/web/server.js",
-    "debug-web": "node-debug src/web/server.js",
-    "dev-api": "node-dev src/api/server.js",
-    "debug-api": "node-debug src/api/server.js"
+    "dev": "node-dev src/web/server.js",
+    "debug": "node-debug src/web/server.js",
+    "prod": "NODE_ENV=prod node src/web/server.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.8.1",
+    "connect-flash": "^0.1.1",
+    "cookie-session": "^1.0.2",
     "express": "^4.4.5",
+    "express-session": "^1.8.1",
     "mongoose": "^3.8.13",
     "nodemailer": "^1.0.4",
     "nodemailer-wellknown": "^0.1.2",
     "nunjucks": "~1.0.5",
-    "passport": "~0.2.0"
+    "passport": "~0.2.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^0.3.0"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",

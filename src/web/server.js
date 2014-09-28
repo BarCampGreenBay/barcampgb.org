@@ -2,7 +2,7 @@ var http = require('http');
 var app = require('./app');
 var server = http.createServer(app);
 
-server.listen(process.env.NODE_PORT || 8002, function(err) {
+server.listen(process.env.NODE_PORT || 8000, function(err) {
 	if (err) {
 		throw new Error(err);
 	}

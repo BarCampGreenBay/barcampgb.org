@@ -1,0 +1,17 @@
+{% extends "templates/layout.html" %}
+
+{% block body %}
+	<form action="/login" method="post">
+		<label>
+			Email:
+			<input type="text" name="username" />
+		</label>
+		<label>
+			Password:
+			<input type="password" name="password" />
+		</label>
+		<button type="submit">
+			Login
+		</button>
+	</form>
+{% endblock %}

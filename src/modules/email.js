@@ -1,17 +1,16 @@
 var nodemailer = require('nodemailer');
-var smtpUser = process.env.SMTP_USER;
-var smtpPassword = process.env.SMTP_PASSWORD;
+var config = require('../config.js').email;
 var transport;
 
-if (!smtpUser || !smtpPassword) {
+if (!config.user || !config.password) {
 	console.error('Email error: no username or password.');
 }
 
 transport = nodemailer.createTransport({
     service: 'Mailgun',
     auth: {
-        user: smtpUser,
-        pass: smtpPassword
+        user: config.user,
+        pass: config.password
     }
 });
 
