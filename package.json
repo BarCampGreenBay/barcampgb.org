@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jasmine-node tests/",
     "autotest": "jasmine-node tests/ --autotest",
-    "dev": "node-dev src/web/server.js | bunyan",
+    "dev": "node-dev src/web/server.js | bunyan --strict -o short",
     "debug": "node-debug src/web/server.js",
     "prod": "NODE_ENV=prod node src/web/server.js"
   },

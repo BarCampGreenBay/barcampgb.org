@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 var log = require('./log');
-var config = require('../config.js').email;
+var config = require('../config').email;
 var transport;
 
 if (!config.user || !config.password) {
