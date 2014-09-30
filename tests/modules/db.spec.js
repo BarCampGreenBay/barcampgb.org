@@ -1,4 +1,4 @@
-var proxyquire = require('proxyquire');//.noPreserveCache();
+var proxyquire = require('proxyquire');
 var db = proxyquire('../../src/modules/db', {
 	'../config': {
 		env: {

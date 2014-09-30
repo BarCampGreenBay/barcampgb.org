@@ -10,5 +10,8 @@ module.exports = {
 	env: {
 		dev: (process.env.NODE_ENV !== 'prod'),
 		prod: (process.env.NODE_ENV === 'prod')
+	},
+	web: {
+		port: process.env.NODE_PORT
 	}
 };
