@@ -12,6 +12,7 @@ module.exports = {
 		prod: (process.env.NODE_ENV === 'prod')
 	},
 	web: {
-		port: process.env.NODE_PORT
+		port: process.env.NODE_PORT,
+		sessionSecret: 'this is a secret!'
 	}
 };

@@ -23,7 +23,7 @@ if (config.env.dev) {
 	require('../bootstrap').db(db);
 }
 
-app.use(session({ secret: 'lmnopia' }));
+app.use(session({ secret: config.web.sessionSecret }));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
