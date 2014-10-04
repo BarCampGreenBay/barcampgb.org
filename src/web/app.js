@@ -4,6 +4,7 @@ var passport = require('passport');
 var app = express();
 var config = require('../config');
 var db = require('../modules/db');
+var email = require('../modules/email')(nunjucks);
 var routes = require('./routes');
 var components = require('./modules/polymer_components');
 var bodyParser = require('body-parser');
@@ -40,7 +41,7 @@ app.use(function(req, res, next) {
 	next();
 });
 
-routes(app, passport, db);
+routes(app, passport, db, email);
 
 app.use('/vendor', express.static(__dirname + '/../../bower_components'));
 app.use('/assets', express.static(__dirname + '/assets'));

@@ -3,6 +3,12 @@
 {% block body %}
 	<form class="form" method="post">
 		<div class="form-field">
+			<label class="field-label" for="login-name">
+				Name:
+			</label>
+			<input class="field-control" type="text" id="login-name" name="name" />
+		</div>
+		<div class="form-field">
 			<label class="field-label" for="login-email">
 				Email:
 			</label>
@@ -14,12 +20,9 @@
 			</label>
 			<input class="field-control" type="password" id="login-password" name="password" />
 		</div>
-		<p>
-			<a href="/forgot-password">Forgot Password</a>
-		</p>
 		<div class="form-field">
 			<button type="submit">
-				Login
+				Register
 			</button>
 		</div>
 	</form>

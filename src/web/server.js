@@ -4,7 +4,7 @@ var app = require('./app');
 var log = require('../modules/log');
 var server = http.createServer(app);
 
-server.listen(config.web.port || 8000, function(err) {
+server.listen(config.web.port, function(err) {
 	if (err) {
 		return log.error(err);
 	}

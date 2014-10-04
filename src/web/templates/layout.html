@@ -11,6 +11,7 @@
 		<link rel="import" href="/assets/components/{{ component }}/{{ component }}.html">
 	{%- endfor %}
 	<!-- <link rel="import" href="/assets/components/site-components.html"> -->
+	<link rel="stylesheet" type="text/css" href="/assets/form.css">
 	<link rel="stylesheet" type="text/css" href="/assets/site.css">
 </head>
 <body fullbleed unresolved>
@@ -18,7 +19,7 @@
 		<site-banner shortname="BCGB">
 			<core-toolbar class="fixed main-toolbar">
 				<core-icon-button icon="menu"></core-icon-button>
-				<span flex>Welcome {{ user.username }}&nbsp;</span>
+				<span flex>Welcome {{ user.name }}&nbsp;</span>
 				<core-icon-button icon="menu"></core-icon-button>
 			</core-toolbar>
 			<header class="main-header">
@@ -27,6 +28,9 @@
 		</site-banner>
 		{% for error in errors %}
 			<div class="error">{{ error }}</div>
+		{% endfor %}
+		{% for success in successes %}
+			<div class="success">{{ success }}</div>
 		{% endfor %}
 		<article class="main-article">
 			{% block body %}{% endblock %}

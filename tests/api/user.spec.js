@@ -9,7 +9,7 @@ describe('User API', function() {
 
 	it('should contain appropriate schema', function() {
 		expect(Object.keys(User(db).schema.paths)).toEqual([
-			'name', 'admin', '_id', 'username', 'hash', 'salt', '__v'
+			'name', 'admin', '_id', 'email', 'hash', 'salt', 'token', 'tokenExpires', '__v'
 		]);
 	});
 

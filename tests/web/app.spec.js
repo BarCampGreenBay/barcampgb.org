@@ -6,6 +6,7 @@ var init = function (proxies) {
 	expressSpy.static = jasmine.createSpy('static').andReturn('static');
 	nunjucksSpy = jasmine.createSpyObj('nunjucks', ['configure']);
 	dbSpy = jasmine.createSpyObj('db', ['connect']);
+	emailSpy = jasmine.createSpyObj('email', ['sendPasswordReset']);
 	sessionSpy = jasmine.createSpy('session').andReturn('session');
 	bodyParserSpy = {
 		urlencoded: jasmine.createSpy('urlencoded').andReturn('urlencoded'),
@@ -21,6 +22,9 @@ var init = function (proxies) {
 		express: expressSpy,
 		nunjucks: nunjucksSpy,
 		'../modules/db': dbSpy,
+		'../modules/email': function() {
+			return emailSpy;
+		},
 		'cookie-session': sessionSpy,
 		'./routes': routesSpy,
 		'body-parser': bodyParserSpy,
@@ -74,7 +78,7 @@ describe('App Module', function() {
 	});
 	it('should set up routes', function() {
 		init();
-		expect(routesSpy).toHaveBeenCalledWith(appSpy, passportSpy, dbSpy);
+		expect(routesSpy).toHaveBeenCalledWith(appSpy, passportSpy, dbSpy, emailSpy);
 	});
 	it('should set up static directories', function() {
 		init();
