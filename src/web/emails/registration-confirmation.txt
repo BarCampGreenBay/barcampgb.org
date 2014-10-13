@@ -1,0 +1,3 @@
+Hi {{ user.name }}!
+
+You now have an account at barcampgb.org!

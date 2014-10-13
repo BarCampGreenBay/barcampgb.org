@@ -35,6 +35,18 @@ describe('Email module', function() {
 			}
 		});
 	});
+	it('should send registration confirmation', function() {
+		var user = {};
+		nunjucksSpy.render.andReturn('message');
+		mailer.sendRegistrationConfirmation('to', { user: user }, 'cb');
+		expect(nunjucksSpy.render).toHaveBeenCalledWith('emails/registration-confirmation.txt', { user: user });
+		expect(sendMailSpy).toHaveBeenCalledWith({
+			to: 'to',
+			subject: 'BarCamp Green Bay: Registration Confirmation',
+			message: 'message',
+			from: 'BarCamp Green Bay <info@barcampgb.org>'
+		}, 'cb');
+	});
 	it('should send password reset email', function() {
 		var user = { token: '1234' };
 		nunjucksSpy.render.andReturn('message');
@@ -42,7 +54,7 @@ describe('Email module', function() {
 		expect(nunjucksSpy.render).toHaveBeenCalledWith('emails/password-reset.txt', { user: user, url: 'url/password/reset/1234' });
 		expect(sendMailSpy).toHaveBeenCalledWith({
 			to: 'to',
-			subject: 'BarCamp Green Bay password reset',
+			subject: 'BarCamp Green Bay: Password Reset',
 			message: 'message',
 			from: 'BarCamp Green Bay <info@barcampgb.org>'
 		}, 'cb');

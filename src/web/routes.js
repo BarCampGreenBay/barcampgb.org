@@ -45,6 +45,9 @@ module.exports = function(app, passport, db, email) {
 				var user = new User(req.body);
 				User.register(user, req.body.password, function(err) {
 					req.tempUser = user;
+					if (!err) {
+						email.sendRegistrationConfirmation(user.email, { user: user });
+					}
 					next(err);
 				});
 			},

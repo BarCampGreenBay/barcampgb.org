@@ -35,13 +35,22 @@ module.exports = function(nunjucks) {
 		templateLocals.url = config.web.getUrl() + '/password/reset/' + templateLocals.user.token;
 		send({
 			to: to,
-			subject: 'BarCamp Green Bay password reset',
+			subject: 'BarCamp Green Bay: Password Reset',
 			message: nunjucks.render('emails/password-reset.txt', templateLocals)
 		}, cb);
 	}
 
+	function sendRegistrationConfirmation (to, templateLocals, cb) {
+		send({
+			to: to,
+			subject: 'BarCamp Green Bay: Registration Confirmation',
+			message: nunjucks.render('emails/registration-confirmation.txt', templateLocals)
+		}, cb);	
+	}
+
 	return {
-		sendPasswordReset: sendPasswordReset
+		sendPasswordReset: sendPasswordReset,
+		sendRegistrationConfirmation: sendRegistrationConfirmation
 	};
 
 };
