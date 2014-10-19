@@ -3,6 +3,7 @@ var merge = require('merge');
 
 module.exports = function(app, passport, db, email) {
 
+	var Event = require('../api/event')(db);
 	var User = require('../api/user')(db);
 	var auth = require('../modules/auth')(passport, User);
 
@@ -14,7 +15,10 @@ module.exports = function(app, passport, db, email) {
 	app.get('/logout', getLogout());
 
 	function getIndex () {
-		return render('index.html');
+		return [
+			findActiveEvent(),
+			render('index.html')
+		];
 	}
 
 	function getLogin () {
@@ -122,6 +126,7 @@ module.exports = function(app, passport, db, email) {
 		return function(req, res) {
 			res.render('views/' + view, merge({
 				user: req.user,
+				event: req.event,
 				errors: req.flash('error'),
 				successes: req.flash('success')
 			}, context || {}));
@@ -157,6 +162,15 @@ module.exports = function(app, passport, db, email) {
 				return next(new Error('Not authorized!'));
 			}
 			next();
+		};
+	}
+
+	function findActiveEvent () {
+		return function(req, res, next) {
+			Event.findActive().then(function(activeEvent) {
+				req.event = activeEvent;
+				next();
+			}, next);
 		};
 	}
 

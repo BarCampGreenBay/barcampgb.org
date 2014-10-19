@@ -1,6 +1,9 @@
 {% extends "templates/layout.html" %}
 
 {% block body %}
+	<p>Next Event:</p>
+	<p>{{ event.date }}</p>
+	<p>Registrants: {{ event.registrants.length }}</p>
 	This is the body <core-icon icon="accessibility"></core-icon>
 	<br><core-icon icon="accessibility"></core-icon>
 	<br><core-icon icon="accessibility"></core-icon>

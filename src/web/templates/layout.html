@@ -19,7 +19,12 @@
 		<site-banner shortname="BCGB">
 			<core-toolbar class="fixed main-toolbar">
 				<core-icon-button icon="menu"></core-icon-button>
-				<span flex>Welcome {{ user.name }}&nbsp;</span>
+				<span flex>
+					{% if user %}
+					Welcome {{ user.name }}
+					{% endif %}
+					&nbsp;
+				</span>
 				<core-icon-button icon="menu"></core-icon-button>
 			</core-toolbar>
 			<header class="main-header">
