@@ -8,6 +8,8 @@ exports.db = function(db) {
 	var testUser = new User({
 		name: 'test',
 		email: email,
+		shirtSize: 'Unisex Medium',
+		diet: 'None',
 		admin: true
 	});
 	User.register(testUser, password, function(err) {

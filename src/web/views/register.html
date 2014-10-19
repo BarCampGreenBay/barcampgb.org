@@ -21,6 +21,17 @@
 			<input class="field-control" type="password" id="login-password" name="password" />
 		</div>
 		<div class="form-field">
+			<label class="field-label" for="register-shirt-size">
+				T-shirt size:
+			</label>
+			<select class="field-control" id="register-shirt-size" name="shirtSize">
+				<option value="">Select...</option>
+				{% for size in shirtSizes %}
+					<option value="{{ size }}">{{ size }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="form-field">
 			<button type="submit">
 				Register
 			</button>

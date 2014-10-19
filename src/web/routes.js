@@ -39,7 +39,9 @@ module.exports = function(app, passport, db, email) {
 	function getRegister () {
 		return [
 			redirectIfLoggedIn('/'),
-			render('register.html')
+			render('register.html', {
+				shirtSizes: User.schema.path('shirtSize').enumValues
+			})
 		];
 	}
 
@@ -199,8 +201,13 @@ module.exports = function(app, passport, db, email) {
 	function handleError (opts) {
 		opts = opts || {};
 		return function(err, req, res, next) {
+			var message = err.message;
+			var field;
+			if (err.errors) {
+				message = err.toString();
+			}
 			if (opts.flashError !== false) {
-				req.flash('error', err.message);
+				req.flash('error', message);
 			}
 			res.redirect(opts.redirect || req.originalUrl);
 		};

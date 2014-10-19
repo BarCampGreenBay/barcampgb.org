@@ -2,8 +2,25 @@ var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
 var mongooseToken = require('mongoose-token');
 var schema = mongoose.Schema({
-	name: String,
-	admin: Boolean
+	name: { type: String, required: 'Name is required' },
+	shirtSize: {
+		type: String,
+		enum: [
+			'Unisex Small',
+			'Unisex Medium',
+			'Unisex Large',
+			'Unisex X-Large',
+			'Unisex XX-Large',
+			'Women\'s Small',
+			'Women\'s Medium',
+			'Women\'s Large',
+			'Women\'s X-Large',
+			'Women\'s XX-Large',
+		],
+		required: 'Shirt size is required'
+	},
+	diet: String,
+	admin: { type: Boolean, default: false }
 });
 
 // passport-local-mongoose will augment user with extra fields and functions
