@@ -38,7 +38,7 @@ module.exports = function(app, passport, db, email) {
 
 	function getRegister () {
 		return [
-			redirectIfLoggedIn('/'),
+			findActiveEvent(),
 			render('register.html', {
 				shirtSizes: User.schema.path('shirtSize').enumValues
 			})
@@ -47,7 +47,10 @@ module.exports = function(app, passport, db, email) {
 
 	function postRegister () {
 		return [
-			function(req, res, next) {
+			function createNewUser (req, res, next) {
+				if (req.body.existingUser === 'yes') {
+					return next();
+				}
 				var user = new User(req.body);
 				User.register(user, req.body.password, function(err) {
 					req.tempUser = user;
@@ -57,10 +60,19 @@ module.exports = function(app, passport, db, email) {
 					next(err);
 				});
 			},
-			handleError(),
-			flash('success', 'Registered!'),
 			loginUser(),
-			redirect('/')
+			function registerUser (req, res, next) {
+				Event.findById(req.body.event, function(err, event) {
+					if (err) {
+						return next(err);
+					}
+					event.registrants.push(req.user.id);
+					event.save(next);
+				});
+			},
+			flash('success', 'Registered!'),
+			redirect('/'),
+			handleError()
 		];
 	}
 
@@ -178,6 +190,9 @@ module.exports = function(app, passport, db, email) {
 
 	function loginUser () {
 		return function(req, res, next) {
+			if (!req.tempUser) {
+				return next();
+			}
 			req.login(req.tempUser, function(err) {
 				next(err);
 			});
