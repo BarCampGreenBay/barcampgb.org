@@ -1,0 +1,38 @@
+{% extends "templates/layout.html" %}
+
+{% block body %}
+	{% if user and (not proposal or user.canEditProposal(proposal)) %}
+		<form {% if proposal %}action="?_method=PUT"{% endif %} method="post">
+			<div class="form-field">
+				<label class="field-label" for="proposal-title">
+					Title:
+				</label>
+				<input class="field-control" type="text" id="proposal-title" name="title" value="{{ proposal.title }}" />
+			</div>
+			<div class="form-field">
+				<label class="field-label" for="proposal-description">
+					Description:
+				</label>
+				<textarea class="field-control" id="proposal-description" name="description">{{ proposal.description }}</textarea>
+			</div>
+			<div class="form-field">
+				<button type="submit">Save</button>
+			</div>
+		</form>
+	{% elif not proposal %}
+		<a href="/login">Login to propose sessions.</a>
+	{% else %}
+		<h2>{{ proposal.title }}</h2>
+		<p>{{ proposal.description }}</p>
+		{% if user %}
+			<form action="/proposal/{{ proposal.id }}/vote" method="post">
+				{% if user.hasVotedForProposal(proposal) %}
+					<button type="submit">Remove Vote</button>
+				{% else %}
+					<input type="hidden" name="vote" value="add" />
+					<button type="submit">Vote</button>
+				{% endif %}
+			</form>
+		{% endif %}
+	{% endif %}
+{% endblock %}

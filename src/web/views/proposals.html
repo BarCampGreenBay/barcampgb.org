@@ -1,0 +1,16 @@
+{% extends "templates/layout.html" %}
+
+{% block body %}
+	<h2>Proposals</h2>
+	<a href="/proposal">Add new</a>
+	{% for proposal in proposals %}
+		<p><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></p>
+		<p>{{ proposal.description }}</p>
+		{% if user and user.canEditProposal(proposal) %}
+			<a href="/proposal/{{ proposal.id }}">Edit</a>
+			<form action="/proposal/{{ proposal.id }}?_method=DELETE" method="post">
+				<button type="submit">Delete</button>				
+			</form>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

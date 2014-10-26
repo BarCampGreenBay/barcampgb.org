@@ -10,6 +10,7 @@ var components = require('./modules/polymer_components');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var session = require('cookie-session');
+var methodOverride = require('method-override');
 
 module.exports = app;
 
@@ -25,6 +26,7 @@ if (config.env.dev) {
 }
 
 app.use(session({ secret: config.web.sessionSecret }));
+app.use(methodOverride('_method'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json

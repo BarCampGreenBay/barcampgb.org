@@ -5,6 +5,7 @@ module.exports = function(app, passport, db, email) {
 
 	var Event = require('../api/event')(db);
 	var User = require('../api/user')(db);
+	var Proposal = require('../api/proposal')(db);
 	var auth = require('../modules/auth')(passport, User);
 
 	app.get('/', getIndex());
@@ -13,6 +14,11 @@ module.exports = function(app, passport, db, email) {
 	app.route('/password/forgot').get(getForgot()).post(postForgot());
 	app.route('/password/reset/:token').get(getReset()).post(postReset());
 	app.get('/logout', getLogout());
+
+	app.get('/proposals', getProposals());
+	app.route('/proposal').get(getProposal({ isNew: true })).post(postProposal());
+	app.route('/proposal/:id').get(getProposal()).put(putProposal()).delete(deleteProposal());
+	app.post('/proposal/:id/vote', postProposalVote());
 
 	function getIndex () {
 		return [
@@ -136,11 +142,104 @@ module.exports = function(app, passport, db, email) {
 		};
 	}
 
+	function getProposals () {
+		return [
+			findActiveEvent(),
+			function(req, res, next) {
+				Proposal.findByEvent(req.event).then(function(proposals) {
+					res.locals.proposals = proposals;
+					next();
+				});
+			},
+			render('proposals.html')
+		];
+	}
+
+	function getProposal (opts) {
+		opts = opts || {};
+		var actions = [
+			findProposal(),
+			handleError({
+				redirect: '/proposals'
+			}),
+			render('proposal.html')
+		];
+		if (opts.isNew) {
+			actions.splice(0, 2);
+		}
+		return actions;
+	}
+
+	function postProposal () {
+		return [
+			findActiveEvent(),
+			function(req, res, next) {
+				var proposal = new Proposal({
+					owner: req.user._id,
+					title: req.body.title,
+					description: req.body.description
+				});
+				req.event.addProposal(proposal, function(err) {
+					next(err);
+				});
+			},
+			flash('success', 'Created!'),
+			redirect('/proposals')
+		];
+	}
+
+	function putProposal () {
+		return [
+			findProposal(),
+			userCanEditProposal(),
+			function updateProposal (req, res, next) {
+				req.proposal.title = req.body.title;
+				req.proposal.description = req.body.description;
+				req.proposal.save(function(err) {
+					next(err);
+				});
+			},
+			flash('Updated!'),
+			redirect('/proposals')
+		];
+	}
+
+	function deleteProposal () {
+		return [
+			findActiveEvent(),
+			findProposal(),
+			userCanEditProposal(),
+			function removeProposal (req, res, next) {
+				req.event.removeProposal(req.proposal, function(err) {
+					next(err);
+				});
+			},
+			flash('success', 'Deleted!'),
+			redirect('/proposals')
+		];
+	}
+
+	function postProposalVote () {
+		return [
+			findProposal(),
+			function changeProposalVote (req, res, next) {
+				if (req.body.vote === 'add') {
+					req.proposal.addVote(req.user, next);
+				}
+				else {
+					req.proposal.removeVote(req.user, next);
+				}
+			},
+			redirect(function(req) {
+				return '/proposal/' + req.proposal.id;
+			})
+		];
+	}
+
 	function render (view, context) {
 		return function(req, res) {
 			res.render('views/' + view, merge({
 				user: req.user,
-				event: req.event,
 				errors: req.flash('error'),
 				successes: req.flash('success')
 			}, context || {}));
@@ -149,6 +248,9 @@ module.exports = function(app, passport, db, email) {
 
 	function redirect (url) {
 		return function(req, res) {
+			if (typeof url === 'function') {
+				url = url(req, res);
+			}
 			res.redirect(url);
 		};
 	}
@@ -173,9 +275,37 @@ module.exports = function(app, passport, db, email) {
 	function authorized () {
 		return function(req, res, next) {
 			if (!req.user) {
+				res.status(403);
 				return next(new Error('Not authorized!'));
 			}
 			next();
+		};
+	}
+
+	function findProposal () {
+		return function(req, res, next) {
+			Proposal.findById(req.params.id, function(err, proposal) {
+				if (proposal) {
+					req.proposal = proposal;
+					res.locals.proposal = proposal;
+				}
+				else {
+					err = new Error('No proposal found!');
+				}
+				next(err);
+			});
+		};
+	}
+
+	function userCanEditProposal () {
+		return function(req, res, next) {
+			if (req.user && req.user.canEditProposal(req.proposal)) {
+				next();
+			}
+			else {
+				res.status(403);
+				next(new Error('No can do.'));
+			}
 		};
 	}
 
@@ -183,6 +313,7 @@ module.exports = function(app, passport, db, email) {
 		return function(req, res, next) {
 			Event.findActive().then(function(activeEvent) {
 				req.event = activeEvent;
+				res.locals.event = activeEvent;
 				next();
 			}, next);
 		};

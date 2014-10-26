@@ -9,6 +9,7 @@ var schema = mongoose.Schema({
 		url: String
 	},
 	registrants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+	proposals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Proposal' }],
 	active: Boolean
 });
 
@@ -25,6 +26,28 @@ schema.path('registrants').validate(function(arr) {
 
 schema.statics.findActive = function(cb) {
 	return this.findOne({ active: true }).exec(cb);
+};
+
+schema.methods.addProposal = function(proposal, cb) {
+	this.proposals.push(proposal.id);
+	proposal.save(function(err) {
+		if (err) {
+			return cb(err);
+		}
+		this.save(cb);
+	}.bind(this));
+};
+
+schema.methods.removeProposal = function(proposal, cb) {
+	this.proposals = this.proposals.filter(function(proposalId) {
+		return (proposalId.toString() !== proposal.id);
+	});
+	this.save(function(err) {
+		if (err) {
+			return cb(err);
+		}
+		proposal.remove(cb);
+	});
 };
 
 module.exports = function(db) {

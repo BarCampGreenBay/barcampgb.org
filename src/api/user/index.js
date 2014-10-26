@@ -31,7 +31,7 @@ schema.plugin(passportLocalMongoose, {
 // add password reset token functionality
 schema.plugin(mongooseToken);
 
-schema.static('forgotPassword', function(email) {
+schema.statics.forgotPassword = function(email) {
 	return this.findByUsername(email).exec()
 		.then(function(user) {
 			if (!user) {
@@ -39,9 +39,9 @@ schema.static('forgotPassword', function(email) {
 			}
 			return user.setToken();
 		});
-});
+};
 
-schema.method('resetPassword', function(password, cb) {
+schema.methods.resetPassword = function(password, cb) {
 	var user = this;
 	user.setPassword(password, function(err) {
 		if (err) {
@@ -49,7 +49,17 @@ schema.method('resetPassword', function(password, cb) {
 		}
 		user.resetToken(cb);
 	});
-});
+};
+
+schema.methods.canEditProposal = function(proposal) {
+	return (proposal.owner.toString() === this.id);
+};
+
+schema.methods.hasVotedForProposal = function(proposal) {
+	return proposal.votes.some(function(userId) {
+		return (userId.toString() === this.id);
+	}.bind(this));
+};
 
 module.exports = function(db) {
 	return db.connection.model('User', schema);
