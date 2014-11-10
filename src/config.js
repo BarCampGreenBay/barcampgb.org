@@ -8,8 +8,8 @@ var config = {
 		password: process.env.SMTP_PASSWORD
 	},
 	env: {
-		dev: (process.env.NODE_ENV !== 'prod'),
-		prod: (process.env.NODE_ENV === 'prod')
+		dev: (process.env.NODE_ENV !== 'production'),
+		prod: (process.env.NODE_ENV === 'production')
 	},
 	web: {
 		port: process.env.NODE_PORT || 8000,

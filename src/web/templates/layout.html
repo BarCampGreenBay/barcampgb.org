@@ -3,34 +3,18 @@
 <head>
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<script src="/vendor/platform/platform.js"></script>
-	{% for component in components.vendor %}
-		<link rel="import" href="/vendor/{{ component }}/{{ component }}.html">
-	{%- endfor %}
-	{% for component in components.user %}
-		<link rel="import" href="/assets/components/{{ component }}/{{ component }}.html">
-	{%- endfor %}
-	<!-- <link rel="import" href="/assets/components/site-components.html"> -->
 	<link rel="stylesheet" type="text/css" href="/assets/form.css">
 	<link rel="stylesheet" type="text/css" href="/assets/site.css">
 </head>
-<body fullbleed unresolved>
-	<scroll-area>
-		<site-banner shortname="BCGB">
-			<core-toolbar class="fixed main-toolbar">
-				<core-icon-button icon="menu"></core-icon-button>
-				<span flex>
-					{% if user %}
-					Welcome {{ user.name }}
-					{% endif %}
-					&nbsp;
-				</span>
-				<core-icon-button icon="menu"></core-icon-button>
-			</core-toolbar>
-			<header class="main-header">
-				<h1><img height="200" src="/assets/images/logo-white.png" /></h1>
-			</header>
-		</site-banner>
+<body>
+	<div>
+		<header class="main-header">
+			<h1><img height="200" src="/assets/images/logo-white.png" /></h1>
+		</header>
+		{% if user %}
+		Welcome {{ user.name }}
+		{% endif %}
+		&nbsp;
 		{% for error in errors %}
 			<div class="error">{{ error }}</div>
 		{% endfor %}
@@ -40,7 +24,7 @@
 		<article class="main-article">
 			{% block body %}{% endblock %}
 		</article>
-
-	</scroll-area>
+	</div>
+	<!-- <script src="/js/client.js"></script> -->
 </body>
 </html>

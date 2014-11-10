@@ -1,11 +1,5 @@
-site-banner {
-	background: #025bac url(/assets/images/block-intro-bg.png);
-	background-size: contain;
-	background-attachment: fixed;
-}
-
 .main-header {
-	/*background: #025bac;*/
+	background: #025bac;
 	color: #fff;
 	margin: 0;
 }

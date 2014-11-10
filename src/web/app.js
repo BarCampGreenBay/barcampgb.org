@@ -6,19 +6,17 @@ var config = require('../config');
 var db = require('../modules/db');
 var email = require('../modules/email')(nunjucks);
 var routes = require('./routes');
-var components = require('./modules/polymer_components');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var session = require('cookie-session');
 var methodOverride = require('method-override');
+var browserify = require('browserify-middleware');
 
 module.exports = app;
 
 nunjucks.configure(__dirname, {
 	express: app
 });
-
-app.locals.components = components;
 
 db.connect();
 if (config.env.dev) {
@@ -45,5 +43,7 @@ app.use(function(req, res, next) {
 
 routes(app, passport, db, email);
 
-app.use('/vendor', express.static(__dirname + '/../../bower_components'));
 app.use('/assets', express.static(__dirname + '/assets'));
+app.use('/js/client.js', browserify(__dirname + '/assets/js/client.jsx', {
+	transform: ['reactify']
+}));
