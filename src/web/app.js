@@ -1,3 +1,4 @@
+require('node-jsx').install({ extension: '.jsx' });
 var nunjucks = require('nunjucks');
 var express = require('express');
 var passport = require('passport');
@@ -35,15 +36,16 @@ app.use(flash());
 
 // catch db connection errors
 app.use(function(req, res, next) {
-	if (db.readyState !== 1 && config.env.prod) {
+	if (db.connection.readyState !== 1 && config.env.prod) {
 		return res.status(500).send('No database connection.');
 	}
 	next();
 });
 
-routes(app, passport, db, email);
-
+// static assets
 app.use('/assets', express.static(__dirname + '/assets'));
-app.use('/js/client.js', browserify(__dirname + '/assets/js/client.jsx', {
+app.use('/assets/js/app.js', browserify(__dirname + '/modules/app.jsx', {
 	transform: ['reactify']
 }));
+
+routes(app, passport, db, email);

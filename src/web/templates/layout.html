@@ -8,9 +8,7 @@
 </head>
 <body>
 	<div>
-		<header class="main-header">
-			<h1><img height="200" src="/assets/images/logo-white.png" /></h1>
-		</header>
+		<header class="main-header"></header>
 		{% if user %}
 		Welcome {{ user.name }}
 		{% endif %}
@@ -25,6 +23,6 @@
 			{% block body %}{% endblock %}
 		</article>
 	</div>
-	<script src="/js/client.js"></script>
+	<script src="/assets/js/client.js"></script>
 </body>
 </html>

@@ -20,6 +20,23 @@ module.exports = function(app, passport, db, email) {
 	app.route('/proposal/:id').get(getProposal()).put(putProposal()).delete(deleteProposal());
 	app.post('/proposal/:id/vote', postProposalVote());
 
+	app.get('/react', function(req, res) {
+		var React = require('react');
+		var App = React.createFactory(require('./modules/app'));
+
+		res.render('templates/react-bootstrap.html', {
+			markup: React.renderToString(App())
+		});
+	});
+	app.get('/react/page2', function(req, res) {
+		var React = require('react');
+		var App = React.createFactory(require('./modules/app'));
+
+		res.render('templates/react-bootstrap.html', {
+			markup: React.renderToString(App({ url: req.url }))
+		});
+	});
+
 	function getIndex () {
 		return [
 			findActiveEvent(),
