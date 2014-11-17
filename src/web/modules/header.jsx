@@ -3,9 +3,9 @@ var React = require('react');
 var Header = React.createClass({
 	render: function() {
 		var user = '';
-		if (this.props.user) {
+		if (this.props.loggedIn) {
 			user = (
-				<p>Welcome, {this.props.user.name}. <a href="/logout">Logout</a></p>
+				<p>Welcome, {this.props.user.name}. <a href={null} onClick={this.props.logout}>Logout</a></p>
 			);
 		}
 		return (

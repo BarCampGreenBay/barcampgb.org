@@ -8,8 +8,11 @@ var views = {
 var App = React.createClass({
 	getInitialState: function() {
 		return {
-			test: 1
+			loggedIn: !!this.props.user
 		}
+	},
+	logout: function() {
+		this.setState({ loggedIn: false });
 	},
 	render: function() {
 		var Page = views[this.props._page];
@@ -23,9 +26,9 @@ var App = React.createClass({
 		return (
 			<div>
 				{propStore}
-				<Header user={this.props.user} />
+				<Header user={this.props.user} loggedIn={this.state.loggedIn} logout={this.logout} />
 				<article className="main-article">
-					<Page user={this.props.user} />
+					<Page user={this.props.user} loggedIn={this.state.loggedIn} logout={this.logout} />
 				</article>
 			</div>
 		);
