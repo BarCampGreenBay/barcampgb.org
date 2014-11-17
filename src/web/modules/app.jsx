@@ -1,6 +1,9 @@
 var React = require('react');
 var Header = require('./header.jsx');
-var Page;
+var views = {
+	index: require('../views/index.jsx'),
+	login: require('../views/login.jsx')
+}
 
 var App = React.createClass({
 	getInitialState: function() {
@@ -9,19 +12,32 @@ var App = React.createClass({
 		}
 	},
 	render: function() {
-		if (this.props.url === '/react/page2') {
-			Page = require('./page2.jsx');
-		}
-		else {
-			Page = require('./pageHome.jsx');
-		}
+		var Page = views[this.props._page];
+		var json = JSON.stringify(this.props);
+		var propStore = (
+			<script type="application/json"
+				id="props"
+				dangerouslySetInnerHTML={{__html: json}}>
+			</script>
+		);
 		return (
 			<div>
-				<Header />
-				<Page />
+				{propStore}
+				<Header user={this.props.user} />
+				<article className="main-article">
+					<Page user={this.props.user} />
+				</article>
 			</div>
 		);
 	}
 });
+
+if (typeof window !== 'undefined') {
+	window.addEventListener('load', function() {
+		var container = document.getElementById('react-root');
+		var props = JSON.parse(document.getElementById('props').innerHTML);
+		React.render(React.createElement(App, props), container);
+	});
+}
 
 module.exports = App;

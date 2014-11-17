@@ -1,5 +1,8 @@
+var config = require('../config');
 var log = require('../modules/log');
 var merge = require('merge');
+var React = require('react');
+var App = React.createFactory(require('./modules/app.jsx'));
 
 module.exports = function(app, passport, db, email) {
 
@@ -10,42 +13,25 @@ module.exports = function(app, passport, db, email) {
 
 	app.get('/', getIndex());
 	app.route('/login').get(getLogin()).post(postLogin());
-	app.route('/register').get(getRegister()).post(postRegister());
-	app.route('/password/forgot').get(getForgot()).post(postForgot());
-	app.route('/password/reset/:token').get(getReset()).post(postReset());
+	// app.route('/register').get(getRegister()).post(postRegister());
+	// app.route('/password/forgot').get(getForgot()).post(postForgot());
+	// app.route('/password/reset/:token').get(getReset()).post(postReset());
 	app.get('/logout', getLogout());
 
-	app.get('/proposals', getProposals());
-	app.route('/proposal').get(getProposal({ isNew: true })).post(postProposal());
-	app.route('/proposal/:id').get(getProposal()).put(putProposal()).delete(deleteProposal());
-	app.post('/proposal/:id/vote', postProposalVote());
-
-	app.get('/react', function(req, res) {
-		var React = require('react');
-		var App = React.createFactory(require('./modules/app'));
-
-		res.render('templates/react-bootstrap.html', {
-			markup: React.renderToString(App())
-		});
-	});
-	app.get('/react/page2', function(req, res) {
-		var React = require('react');
-		var App = React.createFactory(require('./modules/app'));
-
-		res.render('templates/react-bootstrap.html', {
-			markup: React.renderToString(App({ url: req.url }))
-		});
-	});
+	// app.get('/proposals', getProposals());
+	// app.route('/proposal').get(getProposal({ isNew: true })).post(postProposal());
+	// app.route('/proposal/:id').get(getProposal()).put(putProposal()).delete(deleteProposal());
+	// app.post('/proposal/:id/vote', postProposalVote());
 
 	function getIndex () {
 		return [
 			findActiveEvent(),
-			render('index.html')
+			renderReact('index')
 		];
 	}
 
 	function getLogin () {
-		return render('login.html');
+		return renderReact('login');
 	}
 
 	function postLogin () {
@@ -260,6 +246,23 @@ module.exports = function(app, passport, db, email) {
 				errors: req.flash('error'),
 				successes: req.flash('success')
 			}, context || {}));
+		};
+	}
+
+	function renderReact (view, context) {
+		context = context || {};
+		return function(req, res) {
+			context = merge(context, {
+				_page: view,
+				user: req.user
+			});
+			if (config.env.dev) {
+				delete require.cache[require.resolve('./modules/app.jsx')];
+				App = React.createFactory(require('./modules/app.jsx'));
+			}
+			res.render('templates/react-bootstrap.html', {
+				markup: React.renderToString(App(context))
+			});
 		};
 	}
 
