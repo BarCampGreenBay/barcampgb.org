@@ -1,10 +1,10 @@
 var React = require('react');
 
 var LoginPage = React.createClass({
-    displayName: 'LoginPage',
-    render: function () {
-        return (
-            <form className="form" method="post">
+	displayName: 'LoginPage',
+	render: function () {
+		return (
+			<form className="form" method="post">
 				<div className="form-field">
 					<label className="field-label" htmlFor="login-email">
 						Email:
@@ -26,8 +26,8 @@ var LoginPage = React.createClass({
 					</button>
 				</div>
 			</form>
-        );
-    }
+		);
+	}
 });
 
 module.exports = LoginPage;

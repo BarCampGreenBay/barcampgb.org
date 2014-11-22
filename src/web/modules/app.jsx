@@ -2,7 +2,8 @@ var React = require('react');
 var Header = require('./header.jsx');
 var views = {
 	index: require('../views/index.jsx'),
-	login: require('../views/login.jsx')
+	login: require('../views/login.jsx'),
+	register: require('../views/register.jsx')
 }
 
 var App = React.createClass({
@@ -15,7 +16,7 @@ var App = React.createClass({
 		this.setState({ loggedIn: false });
 	},
 	render: function() {
-		var Page = views[this.props._page];
+		var Page = views[this.props._page.split('.')[0]];
 		var json = JSON.stringify(this.props);
 		var propStore = (
 			<script type="application/json"
@@ -28,7 +29,7 @@ var App = React.createClass({
 				{propStore}
 				<Header user={this.props.user} loggedIn={this.state.loggedIn} logout={this.logout} />
 				<article className="main-article">
-					<Page user={this.props.user} loggedIn={this.state.loggedIn} logout={this.logout} />
+					<Page {...this.props} loggedIn={this.state.loggedIn} logout={this.logout} />
 				</article>
 			</div>
 		);

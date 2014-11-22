@@ -2,7 +2,7 @@
   "name": "barcampgb.org",
   "version": "0.0.1",
   "description": "BarCamp Green Bay website",
-  "main": "src/server.js",
+  "main": "src/web/server.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:BarCampGreenBay/barcampgb.org.git"
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jasmine-node tests/",
     "autotest": "jasmine-node tests/ --autotest",
-    "dev": "node-dev src/web/server.js | bunyan -l debug -o short",
+    "dev": "node-dev src/web/server.js --no-deps | bunyan -l debug -o short",
     "debug": "node-debug src/web/server.js",
     "prod": "NODE_ENV=production node src/web/server.js"
   },
@@ -25,7 +25,6 @@
     "express": "^4.4.5",
     "express-jsxtransform": "^1.0.0",
     "express-session": "^1.8.1",
-    "jsx-reader": "^0.1.1",
     "merge": "^1.2.0",
     "method-override": "^2.3.0",
     "mongoose": "^3.8.13",

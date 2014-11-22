@@ -13,7 +13,7 @@ module.exports = function(app, passport, db, email) {
 
 	app.get('/', getIndex());
 	app.route('/login').get(getLogin()).post(postLogin());
-	// app.route('/register').get(getRegister()).post(postRegister());
+	app.route('/register').get(getRegister()).post(postRegister());
 	// app.route('/password/forgot').get(getForgot()).post(postForgot());
 	// app.route('/password/reset/:token').get(getReset()).post(postReset());
 	app.get('/logout', getLogout());
@@ -26,12 +26,12 @@ module.exports = function(app, passport, db, email) {
 	function getIndex () {
 		return [
 			findActiveEvent(),
-			renderReact('index')
+			renderReact('index.jsx')
 		];
 	}
 
 	function getLogin () {
-		return renderReact('login');
+		return renderReact('login.jsx');
 	}
 
 	function postLogin () {
@@ -48,7 +48,7 @@ module.exports = function(app, passport, db, email) {
 	function getRegister () {
 		return [
 			findActiveEvent(),
-			render('register.html', {
+			renderReact('register.jsx', {
 				shirtSizes: User.schema.path('shirtSize').enumValues
 			})
 		];
@@ -252,7 +252,7 @@ module.exports = function(app, passport, db, email) {
 	function renderReact (view, context) {
 		context = context || {};
 		return function(req, res) {
-			context = merge(context, {
+			context = merge(context, res.locals, {
 				_page: view,
 				user: req.user
 			});
@@ -334,6 +334,7 @@ module.exports = function(app, passport, db, email) {
 			Event.findActive().then(function(activeEvent) {
 				req.event = activeEvent;
 				res.locals.event = activeEvent;
+				res.locals.eventName = activeEvent.name;
 				next();
 			}, next);
 		};
