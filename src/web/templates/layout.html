@@ -3,28 +3,34 @@
 <head>
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/form.css">
 	<link rel="stylesheet" type="text/css" href="/assets/site.css">
 </head>
 <body>
 	<div>
+		{% include "partials/navigation.html" %}
 		<header class="main-header">
 			<h1><img height="200" src="/assets/images/logo-white.png" /></h1>
 		</header>
-		{% if user %}
-		Welcome {{ user.name }}
-		{% endif %}
-		&nbsp;
-		{% for error in errors %}
-			<div class="error">{{ error }}</div>
-		{% endfor %}
-		{% for success in successes %}
-			<div class="success">{{ success }}</div>
-		{% endfor %}
-		<article class="main-article">
-			{% block body %}{% endblock %}
-		</article>
+		<div class="container">
+			{% if user %}
+			Welcome {{ user.name }}
+			{% endif %}
+			&nbsp;
+			{% for error in errors %}
+				<div class="error">{{ error }}</div>
+			{% endfor %}
+			{% for success in successes %}
+				<div class="success">{{ success }}</div>
+			{% endfor %}
+			<article class="main-article">
+				{% block body %}{% endblock %}
+			</article>
+		</div>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<!-- <script src="/js/client.js"></script> -->
 </body>
 </html>
