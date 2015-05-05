@@ -5,17 +5,20 @@
 body {
   padding-top: 50px;
 }
+.center-block {
+  float: none;
+}
 
 /*
  * Typography
  */
 
 html {
-  font-size: 16px;
+  font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
-    font-size: 20px;
+    font-size: 17px;
   }
 }
 body {
@@ -76,6 +79,7 @@ hr {
 
 .navbar-default {
   margin-bottom: 0px;
+  background-color: #E7E7E7;
 }
 .navbar-default li {
   margin-bottom: 0px;
@@ -90,10 +94,21 @@ hr {
 	color: #fff;
 	margin: 0;
 }
-
 .main-header h1 {
 	margin: 0;
 	text-align: center;
+}
+.header {
+  position: relative;
+  text-align: center;
+}
+.header-text {
+  position: absolute;
+  top: 75px;
+  width: 100%;
+}
+.header-text h1 {
+  font-size: 2.5rem;
 }
 
 /*.main-header.shrink {
@@ -105,4 +120,34 @@ hr {
 }
 .main-toolbar {
 	height: 65px;
+}
+
+/*
+ * Card
+ */
+
+.card {
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: #FFF;
+  margin-bottom: 1rem;
+}
+
+/*
+ * Main
+ */
+
+#main {
+  margin-top: -250px;
+}
+
+/*
+ * Footer
+ */
+
+footer {
+  background-color: #E7E7E7;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  
 }
