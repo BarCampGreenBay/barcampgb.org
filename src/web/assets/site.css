@@ -3,7 +3,7 @@
  */
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
   font-family: "proxima-nova", sans-serif;
 }
 .center-block {
@@ -96,6 +96,12 @@ hr {
 .navbar-default .navbar-brand {
   max-width: 90px;
 }
+.navbar-nav li .navbar-btn {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 /*
  * Main header
@@ -116,7 +122,8 @@ hr {
 }
 .header-text {
   position: absolute;
-  top: 75px;
+  color: #FFF;
+  top: 25px;
   width: 100%;
 }
 .header-text img {
@@ -129,23 +136,8 @@ hr {
 /*.main-header.shrink {
 	height: 0px;
 }*/
-.main-article {
-	background: #fff;
-	padding: 1em;
-}
 .main-toolbar {
 	height: 65px;
-}
-
-/*
- * Card
- */
-
-.card {
-  border-radius: 1rem;
-  padding: 1rem;
-  background-color: #FFF;
-  margin-bottom: 1rem;
 }
 
 /*
@@ -153,7 +145,19 @@ hr {
  */
 
 #main {
-  margin-top: -225px;
+  margin-top: 1rem;
+}
+
+/*
+ * Card
+ */
+
+.card {
+  border: 1px solid #E7E7E7;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: #FFF;
+  margin-bottom: 1rem;
 }
 
 /*

@@ -1,18 +1,22 @@
 {% extends "templates/layout.html" %}
 
 {% block body %}
+<div class="container" id="main">
   <div class="col-md-7 center-block">
-  	<h2>Proposals</h2>
-  	<a href="/proposal">Add new</a>
+  	<h1>Proposals</h1>
+  	<p><a href="/proposal">Add new</a></p>
   	{% for proposal in proposals %}
+    <div class="card">
   		<p><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></p>
   		<p>{{ proposal.description }}</p>
   		{% if user and user.canEditProposal(proposal) %}
   			<a href="/proposal/{{ proposal.id }}">Edit</a>
   			<form action="/proposal/{{ proposal.id }}?_method=DELETE" method="post">
-  				<button type="submit">Delete</button>				
+  				<button type="submit">Delete</button>
   			</form>
   		{% endif %}
+    </div>
   	{% endfor %}
   </div>
+</div>
 {% endblock %}
