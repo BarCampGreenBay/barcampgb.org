@@ -7,7 +7,7 @@
   	<p><a href="/proposal">Add new</a></p>
   	{% for proposal in proposals %}
     <div class="card">
-  		<p><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></p>
+  		<p><h2><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></h2></p>
   		<p>{{ proposal.description }}</p>
   		{% if user and user.canEditProposal(proposal) %}
   			<a href="/proposal/{{ proposal.id }}">Edit</a>

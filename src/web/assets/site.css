@@ -4,7 +4,8 @@
 
 body {
   padding-top: 60px;
-  font-family: "proxima-nova", sans-serif;
+  padding-bottom: 60px;
+  font-family: "ff-tisa-sans-web-pro", sans-serif;
 }
 .center-block {
   float: none;
@@ -12,6 +13,8 @@ body {
 img {
   width: 100%;
   height: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /*
@@ -31,7 +34,7 @@ body {
   line-height: 1.35;
 }
 p {
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 h1,
@@ -42,12 +45,13 @@ h5,
 h6 {
   margin-top: 1.5rem;
   margin-bottom: .5rem;
+  font-family: "ff-nuvo-sc-web-pro", sans-serif;
   font-size: 1rem;
   font-weight: bold;
 }
 h1 {
   margin-top: 0px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 h2 {
   font-size: 1.1rem;
@@ -84,23 +88,33 @@ hr {
  */
 
 .navbar-default {
-  margin-bottom: 0px;
-  background-color: #E7E7E7;
+  margin-bottom: 0;
+  background-color: #025BAC;
+  border-bottom: none;
 }
-.navbar-default li {
+.navbar-default .navbar-nav li {
+  font-family: "ff-nuvo-sc-web-pro", sans-serif;
   margin-bottom: 1rem;
   margin-top: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.navbar-default .navbar-nav li a {
+  color: #FFF;
+}
+.navbar-default .navbar-nav li .navbar-btn {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #025BAC;
+}
 .navbar-default .navbar-brand {
   max-width: 90px;
 }
-.navbar-nav li .navbar-btn {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.navbar-brand img {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /*
@@ -108,7 +122,7 @@ hr {
  */
 
 .main-header {
-	background: #025bac;
+	background-color: #025BAC;
 	color: #fff;
 	margin: 0;
 }
@@ -146,6 +160,21 @@ hr {
 
 #main {
   margin-top: 1rem;
+  background-color: #FFF;
+}
+
+/*
+ * Section
+ */
+
+.section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.section-inverse {
+  background-color: #E7E7E7;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 /*
@@ -153,11 +182,29 @@ hr {
  */
 
 .card {
+  position: relative;
   border: 1px solid #E7E7E7;
   border-radius: 1rem;
   padding: 1rem;
   background-color: #FFF;
   margin-bottom: 1rem;
+}
+.card-tag {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100px;
+  height: 100px;
+  background-color: #025BAC;
+  border-radius: 50%;
+}
+.card-tag-inverse {
+  background-color: #FFF;
+  border: 3px solid #025BAC;
+}
+.card-list .card {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 /*
