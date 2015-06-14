@@ -89,7 +89,7 @@ hr {
 
 .navbar-default {
   margin-bottom: 0;
-  background-color: #025BAC;
+  background-color: #eee;
   border-bottom: none;
 }
 .navbar-default .navbar-nav li {
@@ -118,33 +118,20 @@ hr {
 }
 
 /*
- * Main header
+ * Jumbotron
  */
 
-.main-header {
-	background-color: #025BAC;
-	color: #fff;
-	margin: 0;
-}
-.main-header h1 {
-	margin: 0;
-	text-align: center;
-}
-.header {
-  position: relative;
+.jumbotron {
   text-align: center;
+  padding-bottom: 6rem;
+  padding-top: 6rem;
 }
-.header-text {
-  position: absolute;
-  color: #FFF;
-  top: 25px;
-  width: 100%;
+.jumbotron h1 {
+  font-family: "ff-tisa-sans-web-pro", sans-serif;
+  font-size: 2rem;
 }
-.header-text img {
-  max-width: 246px;
-}
-.header-text h1 {
-  font-size: 2.5rem;
+.jumbotron p {
+  font-size: 1.5rem;
 }
 
 /*.main-header.shrink {
