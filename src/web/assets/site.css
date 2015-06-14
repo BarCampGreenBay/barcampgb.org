@@ -97,10 +97,14 @@ hr {
 }
 .navbar-default .navbar-nav li {
   font-family: "ff-nuvo-sc-web-pro", sans-serif;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+.navbar-default .navbar-nav li a img {
+  border: 1px solid #FFF;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.1);
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .navbar-default .navbar-nav li a {
   color: #FFF;
