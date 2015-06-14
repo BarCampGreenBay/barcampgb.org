@@ -3,8 +3,8 @@
  */
 
 body {
-  padding-top: 60px;
   padding-bottom: 60px;
+  padding-top: 60px;
   font-family: "ff-tisa-sans-web-pro", sans-serif;
 }
 .center-block {
@@ -82,6 +82,9 @@ hr {
   border-left: 0px;
   border-right: 0px;
 }
+.lead {
+  font-size: 1.5rem;
+}
 
 /*
  * Navigation
@@ -89,7 +92,7 @@ hr {
 
 .navbar-default {
   margin-bottom: 0;
-  background-color: #eee;
+  background-color: #C2C2C2;
   border-bottom: none;
 }
 .navbar-default .navbar-nav li {
@@ -123,15 +126,29 @@ hr {
 
 .jumbotron {
   text-align: center;
-  padding-bottom: 6rem;
-  padding-top: 6rem;
+  padding-bottom: 7rem;
+  padding-top: 7rem;
+  background-color: #C2C2C2;
 }
 .jumbotron h1 {
   font-family: "ff-tisa-sans-web-pro", sans-serif;
-  font-size: 2rem;
+  font-size: 2.3rem;
+  font-weight: normal;
 }
 .jumbotron p {
-  font-size: 1.5rem;
+  color: #7e7e7e;
+  font-size: 1.7rem;
+}
+.jumbotron .btn {
+  margin-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1rem;
+  border: 1px solid #FFF;
+  border-radius: 1.1rem;
+  background-color: transparent;
+  text-transform: uppercase;
+  color: #FFF;
 }
 
 /*.main-header.shrink {
@@ -159,7 +176,7 @@ hr {
   margin-bottom: 2rem;
 }
 .section-inverse {
-  background-color: #E7E7E7;
+  background-color: #F1F0F1;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -170,11 +187,10 @@ hr {
 
 .card {
   position: relative;
-  border: 1px solid #E7E7E7;
-  border-radius: 1rem;
   padding: 1rem;
   background-color: #FFF;
   margin-bottom: 1rem;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.1);
 }
 .card-tag {
   position: absolute;
