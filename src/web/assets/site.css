@@ -4,7 +4,7 @@
 
 body {
   padding-bottom: 60px;
-  padding-top: 60px;
+  padding-top: 0;
   font-family: "ff-tisa-sans-web-pro", sans-serif;
 }
 .center-block {
@@ -92,7 +92,7 @@ hr {
 
 .navbar-default {
   margin-bottom: 0;
-  background-color: #C2C2C2;
+  background-color: transparent;
   border-bottom: none;
 }
 .navbar-default .navbar-nav li {
@@ -130,8 +130,8 @@ hr {
 
 .jumbotron {
   text-align: center;
-  padding-bottom: 7rem;
-  padding-top: 7rem;
+  margin-top: -1.3rem;
+  color: #FFF;
   background-color: #C2C2C2;
 }
 .jumbotron h1 {
@@ -140,7 +140,7 @@ hr {
   font-weight: normal;
 }
 .jumbotron p {
-  color: #7e7e7e;
+  color: #FFF;
   font-size: 1.7rem;
 }
 .jumbotron .btn {
@@ -160,6 +160,39 @@ hr {
 }*/
 .main-toolbar {
 	height: 65px;
+}
+
+/*
+ * Video embed
+ */
+
+.backgroundVideo {
+  z-index: 4;
+  visibility: hidden;
+}
+#video_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+}
+#video_container #text {
+  position: absolute;
+  z-index: 6;
+  text-align: center;
+  opacity: 0;
+  color: #FFF;
+  font-size: 75px;
+}
+#cover_all {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
 }
 
 /*

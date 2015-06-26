@@ -12,28 +12,81 @@
   <script>try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
-	<div>
-		{% include "partials/navigation.html" %}
-		{% if user %}
-		Welcome {{ user.name }}
-		{% endif %}
-		&nbsp;
-		{% for error in errors %}
-			<div class="error">{{ error }}</div>
-		{% endfor %}
-		{% for success in successes %}
-			<div class="success">{{ success }}</div>
-		{% endfor %}
-		<article class="main-article">
-			{% block body %}{% endblock %}
-		</article>
-	</div>
+  
+  {% include "partials/navigation.html" %}
+  {% if user %}
+  Welcome {{ user.name }}
+  {% endif %}
+  &nbsp;
+  {% for error in errors %}
+  	<div class="error">{{ error }}</div>
+  {% endfor %}
+  {% for success in successes %}
+  	<div class="success">{{ success }}</div>
+  {% endfor %}
+  <article class="main-article">
+  	{% block body %}{% endblock %}
+  </article>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <!-- Holder.js for placeholder images. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.7.1/holder.min.js"></script>
   <!-- Bootstrap scripts -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  
+  <!-- Wistia Video Embed -->
+  <script charset='ISO-8859-1' src='https://fast.wistia.com/assets/external/E-v1.js'></script>
+  <script charset='ISO-8859-1' src='https://fast.wistia.com/labs/crop-fill/plugin.js'></script>
+  <script>var fullScreenVideo = fullScreenVideo || {};
+
+fullScreenVideo = {
+  name: 'fullScreenVideo',
+  backgroundvideo: 'myb2xirucn',
+  backgroundvideoDiv: '#wistia_myb2xirucn',
+  
+  embedVideo: function() {
+    var videoOptions = {};
+    
+    Wistia.obj.merge(videoOptions, {
+      plugin: {
+        cropFill: {
+          src: "//fast.wistia.com/labs/crop-fill/plugin.js"
+        }
+      }
+    });
+    
+    wistiaEmbed = Wistia.embed(fullScreenVideo.backgroundvideo, videoOptions);
+    
+    wistiaEmbed.bind("play", function() {
+      wistiaEmbed.pause();
+      wistiaEmbed.time(0);
+      $(fullScreenVideo.backgroundvideoDiv).css('visibility', 'visible');
+      wistiaEmbed.play();
+      return this.unbind;
+    });
+  },
+  
+  fixTextPosition: function()
+  {
+    var width = $( window ).width();
+    var height = $( window ).height();
+    textWidth = $("#text").width();
+    textHeight = $("#text").height();
+    $("#video_container").css("width", width).css("height", (height * .75));
+    $("#main-image").css("width", width).css("height", height);
+    $("#text").css("left", (width/2) - (textWidth/2)).css("top", (height/3) - (textHeight/4));
+  }
+  
+}
+
+$(document).ready(function() {
+  fullScreenVideo.fixTextPosition();
+  $("#text").delay(200).animate({ opacity: 1 }, 650);
+});
+
+$(window).resize(fullScreenVideo.fixTextPosition);
+
+fullScreenVideo.embedVideo();</script>
 	<!-- <script src="/js/client.js"></script> -->
 </body>
 </html>
