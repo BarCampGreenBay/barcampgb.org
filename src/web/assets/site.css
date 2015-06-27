@@ -15,7 +15,7 @@ body {
   line-height: 1.35;
   font-family: "ff-tisa-sans-web-pro", sans-serif;
   padding-bottom: 60px;
-  padding-top: 80px;
+  padding-top: 6rem;
   background-color: #F4EEDF;
 }
 .center-block {
@@ -84,7 +84,7 @@ hr {
 }
 .lead {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem;
   color: #025BAC;
 }
 
@@ -223,7 +223,7 @@ hr {
   margin-bottom: 2rem;
 }
 .section-inverse {
-  background-color: #F1F0F1;
+  background-color: #FFF;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
