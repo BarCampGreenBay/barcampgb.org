@@ -4,48 +4,36 @@
 <div class="container" id="main">
 	<div class="row">
 		<div class="col-md-7 center-block">
-			<h1>Register for {{ event.name }}</h1>
-			<form class="form" method="post">
-				{% if user %}
-					<input type="hidden" name="existingUser" value="yes" />
-				{% else %}
-					<div class="form-field form-group">
-						<label class="field-label" for="login-name">
-							Name
-						</label>
-						<input class="field-control form-control" type="text" id="login-name" name="name" />
-					</div>
-					<div class="form-field">
-						<label class="field-label" for="login-email">
-							Email
-						</label>
-						<input class="field-control form-control" type="text" id="login-email" name="email" />
-					</div>
-					<div class="form-field">
-						<label class="field-label" for="login-password">
-							Password
-						</label>
-						<input class="field-control form-control" type="password" id="login-password" name="password" />
-					</div>
-					<div class="form-field">
-						<label class="field-label" for="register-shirt-size">
-							T-shirt size
-						</label>
-						<select class="field-control form-control" id="register-shirt-size" name="shirtSize">
-							<option value="">Select...</option>
-							{% for size in shirtSizes %}
-								<option value="{{ size }}">{{ size }}</option>
-							{% endfor %}
-						</select>
-					</div>
-				{% endif %}
-				<input type="hidden" name="event" value="{{ event.id }}" />
-				<div class="form-field">
-					<button type="submit" class="btn btn-default">
-						Register
-					</button>
-				</div>
-			</form>
+      <div class="card">
+			  <h1 class="text-center">Register for {{ event.name }}</h1>
+			  <form class="form" method="post">
+			  	{% if user %}
+			  		<input type="hidden" name="existingUser" value="yes" />
+			  	{% else %}
+			  		<div class="form-field form-group">
+			  			<input class="field-control form-control" type="text" id="login-name" placeholder="Name" name="name" />
+			  		</div>
+			  		<div class="form-field">
+			  			<input class="field-control form-control" type="text" id="login-email" placeholder="Email" name="email" />
+			  		</div>
+			  		<div class="form-field">
+			  			<input class="field-control form-control" type="password" id="login-password" placeholder="Password" name="password" />
+			  		</div>
+			  		<div class="form-field">
+			  			<select class="field-control form-control" id="register-shirt-size" name="shirtSize">
+			  				<option value="">Select T-shirt size...</option>
+			  				{% for size in shirtSizes %}
+			  					<option value="{{ size }}">{{ size }}</option>
+			  				{% endfor %}
+			  			</select>
+			  		</div>
+			  	{% endif %}
+			  	<input type="hidden" name="event" value="{{ event.id }}" />
+			  	<div class="form-field">
+			  		<button type="submit" class="btn btn-primary btn-wide">Register</button>
+			  	</div>
+			  </form>
+      </div>
 		</div>
 	</div>
 </div>

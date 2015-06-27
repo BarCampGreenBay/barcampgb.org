@@ -2,10 +2,21 @@
  * Global
  */
 
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 17px;
+  }
+}
 body {
-  padding-bottom: 60px;
-  padding-top: 0;
+  font-size: 1em;
+  line-height: 1.35;
   font-family: "ff-tisa-sans-web-pro", sans-serif;
+  padding-bottom: 60px;
+  padding-top: 80px;
+  background-color: #F4EEDF;
 }
 .center-block {
   float: none;
@@ -21,18 +32,6 @@ img {
  * Typography
  */
 
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 17px;
-  }
-}
-body {
-  font-size: 1em;
-  line-height: 1.35;
-}
 p {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -47,10 +46,12 @@ h6 {
   margin-bottom: .5rem;
   font-size: 1rem;
   font-weight: bold;
+  color: #025BAC;
 }
 h1 {
-  margin-top: 0px;
-  font-size: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 h2 {
   font-size: 1.1rem;
@@ -83,6 +84,8 @@ hr {
 }
 .lead {
   font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #025BAC;
 }
 
 /*
@@ -98,6 +101,7 @@ hr {
   font-family: "ff-nuvo-sc-web-pro", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-bottom: 0;
 }
 .navbar-default .navbar-nav li a img {
   border: 1px solid #FFF;
@@ -131,7 +135,7 @@ hr {
   text-align: center;
   margin-top: -1.3rem;
   color: #FFF;
-  background-color: #C2C2C2;
+  background-color: #025BAC;
 }
 .jumbotron h1 {
   font-family: "ff-tisa-sans-web-pro", sans-serif;
@@ -144,21 +148,29 @@ hr {
 }
 .jumbotron .btn {
   margin-top: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  font-size: 1rem;
-  border: 1px solid #FFF;
-  border-radius: 1.1rem;
-  background-color: transparent;
   text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #FFF;
   color: #FFF;
+  font-weight: 700;
 }
 
-/*.main-header.shrink {
-	height: 0px;
-}*/
-.main-toolbar {
-	height: 65px;
+/*
+ * Buttons
+ */
+
+.btn {
+  padding: 15px;
+  font-size: 1rem;
+}
+.btn-primary {
+  background-color: #025BAC;
+}
+.btn-secondary {
+  background-color: #EBCE1A;
+}
+.btn-wide {
+  width: 100%;
 }
 
 /*
@@ -200,7 +212,6 @@ hr {
 
 #main {
   margin-top: 1rem;
-  background-color: #FFF;
 }
 
 /*
@@ -226,6 +237,7 @@ hr {
   padding: 1rem;
   background-color: #FFF;
   margin-bottom: 1rem;
+  border-radius: 1rem;
   box-shadow: 0px 1px 2px rgba(0,0,0,.1);
 }
 .card-tag {
@@ -244,6 +256,19 @@ hr {
 .card-list .card {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+}
+
+/*
+ * Form
+ */
+
+.form-control {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  box-shadow: none;
+}
+label {
+  font-weight: normal;
 }
 
 /*
