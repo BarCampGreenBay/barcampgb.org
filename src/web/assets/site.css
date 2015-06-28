@@ -167,7 +167,9 @@ hr {
   background-color: #025BAC;
 }
 .btn-secondary {
-  background-color: #EBCE1A;
+  background-color: transparent;
+  border: 1px solid #FFF;
+  color: #FFF;
 }
 .btn-wide {
   width: 100%;
@@ -226,6 +228,27 @@ hr {
   background-color: #FFF;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+/*
+ * Modal
+ */
+
+.modal-content {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border: 0;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.modal-backdrop {
+  background-color: #004990;
+}
+.modal-backdrop.in {
+  opacity: .9;
+}
+.modal .btn-close {
+  float: right;
 }
 
 /*
