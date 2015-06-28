@@ -4,6 +4,7 @@
 
 html {
   font-size: 14px;
+  height: 100%;
 }
 @media (min-width: 768px) {
   html {
@@ -14,9 +15,19 @@ body {
   font-size: 1em;
   line-height: 1.35;
   font-family: "ff-tisa-sans-web-pro", sans-serif;
-  padding-bottom: 60px;
-  padding-top: 6rem;
   background-color: #F4EEDF;
+  height: 100%;
+}
+.login {
+  background-color: #025BAC;
+}
+#login-pattern {
+  background: url(../assets/images/block-intro-bg.png);
+  background-color: #000;
+  height: 100%;
+}
+#login-container {
+  padding-top: 8rem;
 }
 .center-block {
   float: none;
@@ -206,14 +217,6 @@ hr {
   z-index: 5;
   height: 100%;
   width: 100%;
-}
-
-/*
- * Main
- */
-
-#main {
-  margin-top: 1rem;
 }
 
 /*

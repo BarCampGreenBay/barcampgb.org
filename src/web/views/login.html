@@ -1,25 +1,32 @@
 {% extends "templates/layout.html" %}
 
+{% block header %}
+<body class="login">
+{% endblock %}
+
 {% block body %}
-<div class="container" id="main">
-	<div class="row">
-		<div class="col-md-7 center-block">
-      <div class="card">
-        <h1 class="text-center">Login</h1>
-			  <form class="form" method="post">
-			  	<div class="form-field">
-			  		<input class="field-control form-control" type="text" id="login-email" placeholder="Email" name="email" />
-			  	</div>
-			  	<div class="form-field">
-			  		<input class="field-control form-control" type="password" id="login-password" placeholder="Password" name="password" />
-			  	</div>
-			  	<div class="form-field">
-			  		<p><button type="submit" class="btn btn-primary btn-wide">Login</button></p>
-            <p class="text-center"><a href="/forgot-password">Forgot Password?</a></p>
-			  	</div>
-			  </form>
-      </div>
-		</div>
-	</div>
+<div id="login-pattern">
+  <div class="container" id="login-container">
+  	<div class="row">
+  		<div class="col-md-7 center-block">
+        <div class="card">
+          <h1 class="text-center">Login</h1>
+  			  <form class="form" method="post">
+  			  	<div class="form-field">
+  			  		<input class="field-control form-control" type="text" id="login-email" placeholder="Email" name="email" />
+  			  	</div>
+  			  	<div class="form-field">
+  			  		<input class="field-control form-control" type="password" id="login-password" placeholder="Password" name="password" />
+  			  	</div>
+  			  	<div class="form-field">
+  			  		<p><button type="submit" class="btn btn-primary btn-wide">Login</button></p>
+              <p class="text-center"><a href="/forgot-password">Forgot Password?</a></p>
+  			  	</div>
+  			  </form>
+        </div>
+        <a href="/register" class="btn btn-secondary text-center">Register</a>
+  		</div>
+  	</div>
+  </div>
 </div>
 {% endblock %}

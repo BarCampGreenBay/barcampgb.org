@@ -11,7 +11,9 @@
   <script src="//use.typekit.net/avp3yhq.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
 </head>
+{% block header %}
 <body>
+{% endblock %}
   
   {% include "partials/navigation.html" %}
   {% if user %}
@@ -24,9 +26,8 @@
   {% for success in successes %}
   	<div class="success">{{ success }}</div>
   {% endfor %}
-  <article class="main-article">
-  	{% block body %}{% endblock %}
-  </article>
+  
+  {% block body %}{% endblock %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <!-- Holder.js for placeholder images. -->
