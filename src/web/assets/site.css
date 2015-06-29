@@ -20,14 +20,12 @@ body {
 }
 .login {
   background-color: #025BAC;
-}
-#login-pattern {
-  background: url(../assets/images/block-intro-bg.png);
-  background-color: #000;
-  height: 100%;
+  background: url(../assets/images/pattern-5.jpg);
+  background-size: 80%;
+  background-position: 50% 0%;
 }
 #login-container {
-  padding-top: 8rem;
+  padding-top: 7rem;
 }
 .center-block {
   float: none;
