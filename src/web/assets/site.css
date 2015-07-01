@@ -15,7 +15,8 @@ body {
   font-size: 1em;
   line-height: 1.35;
   font-family: "ff-tisa-sans-web-pro", sans-serif;
-  background-color: #F4EEDF;
+  background-color: #E6E6E6;
+  padding-bottom: 60px;
   height: 100%;
 }
 .login {
@@ -221,14 +222,24 @@ hr {
  * Section
  */
 
-.section {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
-.section-inverse {
+.section-white {
   background-color: #FFF;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+}
+.section-pattern {
+  background-color: #025BAC;
+  background: url(../assets/images/pattern-5.jpg);
+  background-size: 80%;
+  background-position: 50% 0%;
+}
+.section-pattern h1 {
+  color: #FFF;
+}
+.section-pattern .card h1 {
+  color: #025BAC;
 }
 
 /*
@@ -271,6 +282,7 @@ hr {
   width: 100px;
   height: 100px;
   background-color: #025BAC;
+  border: 3px solid #FFF;
   border-radius: 50%;
 }
 .card-tag-inverse {

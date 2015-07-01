@@ -13,33 +13,36 @@
   <div id="wistia_myb2xirucn" class="wistia_embed backgroundVideo" style="width:920px;height:518px;"></div>
 </div>
 {% include "partials/register-modal.html" %}
-<div class="container" id="main">
-	<div class="row section">
-		<div class="col-md-8 center-block">
-			<p class="lead text-center">BarCamp Green Bay is a participant-led day of talks, discussions, and activities for sharing knowledge.</p>
-		</div>
-		<div class="col-md-4">
-	    <div class="card">
-			  <h1>Diverse</h1>
-			  <p>Any topic is welcome for a BarCamp session – it's all about sharing knowledge. Past topics include artificial intelligence, retro gaming, emotional intelligence, and web development.</p>
-	    </div>
-		</div>
-		<div class="col-md-4">
-	    <div class="card">
-			  <h1>Participant-led</h1>
-			  <p>Everyone is invited to propose a session topic, and everyone helps to make sure the day goes smoothly. This is your chance to share that thing you love.</p>
-	    </div>
-		</div>
-		<div class="col-md-4">
-	    <div class="card">
-			  <h1>Free and open</h1>
-			  <p>There’s no cost to attend Barcamp. It’s an open environment for sharing knowledge.</p>
-	    </div>
-		</div>
-	</div>
-</div>
 
-<div class="section section-inverse">
+<section>
+  <div class="container">
+  	<div class="row section">
+  		<div class="col-md-8 center-block">
+  			<p class="lead text-center">BarCamp Green Bay is a participant-led day of talks, discussions, and activities for sharing knowledge.</p>
+  		</div>
+  		<div class="col-md-4">
+  	    <div class="card">
+  			  <h1>Participant-led</h1>
+  			  <p>Everyone is invited to propose a session topic, and everyone helps to make sure the day goes smoothly. This is your chance to share that thing you love.</p>
+  	    </div>
+  		</div>
+  		<div class="col-md-4">
+  	    <div class="card">
+  			  <h1>Diverse</h1>
+  			  <p>Any topic is welcome for a BarCamp session – it's all about sharing knowledge. Past topics include artificial intelligence, retro gaming, emotional intelligence, and web development.</p>
+  	    </div>
+  		</div>
+  		<div class="col-md-4">
+  	    <div class="card">
+  			  <h1>Free and open</h1>
+  			  <p>There’s no cost to attend Barcamp. It’s an open environment for sharing knowledge.</p>
+  	    </div>
+  		</div>
+  	</div>
+  </div>
+</section>
+
+<section class="section-pattern">
 	<div class="container">
 		<div class="col-md-8 center-block">
 			<h1 id="how-it-works">How it works</h1>
@@ -62,19 +65,27 @@
 			</ol>-->
 		</div>
 	</div>
-</div>
+</section>
 
-<div class="section">
+<section>
 	<div class="container">
 		<div class="col-md-8 center-block">
 			<h1>Schedule</h1>
       <div class="card">
+        <p>9:00 a.m. Opening Session</p>
+        <p>10:00 a.m. Breakout Sessions</p>
+        <p>12:00 p.m. Lunch catered by Gallagher's Pizza Sponsored by Gallagher's Pizza and Startup Weekend Green Bay</p>
+        <p>1:00 p.m. Breakout Sessions</p>
+        <p>4:00 p.m. Closing Session</p>
+        <p>5:00 p.m. Dinner (not provided) small groups at local restaurants</p>
+        <p>7:00 p.m. Unstructured play games, hack on some code, or just mingle!</p>
+        <p>11:30 p.m. Clean-Up</p>
       </div>
 		</div>
 	</div>
-</div>
+</section>
 
-<div class="section section-inverse">
+<section class="section-white">
 	<div class="container">
 		<div class="col-md-4">
 	    <h1>Code of Conduct</h1>
@@ -89,9 +100,9 @@
 	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus bibendum, lacus a malesuada egestas, lectus nibh tempor enim.</p>
 	  </div>
 	</div>
-</div>
+</section>
 
-<div class="section">
+<section>
 	<div class="container">
 	  <div class="col-md-8 center-block">
 	    <h1>Sponsors</h1>
@@ -120,7 +131,42 @@
       <a class="btn btn-primary btn-wide" href="#">Sponsor BarCamp Green Bay!</a>
 		</div>
 	</div>
-</div>
+</section>
+
+<section class="section-pattern">
+  <div class="container">
+    <div class="col-md-8 center-block">
+      <h1>Join us! Register here.</h1>
+			<form class="form" method="post">
+				{% if user %}
+					<input type="hidden" name="existingUser" value="yes" />
+				{% else %}
+					<div class="form-field form-group">
+						<input class="field-control form-control" type="text" id="login-name" placeholder="Name" name="name" />
+					</div>
+					<div class="form-field">
+						<input class="field-control form-control" type="text" id="login-email" placeholder="Email" name="email" />
+					</div>
+					<div class="form-field">
+						<input class="field-control form-control" type="password" id="login-password" placeholder="Password" name="password" />
+					</div>
+					<div class="form-field">
+						<select class="field-control form-control" id="register-shirt-size" name="shirtSize">
+							<option value="">Select T-shirt size...</option>
+							{% for size in shirtSizes %}
+								<option value="{{ size }}">{{ size }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				{% endif %}
+				<input type="hidden" name="event" value="{{ event.id }}" />
+				<div class="form-field">
+					<button type="submit" class="btn btn-secondary btn-wide">Register</button>
+				</div>
+			</form>
+    </div>
+  </div>
+</section>
 <!--
   <hr>
 	<p>Next Event:</p>
