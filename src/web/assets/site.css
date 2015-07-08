@@ -19,7 +19,10 @@ body {
   padding-bottom: 60px;
   height: 100%;
 }
-.login {
+.white-background {
+  background-color: #FFF;
+}
+.pattern-background {
   background-color: #025BAC;
   background: url(../assets/images/pattern-5.jpg);
   background-size: 80%;
@@ -108,26 +111,36 @@ hr {
   border-bottom: none;
 }
 .navbar-default .navbar-nav li {
-  font-family: "ff-nuvo-sc-web-pro", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   margin-bottom: 0;
-}
-.navbar-default .navbar-nav li a img {
-  border: 1px solid #FFF;
-  box-shadow: 0px 1px 2px rgba(0,0,0,.1);
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 15px;
 }
 .navbar-default .navbar-nav li a {
-  color: #FFF;
+  color: #094F96;
+  text-align: center;
+  margin-left: .75rem;
+  width: 65px;
+  height: 65px;
+  border: 3px solid #094F96;
+  border-radius: 50%;
+  background-color: #D1EDEE;
+}
+.navbar-default .navbar-nav li a:hover {
+  background-color: #094F96;
+  color: #D1EDEE;
+  border-color: #D1EDEE;
+}
+.navbar-default .navbar-nav li a .fa {
+  font-size: 1.70rem;
 }
 .navbar-default .navbar-nav li .navbar-btn {
+  width: auto;
+  height: auto;
+  border-radius: 1rem;
   margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #025BAC;
+  font-weight: bold;
+}
+.navbar-default .navbar-nav li .navbar-btn .fa {
+  vertical-align: middle;
 }
 .navbar-default .navbar-brand {
   max-width: 90px;
@@ -172,6 +185,7 @@ hr {
 .btn {
   padding: 15px;
   font-size: 1rem;
+  border-radius: 1rem;
 }
 .btn-primary {
   background-color: #025BAC;
@@ -274,6 +288,9 @@ section {
   margin-bottom: 1rem;
   border-radius: 1rem;
   box-shadow: 0px 1px 2px rgba(0,0,0,.1);
+}
+.card-secondary {
+  background-color: #E7E7E7;
 }
 .card-tag {
   position: absolute;

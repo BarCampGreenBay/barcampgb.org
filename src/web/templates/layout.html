@@ -4,6 +4,7 @@
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/form.css">
 	<link rel="stylesheet" type="text/css" href="/assets/site.css">
 
@@ -11,10 +12,10 @@
   <script src="//use.typekit.net/avp3yhq.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
 </head>
-{% block header %}
+{% block bodytag %}
 <body>
 {% endblock %}
-  
+
   {% include "partials/navigation.html" %}
   {% if user %}
   Welcome {{ user.name }}
@@ -26,7 +27,7 @@
   {% for success in successes %}
   	<div class="success">{{ success }}</div>
   {% endfor %}
-  
+
   {% block body %}{% endblock %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -34,7 +35,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.7.1/holder.min.js"></script>
   <!-- Bootstrap scripts -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  
+
   <!-- Wistia Video Embed -->
   <script charset='ISO-8859-1' src='https://fast.wistia.com/assets/external/E-v1.js'></script>
   <script charset='ISO-8859-1' src='https://fast.wistia.com/labs/crop-fill/plugin.js'></script>
@@ -44,10 +45,10 @@ fullScreenVideo = {
   name: 'fullScreenVideo',
   backgroundvideo: 'myb2xirucn',
   backgroundvideoDiv: '#wistia_myb2xirucn',
-  
+
   embedVideo: function() {
     var videoOptions = {};
-    
+
     Wistia.obj.merge(videoOptions, {
       plugin: {
         cropFill: {
@@ -55,9 +56,9 @@ fullScreenVideo = {
         }
       }
     });
-    
+
     wistiaEmbed = Wistia.embed(fullScreenVideo.backgroundvideo, videoOptions);
-    
+
     wistiaEmbed.bind("play", function() {
       wistiaEmbed.pause();
       wistiaEmbed.time(0);
@@ -66,7 +67,7 @@ fullScreenVideo = {
       return this.unbind;
     });
   },
-  
+
   fixTextPosition: function()
   {
     var width = $( window ).width();
@@ -77,7 +78,7 @@ fullScreenVideo = {
     $("#main-image").css("width", width).css("height", height);
     $("#text").css("left", (width/2) - (textWidth/2)).css("top", (height/3) - (textHeight/2.5));
   }
-  
+
 }
 
 $(document).ready(function() {
