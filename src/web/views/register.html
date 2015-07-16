@@ -1,7 +1,11 @@
 {% extends "templates/layout.html" %}
 
+{% block bodytag %}
+<body class="pattern-background">
+{% endblock %}
+
 {% block body %}
-<div class="container" id="main">
+<div class="container" id="login-container">
 	<div class="row">
 		<div class="col-md-7 center-block">
       <div class="card">
@@ -34,6 +38,7 @@
 			  	</div>
 			  </form>
       </div>
+      <a href="/login" class="btn btn-secondary text-center">Already registered? Log in</a>
 		</div>
 	</div>
 </div>

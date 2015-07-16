@@ -30,6 +30,7 @@ body {
 }
 #login-container {
   padding-top: 7rem;
+  padding-bottom: 3rem;
 }
 .center-block {
   float: none;
@@ -190,10 +191,17 @@ hr {
 .btn-primary {
   background-color: #025BAC;
 }
+.btn-primary:hover {
+  background-color: #1555A4;
+}
 .btn-secondary {
   background-color: transparent;
   border: 1px solid #FFF;
   color: #FFF;
+}
+.btn-secondary:hover {
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.7);
 }
 .btn-wide {
   width: 100%;
