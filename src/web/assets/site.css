@@ -24,7 +24,7 @@ body {
 }
 .pattern-background {
   background-color: #025BAC;
-  background: url(../assets/images/pattern-5.jpg);
+  background: url(../assets/images/pattern.jpg);
   background-size: 80%;
   background-position: 50% 0%;
 }
@@ -60,7 +60,7 @@ h6 {
   margin-bottom: .5rem;
   font-size: 1rem;
   font-weight: bold;
-  color: #025BAC;
+  color: #3191CE;
 }
 h1 {
   margin-top: 1rem;
@@ -88,6 +88,9 @@ blockquote {
   line-height: 1.35;
   border-left: none;
 }
+a {
+  color: #3191CE;
+}
 hr {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -99,7 +102,7 @@ hr {
 .lead {
   font-size: 1.5rem;
   margin-bottom: 3.5rem;
-  color: #025BAC;
+  color: #3191CE;
 }
 
 /*
@@ -116,20 +119,20 @@ hr {
   margin-top: 15px;
 }
 .navbar-default .navbar-nav li a {
-  color: #094F96;
+  color: #FFF;
   text-align: center;
   margin-left: .75rem;
   width: 65px;
   height: 65px;
   border: 3px solid #FFF;
   border-radius: 50%;
-  background-color: #E7E7E7;
+  background-color: #3191CE;
 	transition: .3s all;
 }
 .navbar-default .navbar-nav li a:hover {
-  background-color: #094F96;
-  color: #FFF;
-  border-color: #FFF;
+  background-color: #FFF;
+  color: #3191CE;
+  transition: .3s all;
 }
 .navbar-default .navbar-nav li a .fa {
   font-size: 1.70rem;
@@ -140,9 +143,9 @@ hr {
   border-radius: 1rem;
   margin-top: 0;
   font-weight: bold;
-  background-color: #094F96;
-  color: #FFF;
-  border-color: #FFF;
+  background-color: #FFF;
+  color: #3191CE;
+  border-color: #3191CE;
 }
 .navbar-default .navbar-nav li .navbar-btn .fa {
   vertical-align: middle;
@@ -189,8 +192,9 @@ hr {
   text-align: center;
   margin-top: -1.3rem;
   color: #FFF;
-  background-color: #025BAC;
+  background-color: #3191CE;
   text-shadow: 1px 1px 5px rgba(0,0,0,.2);
+  margin-bottom: 0;
 }
 .jumbotron h1 {
   font-family: "ff-tisa-sans-web-pro", sans-serif;
@@ -220,7 +224,7 @@ hr {
   border-radius: 1rem;
 }
 .btn-primary {
-  background-color: #025BAC;
+  background-color: #3191CE;
 }
 .btn-primary:hover {
   background-color: #1555A4;
@@ -294,7 +298,7 @@ section {
 }
 .section-pattern {
   background-color: #025BAC;
-  background: url(../assets/images/pattern-5.jpg);
+  background: url(../assets/images/pattern.jpg);
   background-size: 80%;
   background-position: 50% 0%;
 }
@@ -302,7 +306,7 @@ section {
   color: #FFF;
 }
 .section-pattern .card h1 {
-  color: #025BAC;
+  color: #3191CE;
 }
 
 /*
@@ -317,7 +321,7 @@ section {
   margin-top: 1rem;
 }
 .modal-backdrop {
-  background-color: #004990;
+  background-color: #3191CE;
 }
 .modal-backdrop.in {
   opacity: .9;
@@ -336,7 +340,6 @@ section {
   background-color: #FFF;
   margin-bottom: 1rem;
   border-radius: 1rem;
-  box-shadow: 0px 1px 2px rgba(0,0,0,.1);
 }
 .card-secondary {
   background-color: #E7E7E7;
@@ -347,13 +350,13 @@ section {
   left: -20px;
   width: 100px;
   height: 100px;
-  background-color: #025BAC;
+  background-color: #3191CE;
   border: 3px solid #FFF;
   border-radius: 50%;
 }
 .card-tag-inverse {
   background-color: #FFF;
-  border: 3px solid #025BAC;
+  border: 3px solid #3191CE;
 }
 .card-list .card {
   margin-top: 2.5rem;
