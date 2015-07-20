@@ -121,14 +121,15 @@ hr {
   margin-left: .75rem;
   width: 65px;
   height: 65px;
-  border: 3px solid #094F96;
+  border: 3px solid #FFF;
   border-radius: 50%;
-  background-color: #D1EDEE;
+  background-color: #E7E7E7;
+	transition: .3s all;
 }
 .navbar-default .navbar-nav li a:hover {
   background-color: #094F96;
-  color: #D1EDEE;
-  border-color: #D1EDEE;
+  color: #FFF;
+  border-color: #FFF;
 }
 .navbar-default .navbar-nav li a .fa {
   font-size: 1.70rem;
@@ -139,6 +140,9 @@ hr {
   border-radius: 1rem;
   margin-top: 0;
   font-weight: bold;
+  background-color: #094F96;
+  color: #FFF;
+  border-color: #FFF;
 }
 .navbar-default .navbar-nav li .navbar-btn .fa {
   vertical-align: middle;
@@ -150,6 +154,32 @@ hr {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.link-effect a span:last-child {
+  z-index: 0;
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: 1px 1px 5px rgba(0,0,0,.2);
+  opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	-webkit-transform: translate(-25%, -100%);
+	   -moz-transform: translate(-25%, -100%);
+	        transform: translate(-25%, -100%);
+}
+.link-effect a:hover span:last-child {
+  opacity: 1;
+	-webkit-transform: translateY(0%);
+	-moz-transform: translateY(0%);
+	transform: translateY(0%);
+	-webkit-transform: translateX(-25%);
+	   -moz-transform: translateX(-25%);
+	        transform: translateX(-25%);
+}
+
 
 /*
  * Jumbotron
