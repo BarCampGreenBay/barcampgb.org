@@ -5,8 +5,8 @@ var fullScreenVideo = fullScreenVideo || {};
 
 fullScreenVideo = {
   name: 'fullScreenVideo',
-  backgroundvideo: 'vp9ftrir6e',
-  backgroundvideoDiv: '#wistia_vp9ftrir6e',
+  backgroundvideo: 'r8k5d36tri',
+  backgroundvideoDiv: '#wistia_r8k5d36tri',
 
   embedVideo: function() {
     var videoOptions = {};

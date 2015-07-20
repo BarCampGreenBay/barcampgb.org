@@ -144,7 +144,7 @@ hr {
   vertical-align: middle;
 }
 .navbar-default .navbar-brand {
-  max-width: 90px;
+  max-width: 100px;
 }
 .navbar-brand img {
   margin-top: 0;
@@ -160,6 +160,7 @@ hr {
   margin-top: -1.3rem;
   color: #FFF;
   background-color: #025BAC;
+  text-shadow: 1px 1px 5px rgba(0,0,0,.2);
 }
 .jumbotron h1 {
   font-family: "ff-tisa-sans-web-pro", sans-serif;
