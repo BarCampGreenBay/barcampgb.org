@@ -15,7 +15,6 @@ body {
   font-size: 1em;
   line-height: 1.35;
   font-family: "ff-tisa-sans-web-pro", sans-serif;
-  background-color: #E6E6E6;
   padding-bottom: 60px;
   height: 100%;
 }
@@ -111,8 +110,30 @@ hr {
 
 .navbar-default {
   margin-bottom: 0;
-  background-color: transparent;
+  background: transparent;
   border-bottom: none;
+  max-height: 50px;
+  background-size: 80%;
+  background-position: 50% 0%;
+  -webkit-transition: background 1.5s linear;
+  -moz-transition: background 1.5s linear;
+  -o-transition: background 1.5s linear;
+  -ms-transition: background 1.5s linear;
+  transition: background 1.5s linear;
+}
+.header-background {
+  z-index: -1;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: url(../assets/images/pattern.jpg);
+  background-size: 80%;
+  background-position: 50% 0%;
+  transition: opacity .3s;
 }
 .navbar-default .navbar-nav li {
   margin-bottom: 0;
@@ -146,6 +167,9 @@ hr {
   background-color: #FFF;
   color: #3191CE;
   border-color: #3191CE;
+}
+.navbar-default .navbar-header {
+  z-index: 9999;
 }
 .navbar-default .navbar-nav li .navbar-btn .fa {
   vertical-align: middle;
@@ -192,7 +216,7 @@ hr {
   text-align: center;
   margin-top: -1.3rem;
   color: #FFF;
-  background-color: #3191CE;
+  background-color: #FFF;
   text-shadow: 1px 1px 5px rgba(0,0,0,.2);
   margin-bottom: 0;
 }
@@ -209,9 +233,8 @@ hr {
   margin-top: 1rem;
   text-transform: uppercase;
   background-color: transparent;
-  border: 1px solid #FFF;
+  border: 3px solid #FFF;
   color: #FFF;
-  font-weight: 700;
 }
 
 /*
@@ -222,21 +245,23 @@ hr {
   padding: 15px;
   font-size: 1rem;
   border-radius: 1rem;
+  font-weight: bold
 }
 .btn-primary {
   background-color: #3191CE;
+  border: none;
 }
 .btn-primary:hover {
-  background-color: #1555A4;
+  background-color: #308AC2;
 }
 .btn-secondary {
   background-color: transparent;
-  border: 1px solid #FFF;
+  border: 3px solid #FFF;
   color: #FFF;
 }
 .btn-secondary:hover {
   color: rgba(255,255,255,.7);
-  border: 1px solid rgba(255,255,255,.7);
+  border: 3px solid rgba(255,255,255,.7);
 }
 .btn-wide {
   width: 100%;
@@ -293,8 +318,8 @@ section {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
-.section-white {
-  background-color: #FFF;
+.section-divider {
+  border-bottom: 1px solid #E7E7E7;
 }
 .section-pattern {
   background-color: #025BAC;
@@ -361,6 +386,31 @@ section {
 .card-list .card {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+}
+
+/*
+ * Table
+ */
+
+.table tr td:first-child {
+  white-space: nowrap;
+  background-color: #3191CE;
+  color: #FFF;
+  font-weight: bold;
+}
+.table tr td:last-child {
+  background-color: #E7E7E7;
+}
+.table tbody tr td {
+  padding: 1rem;
+  border-top: 3px solid #FFF;
+}
+.table .row-secondary td:first-child {
+  background-color: #FFF;
+  color: #3191CE;
+}
+.table .row-secondary td:last-child {
+  background-color: #FFF;
 }
 
 /*

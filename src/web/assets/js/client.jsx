@@ -43,6 +43,19 @@ fullScreenVideo = {
 
 }
 
+var main = function() {
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 457) {
+      $(".header-background").css("opacity", "1");
+    } else {
+      $(".header-background").css("opacity", "0");
+    }
+  });
+}
+
+$(document).ready(main);
+
 $(document).ready(function() {
   fullScreenVideo.fixTextPosition();
   $("#text").delay(200).animate({ opacity: 1 }, 650);
