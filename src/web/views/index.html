@@ -6,7 +6,13 @@
   <div id="text">
     <h1>A day of open source knowledge</h1>
     <p>Saturday, November 7, 2015 • Green Bay, WI</p>
-    <p><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Register now</button></p>
+    <p>
+      {% if user %}
+      <a type="button" class="btn btn-secondary" href="/proposals">View proposals</a>
+      {% else %}
+      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Register now</button>
+      {% endif %}
+    </p>
   </div>
   <div id="cover_all"></div>
   <div id="main-image"></div>
@@ -164,11 +170,13 @@
 <section class="section-pattern">
   <div class="container">
     <div class="col-md-8 center-block">
-      <h1>Join us! Register here.</h1>
 			<form class="form" method="post">
 				{% if user %}
+        <h1>You're already registered!</h1>
 					<input type="hidden" name="existingUser" value="yes" />
+          <a class="btn btn-secondary btn-wide" href="/proposals">Check out the proposals or submit your own.</a>
 				{% else %}
+        <h1>Join us! Register here.</h1>
 					<div class="form-field form-group">
 						<input class="field-control form-control" type="text" id="login-name" placeholder="Name" name="name" />
 					</div>
@@ -186,74 +194,17 @@
 							{% endfor %}
 						</select>
 					</div>
+          <input type="hidden" name="event" value="{{ event.id }}" />
+          <div class="form-field">
+            <button type="submit" class="btn btn-secondary btn-wide">Register</button>
+          </div>
 				{% endif %}
-				<input type="hidden" name="event" value="{{ event.id }}" />
-				<div class="form-field">
-					<button type="submit" class="btn btn-secondary btn-wide">Register</button>
-				</div>
 			</form>
     </div>
   </div>
 </section>
-<!--
-  <hr>
-	<p>Next Event:</p>
-	<p>{{ event.date }}</p>
-	<p>Registrants: {{ event.registrants.length }}</p>
-	<p><a href="/proposals">Check out the proposals</a></p>
-	<p><a href="/login">Login</a></p>
-	<p><a href="/register">Register</a></p>
-	This is the body <core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	v<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-		<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	v<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v-->
+{% endblock %}
+
+{% block scripts %}
+<script src="/js/client.js"></script>
 {% endblock %}

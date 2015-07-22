@@ -5,15 +5,17 @@
 {% endblock %}
 
 {% block body %}
-<div class="container" id="login-container">
+<div class="container">
 	<div class="row">
 		<div class="col-md-7 center-block">
       <div class="card">
-			  <h1 class="text-center">Register for {{ event.name }}</h1>
 			  <form class="form" method="post">
 			  	{% if user %}
 			  		<input type="hidden" name="existingUser" value="yes" />
+						<h1 class="text-center">You're already registered!</h1>
+						<a class="btn btn-primary btn-wide" href="/proposals">Check out the proposals or submit your own.</a>
 			  	{% else %}
+					<h1 class="text-center">Register for {{ event.name }}</h1>
 			  		<div class="form-field form-group">
 			  			<input class="field-control form-control" type="text" id="login-name" placeholder="Name" name="name" />
 			  		</div>
@@ -31,14 +33,17 @@
 			  				{% endfor %}
 			  			</select>
 			  		</div>
+						<input type="hidden" name="event" value="{{ event.id }}" />
+						<div class="form-field">
+							<button type="submit" class="btn btn-primary btn-wide">Register</button>
+						</div>
 			  	{% endif %}
-			  	<input type="hidden" name="event" value="{{ event.id }}" />
-			  	<div class="form-field">
-			  		<button type="submit" class="btn btn-primary btn-wide">Register</button>
-			  	</div>
 			  </form>
       </div>
+			{% if user %}
+			{% else %}
       <a href="/login" class="btn btn-secondary text-center">Already registered? Log in</a>
+			{% endif %}
 		</div>
 	</div>
 </div>
