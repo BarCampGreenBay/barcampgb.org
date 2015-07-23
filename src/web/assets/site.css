@@ -30,6 +30,13 @@ body {
 .center-block {
   float: none;
 }
+.vertical-center {
+  position: relative;
+  top: 43%;
+  -webkit-transform: translateY(-50%);
+  	  -ms-transform: translateY(-50%);
+  	      transform: translateY(-50%);
+}
 img {
   width: 100%;
   height: auto;
@@ -377,19 +384,24 @@ section {
   position: absolute;
   top: -20px;
   left: -20px;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   background-color: #3191CE;
   border: 3px solid #FFF;
   border-radius: 50%;
+  text-align: center;
+  color: #FFF;
+  font-size: 2rem;
 }
 .card-tag-inverse {
   background-color: #FFF;
   border: 3px solid #3191CE;
+  color: #3191CE;
 }
 .card-list .card {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 /*
