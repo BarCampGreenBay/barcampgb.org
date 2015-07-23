@@ -12,7 +12,7 @@ var config = {
 		prod: (process.env.NODE_ENV === 'production')
 	},
 	web: {
-		port: process.env.NODE_PORT || 8000,
+		port: process.env.NODE_PORT || process.env.PORT || 8000,
 		getUrl: function() {
 			return (config.env.prod? 'http://barcampgb.org' : 'http://localhost:' + config.web.port);
 		},
