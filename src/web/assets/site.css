@@ -242,6 +242,13 @@ hr {
   border: 3px solid #FFF;
   color: #FFF;
 }
+.jumbotron a {
+  color: #FFF;
+}
+.jumbotron a:hover {
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+}
 
 /*
  * Buttons
@@ -391,6 +398,7 @@ section {
   border-radius: 50%;
   text-align: center;
   color: #FFF;
+  font-weight: bold;
   font-size: 2rem;
 }
 .card-tag-inverse {
@@ -451,6 +459,9 @@ section {
 }
 label {
   font-weight: normal;
+}
+.form-container {
+  margin-bottom: 3rem;
 }
 
 /*
