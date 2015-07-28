@@ -114,9 +114,8 @@ hr {
 
 .navbar-default {
   margin-bottom: 0;
-  background: transparent;
   border-bottom: none;
-  max-height: 50px;
+  background: transparent;
   background-size: 80%;
   background-position: 50% 0%;
   -webkit-transition: background 1.5s linear;
@@ -125,7 +124,13 @@ hr {
   -ms-transition: background 1.5s linear;
   transition: background 1.5s linear;
 }
-.header-background {
+@media (min-width: 768px) {
+  .navbar-default {
+    max-height: 50px;
+  }
+}
+/* An extra hacky div to display a background image in the navbar */
+.navbar-background {
   z-index: -1;
   display: block;
   position: absolute;
@@ -139,44 +144,53 @@ hr {
   background-position: 50% 0%;
   transition: opacity .3s;
 }
-.interior .header-background {
+.interior .navbar-background {
   opacity: 1;
+}
+.navbar-default .navbar-header {
+  z-index: 9999;
+}
+.navbar-default .navbar-collapse {
+  border-top: 0;
+  box-shadow: none;
+}
+.navbar-default .navbar-toggle {
+  margin-top: 6px;
+  margin-right: 6px;
+  font-weight: bold;
+  border: 3px solid #FFF;
+  background-color: #3191CE;
+  color: #FFF;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #FFF;
+  color: #3191CE;
+}
+.navbar-default .navbar-nav {
+  margin-top: 2rem;
 }
 .navbar-default .navbar-nav li {
   margin-bottom: 0;
-  margin-top: 15px;
 }
 .navbar-default .navbar-nav li a {
   color: #FFF;
-  text-align: center;
-  margin-left: .75rem;
-  width: 65px;
-  height: 65px;
-  border: 3px solid #FFF;
-  border-radius: 50%;
-  background-color: #3191CE;
-	transition: .3s all;
-}
-.navbar-default .navbar-nav li a:hover {
-  background-color: #FFF;
-  color: #3191CE;
-  transition: .3s all;
+  font-weight: bold;
 }
 .navbar-default .navbar-nav li a .fa {
-  font-size: 1.70rem;
+  margin-right: 5px;
 }
 .navbar-default .navbar-nav li .navbar-btn {
   width: auto;
   height: auto;
   border-radius: 1rem;
   margin-top: 0;
+  margin-left: 15px;
+  margin-right: 15px;
   font-weight: bold;
   background-color: #FFF;
   color: #3191CE;
   border-color: #3191CE;
-}
-.navbar-default .navbar-header {
-  z-index: 9999;
 }
 .navbar-default .navbar-nav li .navbar-btn .fa {
   vertical-align: middle;
@@ -188,32 +202,57 @@ hr {
   margin-top: 0;
   margin-bottom: 0;
 }
+@media (min-width: 768px) {
+  .navbar-default .navbar-nav {
+    margin-top: 0;
+  }
+  .navbar-default .navbar-nav li {
+    margin-top: 15px;
+  }
+  .navbar-default .navbar-nav li a {
+    text-align: center;
+    margin-left: .75rem;
+    width: 65px;
+    height: 65px;
+    border: 3px solid #FFF;
+    border-radius: 50%;
+    background-color: #3191CE;
+  	transition: .3s all;
+  }
+  .navbar-default .navbar-nav li a:hover {
+    background-color: #FFF;
+    color: #3191CE;
+    transition: .3s all;
+  }
+  .navbar-default .navbar-nav li a .fa {
+    font-size: 1.70rem;
+  }
 
-.link-effect a span:last-child {
-  z-index: 0;
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-weight: bold;
-  color: #FFF;
-  text-shadow: 1px 1px 5px rgba(0,0,0,.2);
-  opacity: 0;
-	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
-	transition: transform 0.3s, opacity 0.3s;
-	-webkit-transform: translate(-25%, -100%);
-	   -moz-transform: translate(-25%, -100%);
-	        transform: translate(-25%, -100%);
+  .link-effect a span:last-child {
+    z-index: 0;
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    color: #FFF;
+    text-shadow: 1px 1px 5px rgba(0,0,0,.2);
+    opacity: 0;
+  	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+  	transition: transform 0.3s, opacity 0.3s;
+  	-webkit-transform: translate(-25%, -100%);
+  	   -moz-transform: translate(-25%, -100%);
+  	        transform: translate(-25%, -100%);
+  }
+  .link-effect a:hover span:last-child {
+    opacity: 1;
+  	-webkit-transform: translateY(0%);
+  	-moz-transform: translateY(0%);
+  	transform: translateY(0%);
+  	-webkit-transform: translateX(-25%);
+  	   -moz-transform: translateX(-25%);
+  	        transform: translateX(-25%);
+  }
 }
-.link-effect a:hover span:last-child {
-  opacity: 1;
-	-webkit-transform: translateY(0%);
-	-moz-transform: translateY(0%);
-	transform: translateY(0%);
-	-webkit-transform: translateX(-25%);
-	   -moz-transform: translateX(-25%);
-	        transform: translateX(-25%);
-}
-
 
 /*
  * Jumbotron

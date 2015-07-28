@@ -47,9 +47,9 @@ var main = function() {
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
     if (scroll >= 457) {
-      $(".header-background").css("opacity", "1");
+      $(".navbar-background").css("opacity", "1");
     } else {
-      $(".header-background").css("opacity", "0");
+      $(".navbar-background").css("opacity", "0");
     }
   });
 }
