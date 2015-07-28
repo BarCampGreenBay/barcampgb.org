@@ -19,6 +19,7 @@ body {
 }
 .interior {
   padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .pattern-background {
   padding-top: 7rem;
@@ -279,6 +280,12 @@ hr {
 .btn-wide {
   width: 100%;
 }
+.btn-link {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  font-weight: normal;
+}
 
 /*
  * Video embed
@@ -382,10 +389,14 @@ section {
 .card-secondary {
   background-color: #E7E7E7;
 }
+.card-secondary h1 {
+  margin-top: 0;
+}
 .card-btn {
-  position: absolute;
-  bottom: -15px;
-  right: -15px;
+  position: relative;
+  text-align: right;
+  margin-top: 1rem;
+  bottom: -30px;
 }
 .card-tag {
   position: absolute;
@@ -416,11 +427,18 @@ section {
  * Post
  */
 
+.post {
+  margin-bottom: 2rem;
+}
 .post-meta {
   color: #7E7E7E;
   font-weight: normal;
   margin-top: -1rem;
   margin-bottom: 1rem;
+}
+.post-menu {
+  position: relative;
+  bottom: 0;
 }
 
 /*
@@ -452,10 +470,19 @@ section {
  * Form
  */
 
+.form-inline {
+  display: inline-block;
+}
 .form-control {
   padding-top: 24px;
   padding-bottom: 24px;
   box-shadow: none;
+}
+form #proposal-description {
+  padding-top: 12px;
+}
+textarea {
+  padding-top: 12px;
 }
 label {
   font-weight: normal;

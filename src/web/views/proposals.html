@@ -6,42 +6,48 @@
 
 {% block body %}
 <div class="container" id="main">
-  <div class="col-md-9 center-block">
-  	<h1>Session Proposals</h1>
-    <p>Remember, these are just ideas! The real schedule will be created the day of the event. Share your ideas even if they're rough and show your interest by voting for the ones you'd like to attend.</p>
-  	<p><a class="btn btn-primary btn-wide" href="/proposal">Submit session ideas!</a></p>
-  	{% for proposal in proposals %}
-    <div class="card card-secondary">
-  		<h1><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></h1>
-      <h2 class="post-meta">By: Proposal author</h2>
-  		<p>{{ proposal.description }}</p>
-      <div class="card-btn">
-        <span>8 people like this</span>
-        {% if user %}
-        <form action="/proposal/{{ proposal.id }}/vote" method="post">
-          {% if user.hasVotedForProposal(proposal) %}
-            <button class="btn btn-primary" type="submit">Remove Vote <i class="fa fa-times"></i></button>
-          {% else %}
-            <input type="hidden" name="vote" value="add" />
-            <button class="btn btn-primary" type="submit">This sounds cool! <i class="fa fa-heart-o"></i></button>
-          {% endif %}
-        </form>
-        {% else %}
-        <div>
-          <a class="btn btn-primary" href="/login">This sounds cool! <i class="fa fa-heart-o"></i></a>
+  <div class="row">
+    <div class="col-md-8 center-block">
+    	<h1>Session Proposals</h1>
+      <p>Remember, these are just ideas! The real schedule will be created the day of the event. Share your ideas even if they're rough and show your interest by voting for the ones you'd like to attend.</p>
+    	<p><a class="btn btn-primary btn-wide" href="/proposal">Submit session ideas!</a></p>
+
+    	{% for proposal in proposals %}
+      <div class="card card-secondary post">
+    		<h1><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></h1>
+        <h2 class="post-meta">By: Proposal author</h2>
+    		<p>{{ proposal.description }}</p>
+
+        {% if user and user.canEditProposal(proposal) %}
+        <div class="post-menu">
+          <a href="/proposal/{{ proposal.id }}" class="btn btn-link"><i class="fa fa-pencil"></i> Edit</a>
+          <form class="form-inline" action="/proposal/{{ proposal.id }}?_method=DELETE" method="post">
+            <button class="btn btn-link" type="submit"><i class="fa fa-trash"></i> Delete</button>
+          </form>
         </div>
         {% endif %}
+
+        <div class="card-btn">
+          <p class="post-meta">8 people like this</p>
+          {% if user %}
+          <form action="/proposal/{{ proposal.id }}/vote" method="post">
+            {% if user.hasVotedForProposal(proposal) %}
+              <button class="btn btn-primary" type="submit">Remove Vote <i class="fa fa-times"></i></button>
+            {% else %}
+              <input type="hidden" name="vote" value="add" />
+              <button class="btn btn-primary" type="submit">This sounds cool! <i class="fa fa-heart-o"></i></button>
+            {% endif %}
+          </form>
+          {% else %}
+          <div>
+            <a class="btn btn-primary" href="/login">This sounds cool! <i class="fa fa-heart-o"></i></a>
+          </div>
+          {% endif %}
+        </div>
+        
       </div>
-  		{% if user and user.canEditProposal(proposal) %}
-      <div>
-  			<a href="/proposal/{{ proposal.id }}">Edit</a>
-  			<form action="/proposal/{{ proposal.id }}?_method=DELETE" method="post">
-  				<button class="btn btn-link" type="submit">Delete</button>
-  			</form>
-      </div>
-  		{% endif %}
+    	{% endfor %}
     </div>
-  	{% endfor %}
   </div>
 </div>
 {% endblock %}
