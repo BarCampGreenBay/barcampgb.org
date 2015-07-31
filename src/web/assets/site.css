@@ -18,15 +18,26 @@ body {
   height: 100%;
 }
 .interior {
+  margin-top: 2rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .interior {
+    margin-top: 0;
+  }
 }
 .pattern-background {
   padding-top: 7rem;
   background-color: #025BAC;
   background: url(../assets/images/pattern.jpg);
-  background-size: 80%;
+  background-size: 120%;
   background-position: 50% 0%;
+}
+@media (min-width: 768) {
+  .pattern-background {
+    background-size: 80%;
+  }
 }
 .center-block {
   float: none;
@@ -120,13 +131,6 @@ hr {
   margin-bottom: 0;
   border-bottom: none;
   background: transparent;
-  background-size: 80%;
-  background-position: 50% 0%;
-  -webkit-transition: background 1.5s linear;
-  -moz-transition: background 1.5s linear;
-  -o-transition: background 1.5s linear;
-  -ms-transition: background 1.5s linear;
-  transition: background 1.5s linear;
 }
 @media (min-width: 768px) {
   .navbar-default {
@@ -144,9 +148,14 @@ hr {
   height: 100%;
   opacity: 0;
   background: url(../assets/images/pattern.jpg);
-  background-size: 80%;
+  background-size: 120%;
   background-position: 50% 0%;
   transition: opacity .3s;
+}
+@media (min-width: 768px) {
+  .navbar-background {
+    background-size: 80%;
+  }
 }
 .interior .navbar-background {
   opacity: 1;
@@ -282,6 +291,7 @@ hr {
  */
 
 .jumbotron {
+  padding: 0;
   text-align: center;
   margin-top: -1.3rem;
   color: #FFF;
@@ -367,6 +377,8 @@ hr {
 }
 #video_container #text {
   position: absolute;
+  padding-left: 5px;
+  padding-right: 5px;
   z-index: 6;
   text-align: center;
   opacity: 0;
@@ -411,8 +423,13 @@ section {
 .section-pattern {
   background-color: #025BAC;
   background: url(../assets/images/pattern.jpg);
-  background-size: 80%;
+  background-size: 120%;
   background-position: 50% 0%;
+}
+@media (min-width: 768) {
+  .section-pattern {
+    background-size: 80%;
+  }
 }
 .section-pattern h1 {
   color: #FFF;
