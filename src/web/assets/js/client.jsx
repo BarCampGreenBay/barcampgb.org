@@ -57,7 +57,7 @@ var main = function() {
   var hideBackground = function() {
     $(".navbar-background").css("opacity", "0");
   }
-  var open;
+  var open = false;
   $('#navbar-collapse-1').on('show.bs.collapse', function () {
     showBackground();
     return open = true;
@@ -66,11 +66,9 @@ var main = function() {
     hideBackground();
     return open = false;
   });
-  console.log(open);
   // If the scroll goes past the jumbotron's height, show the background, otherwise hide it
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
-    console.log(open);
     if (scroll >= (scrollHeight - 100)) {
       showBackground();
       $('#navbar-collapse-1').on('hidden.bs.collapse', function () {
