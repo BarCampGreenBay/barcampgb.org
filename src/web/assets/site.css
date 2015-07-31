@@ -94,6 +94,10 @@ blockquote {
 a {
   color: #3191CE;
 }
+a:hover {
+  color: #21AE42;
+  text-decoration: none;
+}
 hr {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -173,12 +177,26 @@ hr {
 .navbar-default .navbar-nav li {
   margin-bottom: 0;
 }
+@media (max-width: 768px) {
+  .navbar-default .navbar-nav li {
+    display: inline-block;
+    width: 48%;
+  }
+  .navbar-default .navbar-nav .nav-wide {
+    width: 100%;
+  }
+}
 .navbar-default .navbar-nav li a {
   color: #FFF;
   font-weight: bold;
 }
 .navbar-default .navbar-nav li a .fa {
   margin-right: 5px;
+}
+@media (min-width: 768px) {
+  .navbar-default .navbar-nav li a .fa {
+    margin-right: 0;
+  }
 }
 .navbar-default .navbar-nav li .navbar-btn {
   width: auto;
@@ -191,6 +209,11 @@ hr {
   background-color: #FFF;
   color: #3191CE;
   border-color: #3191CE;
+}
+.navbar-default .navbar-nav li .navbar-btn:hover {
+  background-color: #21AE42;
+  color: #FFF;
+  border-color: #FFF;
 }
 .navbar-default .navbar-nav li .navbar-btn .fa {
   vertical-align: middle;
@@ -234,7 +257,7 @@ hr {
     margin-top: 1.5rem;
     font-weight: bold;
     color: #FFF;
-    text-shadow: 1px 1px 5px rgba(0,0,0,.2);
+    text-shadow: 0px 2px 8px rgba(0,0,0,.7);
     opacity: 0;
   	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
   	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
@@ -363,10 +386,15 @@ hr {
   top: 0;
   left: 0;
   z-index: 3;
-  background-image: url(/assets/images/comp1.jpg);
+  background-image: url(/assets/images/jumbotron-background.jpg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
+}
+@media (min-width: 992px) {
+  #main-image {
+    background-image: url(/assets/images/comp1.jpg);
+  }
 }
 
 /*
