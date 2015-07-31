@@ -15,8 +15,9 @@
     	{% for proposal in proposals %}
       <div class="card card-secondary post">
     		<h1><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></h1>
-        <h2 class="post-meta">By: Proposal author</h2>
-    		<p>{{ proposal.description }}</p>
+        <!-- Not sure what the variable is for the proposal submitter -->
+        <h2 class="post-meta">By: {{ proposal.submitter }}</h2>
+        <p>{{ proposal.description }}</p>
 
         {% if user and user.canEditProposal(proposal) %}
         <div class="post-menu">
@@ -32,7 +33,7 @@
           {% if user %}
           <form action="/proposal/{{ proposal.id }}/vote" method="post">
             {% if user.hasVotedForProposal(proposal) %}
-              <button class="btn btn-primary" type="submit">Remove Vote <i class="fa fa-times"></i></button>
+              <button class="btn btn-primary" type="submit">Thanks for voting <i class="fa fa-heart"></i></button>
             {% else %}
               <input type="hidden" name="vote" value="add" />
               <button class="btn btn-primary" type="submit">This sounds cool! <i class="fa fa-heart-o"></i></button>
@@ -44,7 +45,7 @@
           </div>
           {% endif %}
         </div>
-        
+
       </div>
     	{% endfor %}
     </div>
