@@ -1,38 +1,65 @@
 {% extends "templates/layout.html" %}
 
+{% block bodytag %}
+<body class="interior">
+{% endblock %}
+
 {% block body %}
-	{% if user and (not proposal or user.canEditProposal(proposal)) %}
-		<form {% if proposal %}action="?_method=PUT"{% endif %} method="post">
-			<div class="form-field">
-				<label class="field-label" for="proposal-title">
-					Title:
-				</label>
-				<input class="field-control" type="text" id="proposal-title" name="title" value="{{ proposal.title }}" />
+<div class="container">
+	<div class="row">
+		<div class="col-md-7 center-block">
+			{% if user and (not proposal or user.canEditProposal(proposal)) %}
+			<h1>Submit a proposal</h1>
+			<div class="card card-secondary">
+				<form class="form" {% if proposal %}action="?_method=PUT"{% endif %} method="post">
+					<div class="form-field">
+						<label class="field-label" for="proposal-title">
+							Title:
+						</label>
+						<input class="field-control form-control" type="text" id="proposal-title" name="title" value="{{ proposal.title }}" />
+					</div>
+					<div class="form-field">
+						<label class="field-label" for="proposal-description">
+							Description:
+						</label>
+						<textarea class="field-control form-control" id="proposal-description" name="description">{{ proposal.description }}</textarea>
+					</div>
+					<div class="form-field">
+						<button class="btn btn-primary btn-wide" type="submit">Save</button>
+					</div>
+				</form>
 			</div>
-			<div class="form-field">
-				<label class="field-label" for="proposal-description">
-					Description:
-				</label>
-				<textarea class="field-control" id="proposal-description" name="description">{{ proposal.description }}</textarea>
+			<a href="/proposals">See all proposals</a>
+			{% elif not proposal %}
+				<a class="btn btn-primary btn-wide" href="/login">Login to propose sessions.</a>
+			{% else %}
+			<div class="card card-secondary" style="margin-top: 2rem;">
+				<h1>{{ proposal.title }}</h1>
+				<!-- Not sure what the variable is for the proposal submitter -->
+				<h2 class="post-meta">By: {{ proposal.submitter }}</h2>
+				<p>{{ proposal.description }}</p>
+				<div class="card-btn">
+          <p class="post-meta">8 people like this</p>
+          {% if user %}
+          <form action="/proposal/{{ proposal.id }}/vote" method="post">
+            {% if user.hasVotedForProposal(proposal) %}
+              <button class="btn btn-primary" type="submit">Thanks for voting <i class="fa fa-heart"></i></button>
+            {% else %}
+              <input type="hidden" name="vote" value="add" />
+              <button class="btn btn-primary" type="submit">This sounds cool! <i class="fa fa-heart-o"></i></button>
+            {% endif %}
+          </form>
+          {% else %}
+          <div>
+            <a class="btn btn-primary" href="/login">This sounds cool! <i class="fa fa-heart-o"></i></a>
+          </div>
+          {% endif %}
+        </div>
 			</div>
-			<div class="form-field">
-				<button type="submit">Save</button>
-			</div>
-		</form>
-	{% elif not proposal %}
-		<a href="/login">Login to propose sessions.</a>
-	{% else %}
-		<h2>{{ proposal.title }}</h2>
-		<p>{{ proposal.description }}</p>
-		{% if user %}
-			<form action="/proposal/{{ proposal.id }}/vote" method="post">
-				{% if user.hasVotedForProposal(proposal) %}
-					<button type="submit">Remove Vote</button>
-				{% else %}
-					<input type="hidden" name="vote" value="add" />
-					<button type="submit">Vote</button>
-				{% endif %}
-			</form>
-		{% endif %}
-	{% endif %}
+			<hr>
+			<a class="btn btn-primary btn-wide" href="/proposals">See all proposals</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
 {% endblock %}

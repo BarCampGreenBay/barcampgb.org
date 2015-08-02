@@ -1,63 +1,207 @@
 {% extends "templates/layout.html" %}
 
 {% block body %}
-	<p>Next Event:</p>
-	<p>{{ event.date }}</p>
-	<p>Registrants: {{ event.registrants.length }}</p>
-	<p><a href="/proposals">Check out the proposals</a></p>
-	<p><a href="/login">Login</a></p>
-	<p><a href="/register">Register</a></p>
-	This is the body <core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	v<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-		<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	<br><core-icon icon="accessibility"></core-icon>
-	v
-	v
-	v<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	<br><core-icon icon="accessibility"></core-icon>
-	v
+
+<div class="jumbotron" id="video_container">
+  <div id="text">
+    <h1>A day of open source&nbsp;knowledge</h1>
+    <p>Saturday, November 7, 2015<br><a target="_blank" href="https://www.google.com/maps/place/NWTC+Corporate+Conference+Center/@44.5273265,-88.1073207,17z/data=!3m1!4b1!4m2!3m1!1s0x8802f9e7ab077a8f:0x7861e0117a83b803">NWTC Corporate Conference&nbsp;Center <i class="fa fa-arrow-circle-right"></i></a></p>
+    <p>
+      {% if user %}
+      <a type="button" class="btn btn-secondary" href="/proposals">View proposals</a>
+      {% else %}
+      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Register now</button>
+      {% endif %}
+    </p>
+  </div>
+  <div id="cover_all"></div>
+  <div id="main-image"></div>
+  <div id="wistia_9q2mvpusg8" class="wistia_embed backgroundVideo" style="width:920px;height:518px;"></div>
+</div>
+{% include "partials/register-modal.html" %}
+
+<section id="about">
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md-8 center-block">
+  			<p class="lead text-center">BarCamp Green Bay is a participant-led day of talks, discussions, and activities for sharing knowledge.</p>
+  		</div>
+  		<div class="col-md-4">
+  	    <div class="card">
+  			  <h1>Participant-led</h1>
+  			  <p>Everyone is invited to propose a session topic, and everyone helps to make sure the day goes smoothly. This is your chance to share that thing you love.</p>
+  	    </div>
+  		</div>
+  		<div class="col-md-4">
+  	    <div class="card">
+  			  <h1>Diverse</h1>
+  			  <p>Any topic is welcome for a BarCamp session – it's all about sharing knowledge. Past topics include artificial intelligence, retro gaming, emotional intelligence, and web development.</p>
+  	    </div>
+  		</div>
+  		<div class="col-md-4">
+  	    <div class="card">
+  			  <h1>Free and open</h1>
+  			  <p>There’s no cost to attend Barcamp. It’s an open environment for sharing knowledge.</p>
+  	    </div>
+  		</div>
+  	</div>
+  </div>
+</section>
+
+<section class="section-pattern">
+	<div class="container">
+		<div class="col-md-8 center-block">
+			<h1 id="how-it-works">How it works</h1>
+			<div class="card-list">
+				<div class="card">
+					<div class="card-tag hidden-xs"><div class="vertical-center">1</div></div>
+					<h1 class="text-center"><a href="/register">Register to attend</a> – it's&nbsp;free!</h1>
+				</div>
+				<div class="card">
+					<div class="card-tag card-tag-inverse hidden-xs"><div class="vertical-center">2</div></div>
+					<h1 class="text-center">Help out</h1>
+          <p>Spread the word, assist with setup during the event, or <a href="mailto:info@barcampgb.org">contact us</a> to see how you can help.</p>
+				</div>
+				<div class="card">
+					<div class="card-tag hidden-xs"><div class="vertical-center">3</div></div>
+					<h1 class="text-center"><a href="/proposals">Submit a session topic</a></h1>
+          <p>A talk, demo, discussion, workshop… whatever works for you!</p>
+				</div>
+				<div class="card">
+					<div class="card-tag card-tag-inverse hidden-xs"><div class="vertical-center">4</div></div>
+					<h1 class="text-center">Join us on November 7th</h1>
+          <p>We’ll plan the day’s schedule as a group and get going!</p>
+				</div>
+				<div class="card">
+					<div class="card-tag hidden-xs"><div class="vertical-center">5</div></div>
+					<h1 class="text-center">Learn awesome new things!</h1>
+          <p>Learn awesome new things, share your favorite things, and make great connections.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="schedule" class="section-divider">
+	<div class="container">
+		<div class="col-md-8 center-block">
+			<h1>Schedule – November 7th, 2015</h1>
+      <table class="table">
+        <tr>
+          <td>9:00 a.m.</td>
+          <td>Opening Session</td>
+        </tr>
+        <tr>
+          <td>10:00 a.m.</td>
+          <td>Breakout Sessions</td>
+        </tr>
+        <tr class="row-secondary">
+          <td>12:00 p.m.</td>
+          <td>Lunch catered by Gallagher's Pizza<br>Sponsored by <a href="http://gallagherspizza.com">Gallagher's Pizza</a> and <a href="http://swgreenbay.com">Startup Weekend Green Bay</a></td>
+        </tr>
+        <tr>
+          <td>1:00 p.m.</td>
+          <td>Breakout Sessions</td>
+        </tr>
+        <tr>
+          <td>4:00 p.m.</td>
+          <td>Closing Session</td>
+        </tr>
+        <tr class="row-secondary">
+          <td>5:00 p.m.</td>
+          <td>Dinner (not provided) small groups at local restaurants</td>
+        </tr>
+        <tr>
+          <td>7:00 p.m.</td>
+          <td>Unstructured play games, hack on some code, or just mingle!</td>
+        </tr>
+        <tr>
+          <td>11:30 p.m.</td>
+          <td>Clean-Up</td>
+        </tr>
+      </table>
+		</div>
+	</div>
+</section>
+
+<section class="section-divider">
+	<div class="container">
+		<div class="col-md-8 center-block">
+	    <h1>Code of Conduct</h1>
+	    <p>BarCamp Green Bay is dedicated to a harassment-free conference experience for everyone. Please read our <a href="#">code of conduct</a>.</p>
+	  </div>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+	  <div class="col-md-8 center-block">
+	    <h1>Sponsors</h1>
+	    <p>Be part of something amazing. <a href="https://www.payitsquare.com/collect-page/43084">Sponsor BarCamp Green Bay!</a></p>
+	    <p>Consider sponsoring $50-$200 and we will list you on this site and give you a shout-out during the event.</p>
+	    <div class="row">
+	    	<div class="col-md-4">
+	    		<img src="holder.js/100%x150/text:Logo/#E7E7E7:#FFF">
+	    	</div>
+	    	<div class="col-md-4">
+	    		<img src="holder.js/100%x150/text:Logo/#E7E7E7:#FFF">
+	    	</div>
+	    	<div class="col-md-4">
+	    		<img src="holder.js/100%x150/text:Logo/#E7E7E7:#FFF">
+	    	</div>
+	    	<div class="col-md-4">
+	    		<img src="holder.js/100%x150/text:Logo/#E7E7E7:#FFF">
+	    	</div>
+	    	<div class="col-md-4">
+	    		<img src="holder.js/100%x150/text:Logo/#E7E7E7:#FFF">
+	    	</div>
+	    	<div class="col-md-4">
+	    		<img src="holder.js/100%x150/text:Logo/#E7E7E7:#FFF">
+	    	</div>
+	    </div>
+      <a class="btn btn-primary btn-wide" href="#">Sponsor BarCamp Green Bay!</a>
+		</div>
+	</div>
+</section>
+
+<section class="section-pattern">
+  <div class="container">
+    <div class="col-md-8 center-block">
+			<form class="form" method="post">
+				{% if user %}
+        <h1>You're already registered!</h1>
+					<input type="hidden" name="existingUser" value="yes" />
+          <a class="btn btn-secondary btn-wide" href="/proposals">Check out the proposals or submit your own.</a>
+				{% else %}
+        <h1>Join us! Register here.</h1>
+					<div class="form-field form-group">
+						<input class="field-control form-control" type="text" id="login-name" placeholder="Name" name="name" />
+					</div>
+					<div class="form-field">
+						<input class="field-control form-control" type="text" id="login-email" placeholder="Email" name="email" />
+					</div>
+					<div class="form-field">
+						<input class="field-control form-control" type="password" id="login-password" placeholder="Password" name="password" />
+					</div>
+					<div class="form-field">
+						<select class="field-control form-control" id="register-shirt-size" name="shirtSize">
+							<option value="">Select T-shirt size...</option>
+							{% for size in shirtSizes %}
+								<option value="{{ size }}">{{ size }}</option>
+							{% endfor %}
+						</select>
+					</div>
+          <input type="hidden" name="event" value="{{ event.id }}" />
+          <div class="form-field">
+            <button type="submit" class="btn btn-secondary btn-wide">Register</button>
+          </div>
+				{% endif %}
+			</form>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/js/client.js"></script>
 {% endblock %}
