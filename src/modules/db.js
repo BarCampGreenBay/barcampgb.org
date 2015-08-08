@@ -9,7 +9,7 @@ var db = mongoose.createConnection();
 
 function connect () {
 	if (config.env.prod) {
-		db.open(config.db.host, config.db.name);
+		db.open(config.db.host, config.db.name, config.db.port);
 	}
 	db.on('error', log.error.bind(log, 'mongodb connection error:'));
 }
