@@ -1,7 +1,7 @@
 var config = {
 	db: {
 		name: 'bcgb',
-		host: 'localhost'
+		host: process.env.MONGOD_HOST || 'localhost'
 	},
 	email: {
 		user: process.env.SMTP_USER,
