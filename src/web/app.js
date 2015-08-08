@@ -35,7 +35,7 @@ app.use(flash());
 
 // catch db connection errors
 app.use(function(req, res, next) {
-	if (db.readyState !== 1 && config.env.prod) {
+	if (db.connection.readyState !== 1 && config.env.prod) {
 		return res.status(500).send('No database connection.');
 	}
 	next();
