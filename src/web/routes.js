@@ -68,11 +68,14 @@ module.exports = function(app, passport, db, email) {
 			},
 			loginUser(),
 			function registerUser (req, res, next) {
+				if (!req.body.event) {
+					return next(new Error('No event specified!'));
+				}
 				Event.findById(req.body.event, function(err, event) {
 					if (err) {
 						return next(err);
 					}
-					event.registrants.push(req.user.id);
+					event.registrants.push(req.user._id);
 					event.save(next);
 				});
 			},
@@ -355,6 +358,7 @@ module.exports = function(app, passport, db, email) {
 			if (opts.flashError !== false) {
 				req.flash('error', message);
 			}
+			log.error(err);
 			res.redirect(opts.redirect || req.originalUrl);
 		};
 	}

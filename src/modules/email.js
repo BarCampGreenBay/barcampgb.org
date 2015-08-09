@@ -36,7 +36,7 @@ module.exports = function(nunjucks) {
 		send({
 			to: to,
 			subject: 'BarCamp Green Bay: Password Reset',
-			message: nunjucks.render('emails/password-reset.txt', templateLocals)
+			text: nunjucks.render('emails/password-reset.txt', templateLocals)
 		}, cb);
 	}
 
@@ -44,8 +44,8 @@ module.exports = function(nunjucks) {
 		send({
 			to: to,
 			subject: 'BarCamp Green Bay: Registration Confirmation',
-			message: nunjucks.render('emails/registration-confirmation.txt', templateLocals)
-		}, cb);	
+			text: nunjucks.render('emails/registration-confirmation.txt', templateLocals)
+		}, cb);
 	}
 
 	return {
