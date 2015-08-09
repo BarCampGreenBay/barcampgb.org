@@ -3,41 +3,55 @@
 <head>
 	<title>BarCamp Green Bay</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/assets/form.css">
+	<link rel="stylesheet" type="text/css" href="/assets/form.css">
 	<link rel="stylesheet" type="text/css" href="/assets/site.css">
 
-  <!-- Typekit fonts -->
-  <script src="//use.typekit.net/avp3yhq.js"></script>
-  <script>try{Typekit.load();}catch(e){}</script>
+	<!-- Typekit fonts -->
+	<script src="//use.typekit.net/avp3yhq.js"></script>
+	<script>
+		try {
+			Typekit.load();
+		} catch (e) {}
+	</script>
 </head>
 {% block bodytag %}
 <body>
 {% endblock %}
+	{% include "partials/navigation.html" %}
+	{% if user %} Welcome {{ user.name }} {% endif %}
 
-  {% include "partials/navigation.html" %}
-  {% if user %}
-  Welcome {{ user.name }}
-  {% endif %}
-  &nbsp;
-  {% for error in errors %}
-  	<div class="error">{{ error }}</div>
-  {% endfor %}
-  {% for success in successes %}
-  	<div class="success">{{ success }}</div>
-  {% endfor %}
+	{% if errors or successes %}
+	<div class="alert-container">
+		<div class="row">
+			<div class="col-md-7 center-block">
+				{% for error in errors %}
+					<div class="alert alert-danger alert-dismissible fade in" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						{{ error }}
+					</div>
+				{% endfor %} {% for success in successes %}
+					<div class="alert alert-success alert-dismissible fade in" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						{{ success }}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
 
-  {% block body %}{% endblock %}
+	{% block body %}{% endblock %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- Holder.js for placeholder images. -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.7.1/holder.min.js"></script>
-  <!-- Bootstrap scripts -->
+	<!-- Holder.js for placeholder images. -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.7.1/holder.min.js"></script>
+	<!-- Bootstrap scripts -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- Wistia Video Embed -->
-  <script charset='ISO-8859-1' src='https://fast.wistia.com/assets/external/E-v1.js'></script>
-  <script charset='ISO-8859-1' src='https://fast.wistia.com/labs/crop-fill/plugin.js'></script>
+	<!-- Wistia Video Embed -->
+	<script charset='ISO-8859-1' src='https://fast.wistia.com/assets/external/E-v1.js'></script>
+	<script charset='ISO-8859-1' src='https://fast.wistia.com/labs/crop-fill/plugin.js'></script>
 
 	{% block scripts %}{% endblock %}
 </body>

@@ -589,3 +589,14 @@ footer {
   padding-bottom: 3rem;
 
 }
+
+/*
+ * Flash Alerts
+ */
+
+.alert-container {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+    z-index: 1040;
+}
