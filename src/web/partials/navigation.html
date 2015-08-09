@@ -16,6 +16,9 @@
         <li><a href="/#schedule"><span class="fa fa-clock-o"></span><span>Schedule</span></a></li>
         <li><a href="/#about"><span class="fa fa-info-circle"></span><span>About</span></a></li>
         <li><a href="http://twitter.com/barcampgb" target="_blank"><span class="fa fa-twitter"></span><span>Twitter</span></a></li>
+        {% if user %}
+          <li><a href="/logout"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+        {% endif %}
         <li class="nav-wide"><a href="/register" class="btn btn-default navbar-btn"><i class="fa fa-pencil-square-o"></i> Register!</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

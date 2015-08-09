@@ -20,7 +20,6 @@
 <body>
 {% endblock %}
 	{% include "partials/navigation.html" %}
-	{% if user %} Welcome {{ user.name }} {% endif %}
 
 	{% if errors or successes %}
 	<div class="alert-container">
