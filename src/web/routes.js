@@ -45,9 +45,7 @@ module.exports = function(app, passport, db, email) {
 	function getRegister () {
 		return [
 			findActiveEvent(),
-			render('register.html', {
-				shirtSizes: User.schema.path('shirtSize').enumValues
-			})
+			render('register.html')
 		];
 	}
 
@@ -317,6 +315,7 @@ module.exports = function(app, passport, db, email) {
 			Event.findActive().then(function(activeEvent) {
 				req.event = activeEvent;
 				res.locals.event = activeEvent;
+				res.locals.shirtSizes = User.schema.path('shirtSize').enumValues
 				next();
 			}, next);
 		};
