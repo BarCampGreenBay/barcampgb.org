@@ -31,7 +31,9 @@
 			</div>
 			<a href="/proposals">See all proposals</a>
 			{% elif not proposal %}
-				<a class="btn btn-primary btn-wide" href="/login">Login to propose sessions.</a>
+				<a class="btn btn-primary btn-wide" href="/login">
+					Login to propose sessions.
+				</a>
 			{% else %}
 			<div class="card card-secondary" style="margin-top: 2rem;">
 				<h1>{{ proposal.title }}</h1>
@@ -39,25 +41,33 @@
 				<h2 class="post-meta">By: {{ proposal.submitter }}</h2>
 				<p>{{ proposal.description }}</p>
 				<div class="card-btn">
-          <p class="post-meta">8 people like this</p>
-          {% if user %}
-          <form action="/proposal/{{ proposal.id }}/vote" method="post">
-            {% if user.hasVotedForProposal(proposal) %}
-              <button class="btn btn-primary" type="submit">Thanks for voting <i class="fa fa-heart"></i></button>
-            {% else %}
-              <input type="hidden" name="vote" value="add" />
-              <button class="btn btn-primary" type="submit">This sounds cool! <i class="fa fa-heart-o"></i></button>
-            {% endif %}
-          </form>
-          {% else %}
-          <div>
-            <a class="btn btn-primary" href="/login">This sounds cool! <i class="fa fa-heart-o"></i></a>
-          </div>
-          {% endif %}
-        </div>
+					<p class="post-meta">8 people like this</p>
+					{% if user %}
+					<form action="/proposal/{{ proposal.id }}/vote" method="post">
+						{% if user.hasVotedForProposal(proposal) %}
+						<button class="btn btn-primary" type="submit">
+							Thanks for voting <i class="fa fa-heart"></i>
+						</button>
+						{% else %}
+						<input type="hidden" name="vote" value="add" />
+						<button class="btn btn-primary" type="submit">
+							This sounds cool! <i class="fa fa-heart-o"></i>
+						</button>
+						{% endif %}
+					</form>
+					{% else %}
+					<div>
+						<a class="btn btn-primary" href="/login">
+							This sounds cool! <i class="fa fa-heart-o"></i>
+						</a>
+					</div>
+					{% endif %}
+				</div>
 			</div>
 			<hr>
-			<a class="btn btn-primary btn-wide" href="/proposals">See all proposals</a>
+			<a class="btn btn-primary btn-wide" href="/proposals">
+				See all proposals
+			</a>
 			{% endif %}
 		</div>
 	</div>

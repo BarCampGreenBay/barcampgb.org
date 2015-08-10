@@ -1,20 +1,16 @@
 {% extends "templates/layout.html" %}
-
 {% block bodytag %}
 <body class="pattern-background">
 {% endblock %}
-
 {% block body %}
 <div class="container">
 	<div class="row form-container">
 		<div class="col-md-7 center-block">
-      <div class="card">
-			{% include "partials/register-form.html" %}
-      </div>
-			{% if user %}
-			{% else %}
-      <a href="/login" class="btn btn-secondary text-center">Already registered? Log in</a>
-			{% endif %}
+			<div class="card">
+				{% include "partials/register-form.html" %}
+			</div>
+			{% if user %} {% else %}
+			<a href="/login" class="btn btn-secondary text-center">Already registered? Log in</a> {% endif %}
 		</div>
 	</div>
 </div>
