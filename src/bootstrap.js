@@ -30,7 +30,7 @@ exports.db = function(db) {
 		}
 	});
 	var activeEvent = new Event({
-		date: Date.now(),
+		date: Date.now() + 1000 * 60 * 60 * 24,
 		location: {
 			name: 'Location',
 			address: '123 Street',
