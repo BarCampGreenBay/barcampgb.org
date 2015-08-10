@@ -104,6 +104,7 @@ blockquote {
 }
 a {
   color: #3191CE;
+  border-bottom: 2px solid rgba(50, 146, 207, 0.25);
 }
 a:hover {
   color: #21AE42;
@@ -234,6 +235,9 @@ hr {
 .navbar-default .navbar-brand {
   max-width: 100px;
 }
+.navbar-brand {
+    border: 0;
+}
 .navbar-brand img {
   margin-top: 0;
   margin-bottom: 0;
@@ -334,7 +338,6 @@ hr {
 .btn {
   padding: 15px;
   font-size: 1rem;
-  border-radius: 1rem;
   font-weight: bold
 }
 .btn-primary {
@@ -595,7 +598,7 @@ footer {
  */
 
 .alert-container {
-    position: absolute;
+    position: fixed;
     top: 90px;
     width: 100%;
     z-index: 1040;
