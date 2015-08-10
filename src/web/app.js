@@ -11,12 +11,14 @@ var flash = require('connect-flash');
 var session = require('cookie-session');
 var methodOverride = require('method-override');
 var browserify = require('browserify-middleware');
+var nunjucksDate = require('nunjucks-date');
 
 module.exports = app;
 
-nunjucks.configure(__dirname, {
+var nunjucksEnv = nunjucks.configure(__dirname, {
 	express: app
 });
+nunjucksDate.install(nunjucksEnv);
 
 db.connect();
 if (config.env.dev) {

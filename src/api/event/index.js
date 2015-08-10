@@ -17,6 +17,10 @@ schema.virtual('name').get(function() {
 	return 'BarCamp Green Bay ' + this.date.getFullYear();
 });
 
+schema.virtual('registrationOpen').get(function() {
+	return (this.date.getTime() > Date.now());
+});
+
 schema.path('registrants').validate(function(arr) {
 	var unique = arr.filter(function(value, index, self) {
 		return self.indexOf(value) === index;
@@ -25,7 +29,7 @@ schema.path('registrants').validate(function(arr) {
 }, 'Duplicate user');
 
 schema.statics.findActive = function(cb) {
-	return this.findOne({ active: true }).exec(cb);
+	return this.findOne({ active: true }).sort({ date: -1 }).exec(cb);
 };
 
 schema.methods.addProposal = function(proposal, cb) {

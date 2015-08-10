@@ -4,14 +4,25 @@
 <div class="jumbotron" id="video_container">
 	<div id="text">
 		<h1>A day of open source&nbsp;knowledge</h1>
-		<p>Saturday, November 7, 2015
-			<br><a target="_blank" href="https://www.google.com/maps/place/NWTC+Corporate+Conference+Center/@44.5273265,-88.1073207,17z/data=!3m1!4b1!4m2!3m1!1s0x8802f9e7ab077a8f:0x7861e0117a83b803">NWTC Corporate Conference&nbsp;Center <i class="fa fa-arrow-circle-right"></i></a></p>
-		<p>
-			{% if user %}
-			<a type="button" class="btn btn-secondary" href="/proposals">View proposals</a> {% else %}
-			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Register now</button>
-			{% endif %}
+		<p>{{ event.date | date('dddd, MMMM Do YYYY') }}<br>
+			<a target="_blank" href="{{ event.location.url }}">
+				{{ event.location.name }}
+				<i class="fa fa-arrow-circle-right"></i>
+			</a>
 		</p>
+		{% if event.registrationOpen %}
+			<p>
+				{% if user %}
+					<a type="button" class="btn btn-secondary" href="/proposals">
+						View proposals
+					</a>
+				{% else %}
+					<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">
+						Register now
+					</button>
+				{% endif %}
+			</p>
+		{% endif %}
 	</div>
 	<div id="cover_all"></div>
 	<div id="main-image"></div>
@@ -40,12 +51,14 @@
 			<div class="col-md-4">
 				<div class="card">
 					<h1>Free and open</h1>
-					<p>There’s no cost to attend Barcamp. It’s an open environment for sharing knowledge.</p>
+					<p>There’s no cost to attend BarCamp. It’s an open environment for sharing knowledge.</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+{% if event.registrationOpen %}
 
 <section class="section-pattern">
 	<div class="container">
@@ -76,7 +89,7 @@
 					<div class="card-tag card-tag-inverse hidden-xs">
 						<div class="vertical-center">4</div>
 					</div>
-					<h1 class="text-center">Join us on November 7th</h1>
+					<h1 class="text-center">Join us on {{ event.date | date('MMMM Do') }}</h1>
 					<p>We’ll plan the day’s schedule as a group and get going!</p>
 				</div>
 				<div class="card">
@@ -94,7 +107,7 @@
 <section id="schedule" class="section-divider">
 	<div class="container">
 		<div class="col-md-8 center-block">
-			<h1>Schedule – November 7th, 2015</h1>
+			<h1>Schedule – {{ event.date | date('MMMM Do YYYY') }}</h1>
 			<table class="table">
 				<tr>
 					<td>9:00 a.m.</td>
@@ -145,6 +158,26 @@
 	</div>
 </section>
 
+{% else %}
+
+<section class="section-pattern bg-primary">
+	<div class="container">
+		<div class="col-md-8 center-block">
+			<h1>
+				Thanks for joining us at {{ event.name }}!
+				<i class="fa fa-thumbs-up"></i>
+			</h1>
+			<p>
+				You're awesome, and we glad you helped make our event special.
+			</p>
+			<p>
+				Didn't make it to {{ event.name }}? Join us next year! Same place on the first Saturday of November!
+			</p>
+		</div>
+	</div>
+</section>
+
+{% endif %}
 <section class="section-divider">
 	<div class="container">
 		<div class="col-md-8 center-block">

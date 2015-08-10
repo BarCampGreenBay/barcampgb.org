@@ -8,7 +8,13 @@
 			<div class="col-md-8 center-block">
 				<h1>Session Proposals</h1>
 				<p>Remember, these are just ideas! The real schedule will be created the day of the event. Share your ideas even if they're rough and show your interest by voting for the ones you'd like to attend.</p>
-				<p><a class="btn btn-success btn-block" href="/proposal">Submit session ideas!</a></p>
+				{% if event.registrationOpen %}
+				<p>
+					<a class="btn btn-success btn-block" href="/proposal">
+						Submit session ideas!
+					</a>
+				</p>
+				{% endif %}
 
 				{% for proposal in proposals %}
 				<div class="card card-secondary post">
@@ -17,7 +23,7 @@
 					<h2 class="post-meta">By: {{ proposal.submitter }}</h2>
 					<p>{{ proposal.description }}</p>
 
-					{% if user and user.canEditProposal(proposal) %}
+					{% if event.registrationOpen and user and user.canEditProposal(proposal) %}
 					<div class="post-menu">
 						<a href="/proposal/{{ proposal.id }}" class="btn btn-link"><i class="fa fa-pencil"></i> Edit</a>
 						<form class="form-inline" action="/proposal/{{ proposal.id }}?_method=DELETE" method="post">
@@ -28,7 +34,7 @@
 
 					<div class="card-btn">
 						<p class="post-meta">8 people like this</p>
-						{% if user %}
+						{% if event.registrationOpen and user %}
 						<form action="/proposal/{{ proposal.id }}/vote" method="post">
 							{% if user.hasVotedForProposal(proposal) %}
 							<button class="btn btn-primary" type="submit">Thanks for voting <i class="fa fa-heart"></i></button>
@@ -37,10 +43,6 @@
 							<button class="btn btn-primary" type="submit">This sounds cool! <i class="fa fa-heart-o"></i></button>
 							{% endif %}
 						</form>
-						{% else %}
-						<div>
-							<a class="btn btn-primary" href="/login">This sounds cool! <i class="fa fa-heart-o"></i></a>
-						</div>
 						{% endif %}
 					</div>
 

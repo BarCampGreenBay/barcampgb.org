@@ -39,9 +39,11 @@
 					</a>
 				</li>
 				{% if user %}
-				<li><a href="/logout"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+					<li><a href="/logout"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
 				{% endif %}
-				<li class="nav-wide"><a href="/register" class="btn btn-default navbar-btn"><i class="fa fa-pencil-square-o"></i> Register!</a></li>
+				{% if event.registrationOpen %}
+					<li class="nav-wide"><a href="/register" class="btn btn-default navbar-btn"><i class="fa fa-pencil-square-o"></i> Register!</a></li>
+				{% endif %}
 			</ul>
 		</div>
 		<!-- /.navbar-collapse Ω-->
