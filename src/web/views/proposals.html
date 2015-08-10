@@ -17,7 +17,7 @@
 				{% endif %}
 
 				{% for proposal in proposals %}
-				<div class="card card-secondary post">
+				<div id="{{ proposal.id }}" class="card card-secondary post">
 					<h1><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></h1>
 					<!-- Not sure what the variable is for the proposal submitter -->
 					<h2 class="post-meta">By: {{ proposal.submitter }}</h2>
@@ -35,7 +35,7 @@
 					<div class="card-btn">
 						<p class="post-meta">8 people like this</p>
 						{% if event.registrationOpen and user %}
-						<form action="/proposal/{{ proposal.id }}/vote" method="post">
+						<form action="/proposal/{{ proposal.id }}/vote?returnUrl={{ url + '#' + proposal.id | urlencode }}" method="post">
 							{% if user.hasVotedForProposal(proposal) %}
 							<button class="btn btn-primary" type="submit">Thanks for voting <i class="fa fa-heart"></i></button>
 							{% else %}

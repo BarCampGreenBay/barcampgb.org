@@ -43,7 +43,7 @@
 				<div class="card-btn">
 					<p class="post-meta">8 people like this</p>
 					{% if user %}
-					<form action="/proposal/{{ proposal.id }}/vote" method="post">
+					<form action="/proposal/{{ proposal.id }}/vote?returnUrl={{ url | urlencode }}" method="post">
 						{% if user.hasVotedForProposal(proposal) %}
 						<button class="btn btn-primary" type="submit">
 							Thanks for voting <i class="fa fa-heart"></i>

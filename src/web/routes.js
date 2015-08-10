@@ -240,6 +240,7 @@ module.exports = function(app, passport, db, email) {
 	function render (view, context) {
 		return function(req, res) {
 			res.render('views/' + view, merge({
+				url: req.originalUrl,
 				user: req.user,
 				errors: req.flash('error'),
 				successes: req.flash('success')
@@ -252,7 +253,7 @@ module.exports = function(app, passport, db, email) {
 			if (typeof url === 'function') {
 				url = url(req, res);
 			}
-			res.redirect(url);
+			res.redirect(req.query.returnUrl || url);
 		};
 	}
 
