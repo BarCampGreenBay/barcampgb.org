@@ -159,6 +159,7 @@ module.exports = function(app, passport, db, email) {
 	function getProposal (opts) {
 		opts = opts || {};
 		var actions = [
+			findActiveEvent(),
 			findProposal(),
 			handleError({
 				redirect: '/proposals'
@@ -286,7 +287,7 @@ module.exports = function(app, passport, db, email) {
 
 	function findProposal () {
 		return function(req, res, next) {
-			Proposal.findById(req.params.id, function(err, proposal) {
+			Proposal.findById(req.params.id).populate('owner').exec(function(err, proposal) {
 				if (proposal) {
 					req.proposal = proposal;
 					res.locals.proposal = proposal;

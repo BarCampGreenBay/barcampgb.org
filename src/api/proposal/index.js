@@ -14,7 +14,7 @@ schema.path('votes').validate(function(arr) {
 }, 'Duplicate user');
 
 schema.statics.findByEvent = function(event, cb) {
-	return this.find({ '_id': { $in: event.proposals } }).exec(cb);
+	return this.find({ '_id': { $in: event.proposals } }).populate('owner').exec(cb);
 };
 
 schema.methods.addVote = function(user, cb) {

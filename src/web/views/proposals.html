@@ -17,36 +17,7 @@
 				{% endif %}
 
 				{% for proposal in proposals %}
-				<div id="{{ proposal.id }}" class="card card-secondary post">
-					<h1><a href="/proposal/{{ proposal.id }}">{{ proposal.title }}</a></h1>
-					<!-- Not sure what the variable is for the proposal submitter -->
-					<h2 class="post-meta">By: {{ proposal.submitter }}</h2>
-					<p>{{ proposal.description }}</p>
-
-					{% if event.registrationOpen and user and user.canEditProposal(proposal) %}
-					<div class="post-menu">
-						<a href="/proposal/{{ proposal.id }}" class="btn btn-link"><i class="fa fa-pencil"></i> Edit</a>
-						<form class="form-inline" action="/proposal/{{ proposal.id }}?_method=DELETE" method="post">
-							<button class="btn btn-link" type="submit"><i class="fa fa-trash"></i> Delete</button>
-						</form>
-					</div>
-					{% endif %}
-
-					<div class="card-btn">
-						<p class="post-meta">8 people like this</p>
-						{% if event.registrationOpen and user %}
-						<form action="/proposal/{{ proposal.id }}/vote?returnUrl={{ url + '#' + proposal.id | urlencode }}" method="post">
-							{% if user.hasVotedForProposal(proposal) %}
-							<button class="btn btn-primary" type="submit">Thanks for voting <i class="fa fa-heart"></i></button>
-							{% else %}
-							<input type="hidden" name="vote" value="add" />
-							<button class="btn btn-primary" type="submit">This sounds cool! <i class="fa fa-heart-o"></i></button>
-							{% endif %}
-						</form>
-						{% endif %}
-					</div>
-
-				</div>
+					{% include "partials/proposal-display.html" %}
 				{% endfor %}
 			</div>
 		</div>
