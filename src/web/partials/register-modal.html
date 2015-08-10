@@ -7,32 +7,7 @@
       </div>
     </div>
     <div class="modal-content">
-			<h1 class="text-center">Register for {{ event.name }}</h1>
-			<form class="form" method="post" action="/register">
-				{% if user %}
-					<input type="hidden" name="existingUser" value="yes" />
-				{% else %}
-					<div class="form-group">
-						<input class="form-control" type="text" id="login-name" placeholder="Name" name="name" />
-					</div>
-					<div class="form-group">
-						<input class="form-control" type="text" id="login-email" placeholder="Email" name="email" />
-					</div>
-					<div class="form-group">
-						<input class="form-control" type="password" id="login-password" placeholder="Password" name="password" />
-					</div>
-					<div class="form-group">
-						<select class="form-control" id="register-shirt-size" name="shirtSize">
-							<option value="">Select T-shirt size...</option>
-							{% for size in shirtSizes %}
-								<option value="{{ size }}">{{ size }}</option>
-							{% endfor %}
-						</select>
-					</div>
-				{% endif %}
-				<input type="hidden" name="event" value="{{ event.id }}" />
-				<button type="submit" class="btn btn-primary btn-wide">Register</button>
-			</form>
+		{% include "partials/register-form.html" %}
     </div>
   </div>
 </div>
