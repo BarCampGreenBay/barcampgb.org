@@ -603,3 +603,7 @@ footer {
     width: 100%;
     z-index: 1040;
 }
+
+#about {
+    padding-top: 5rem;
+}

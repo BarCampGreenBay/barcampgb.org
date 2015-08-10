@@ -16,17 +16,17 @@
 						<a class="btn btn-primary btn-wide" href="/proposals">Check out the proposals or submit your own.</a>
 			  	{% else %}
 					<h1 class="text-center">Register for {{ event.name }}</h1>
-			  		<div class="form-field form-group">
-			  			<input class="field-control form-control" type="text" id="login-name" placeholder="Name" name="name" />
+			  		<div class="form-group">
+			  			<input class="form-control" type="text" id="login-name" placeholder="Name" name="name" />
 			  		</div>
-			  		<div class="form-field">
-			  			<input class="field-control form-control" type="text" id="login-email" placeholder="Email" name="email" />
+			  		<div class="form-group">
+			  			<input class="form-control" type="text" id="login-email" placeholder="Email" name="email" />
 			  		</div>
-			  		<div class="form-field">
-			  			<input class="field-control form-control" type="password" id="login-password" placeholder="Password" name="password" />
+			  		<div class="form-group">
+			  			<input class="form-control" type="password" id="login-password" placeholder="Password" name="password" />
 			  		</div>
-			  		<div class="form-field">
-			  			<select class="field-control form-control" id="register-shirt-size" name="shirtSize">
+			  		<div class="form-group">
+			  			<select class="form-control" id="register-shirt-size" name="shirtSize">
 			  				<option value="">Select T-shirt size...</option>
 			  				{% for size in shirtSizes %}
 			  					<option value="{{ size }}">{{ size }}</option>
@@ -34,9 +34,7 @@
 			  			</select>
 			  		</div>
 						<input type="hidden" name="event" value="{{ event.id }}" />
-						<div class="form-field">
-							<button type="submit" class="btn btn-primary btn-wide">Register</button>
-						</div>
+						<button type="submit" class="btn btn-primary btn-wide">Register</button>
 			  	{% endif %}
 			  </form>
       </div>
