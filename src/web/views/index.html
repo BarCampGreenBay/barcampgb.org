@@ -191,14 +191,18 @@
 	<div class="container">
 		<div class="col-md-8 center-block">
 			<h1>Sponsors</h1>
+			{% if event.registrationOpen %}
 			<p>Be part of something amazing.</p>
 			<p>Consider sponsoring $50-$200 and we will list you on this site and give you a shout-out during the event.</p>
+			{% endif %}
 			<!--<div class="row">
 			<div class="col-md-4">
 				<img src="holder.js/100%x150/text:Logo/#E7E7E7:#FFF">
 			</div>
 		</div> -->
+			{% if event.registrationOpen %}
 			<a class="btn btn-success btn-wide" href="https://www.payit2.com/fundraiser/73845">Sponsor BarCamp Green Bay!</a>
+			{% endif %}
 		</div>
 	</div>
 </section>
