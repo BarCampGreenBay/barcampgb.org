@@ -1,5 +1,6 @@
 var log = require('../modules/log');
 var merge = require('merge');
+var filterObject = require('filter-object');
 
 module.exports = function(app, passport, db, email) {
 
@@ -55,13 +56,15 @@ module.exports = function(app, passport, db, email) {
 				if (req.body.existingUser === 'yes') {
 					return next();
 				}
-				var user = new User(req.body);
+				var user = new User(cleanUserRequest(req.body));
 				User.register(user, req.body.password, function(err) {
 					req.tempUser = user;
-					if (!err) {
-						email.sendRegistrationConfirmation(user.email, { user: user });
+					if (err) {
+						req.flash('form', req.body);
+						return next(err);
 					}
-					next(err);
+					email.sendRegistrationConfirmation(user.email, { user: user });
+					next();
 				});
 			},
 			loginUser(),
@@ -77,7 +80,7 @@ module.exports = function(app, passport, db, email) {
 					event.save(next);
 				});
 			},
-			flash('success', 'Registered!'),
+			flash('success', 'Thanks for registering. You\'re all set!'),
 			redirect('/'),
 			handleError()
 		];
@@ -244,7 +247,11 @@ module.exports = function(app, passport, db, email) {
 				url: req.originalUrl,
 				user: req.user,
 				errors: req.flash('error'),
-				successes: req.flash('success')
+				successes: req.flash('success'),
+				form: req.flash('form').pop(),
+				dump: function (value) {
+					return JSON.stringify(value);
+				}
 			}, context || {}));
 		};
 	}
@@ -350,18 +357,26 @@ module.exports = function(app, passport, db, email) {
 
 	function handleError (opts) {
 		opts = opts || {};
+		var userErrors = ['BadRequestError', 'ValidationError', 'UserError'];
 		return function(err, req, res, next) {
 			var message = err.message;
-			var field;
+			if (userErrors.indexOf(err.name) < 0) {
+				log.error(err);
+				message = 'Oops, something went wrong :(';
+			}
 			if (err.errors) {
 				message = err.toString();
 			}
 			if (opts.flashError !== false) {
 				req.flash('error', message);
 			}
-			log.error(err);
+
 			res.redirect(opts.redirect || req.originalUrl);
 		};
+	}
+
+	function cleanUserRequest(obj) {
+		return filterObject(obj, ['name', 'email', 'password', 'shirtSize']);
 	}
 
 };

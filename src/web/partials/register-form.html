@@ -6,10 +6,10 @@
 	{% else %}
 		<h1 class="text-center">Register for {{ event.name }}</h1>
 		<div class="form-group">
-			<input class="form-control" type="text" id="login-name" placeholder="Name" name="name" />
+			<input class="form-control" type="text" id="login-name" placeholder="Name" name="name" value="{{ form.name }}" />
 		</div>
 		<div class="form-group">
-			<input class="form-control" type="text" id="login-email" placeholder="Email" name="email" />
+			<input class="form-control" type="text" id="login-email" placeholder="Email" name="email" value="{{ form.email }}" />
 		</div>
 		<div class="form-group">
 			<input class="form-control" type="password" id="login-password" placeholder="Password" name="password" />
@@ -18,7 +18,7 @@
 			<select class="form-control" id="register-shirt-size" name="shirtSize">
 				<option value="">Select T-shirt size...</option>
 				{% for size in shirtSizes %}
-				<option value="{{ size }}">{{ size }}</option>
+				<option value="{{ size }}" {% if form.size == size %}selected{% endif %}>{{ size }}</option>
 				{% endfor %}
 			</select>
 		</div>
