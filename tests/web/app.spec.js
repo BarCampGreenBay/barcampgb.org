@@ -2,25 +2,27 @@ var proxyquire = require('proxyquire');
 var expressSpy, appSpy, nunjucksSpy, dbSpy, sessionSpy, bodyParserSpy, passportSpy, flashSpy, routesSpy;
 var init = function (proxies) {
 	appSpy = jasmine.createSpyObj('app', ['use', 'locals']);
-	expressSpy = jasmine.createSpy('express').andReturn(appSpy);
-	expressSpy.static = jasmine.createSpy('static').andReturn('static');
+	expressSpy = jasmine.createSpy('express').and.returnValue(appSpy);
+	expressSpy.static = jasmine.createSpy('static').and.returnValue('static');
 	nunjucksSpy = jasmine.createSpyObj('nunjucks', ['configure']);
+	nunjucksDateSpy = jasmine.createSpyObj('nunjucksDate', ['install']);
 	dbSpy = jasmine.createSpyObj('db', ['connect']);
 	emailSpy = jasmine.createSpyObj('email', ['sendPasswordReset']);
-	sessionSpy = jasmine.createSpy('session').andReturn('session');
+	sessionSpy = jasmine.createSpy('session').and.returnValue('session');
 	bodyParserSpy = {
-		urlencoded: jasmine.createSpy('urlencoded').andReturn('urlencoded'),
-		json: jasmine.createSpy('json').andReturn('json')
+		urlencoded: jasmine.createSpy('urlencoded').and.returnValue('urlencoded'),
+		json: jasmine.createSpy('json').and.returnValue('json')
 	};
 	passportSpy = {
-		initialize: jasmine.createSpy('initialize').andReturn('passport init'),
-		session: jasmine.createSpy('session').andReturn('passport session')
+		initialize: jasmine.createSpy('initialize').and.returnValue('passport init'),
+		session: jasmine.createSpy('session').and.returnValue('passport session')
 	};
-	flashSpy = jasmine.createSpy('flash').andReturn('flash');
+	flashSpy = jasmine.createSpy('flash').and.returnValue('flash');
 	routesSpy = jasmine.createSpy('routes');
 	return proxyquire('../../src/web/app', {
 		express: expressSpy,
 		nunjucks: nunjucksSpy,
+		'nunjucks-date': nunjucksDateSpy,
 		'../modules/db': dbSpy,
 		'../modules/email': function() {
 			return emailSpy;
@@ -83,7 +85,6 @@ describe('App Module', function() {
 	it('should set up static directories', function() {
 		init();
 		expect(expressSpy.static).toHaveBeenCalledWith(jasmine.any(String));
-		expect(appSpy.use).toHaveBeenCalledWith('/vendor', 'static');
 		expect(appSpy.use).toHaveBeenCalledWith('/assets', 'static');
 	});
 });

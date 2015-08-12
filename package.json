@@ -8,8 +8,7 @@
     "url": "git@github.com:BarCampGreenBay/barcampgb.org.git"
   },
   "scripts": {
-    "test": "jasmine-node tests/",
-    "autotest": "jasmine-node tests/ --autotest",
+    "test": "JASMINE_CONFIG_PATH=jasmine.json jasmine",
     "dev": "node-dev src/web/server.js | bunyan -l debug -o short",
     "debug": "node-debug src/web/server.js",
     "prod": "NODE_ENV=production node src/web/server.js"
@@ -42,7 +41,7 @@
   },
   "devDependencies": {
     "browserify": "^6.2.0",
-    "jasmine-node": "^1.14.5",
+    "jasmine": "^2.3.2",
     "mockgoose": "^1.10.7",
     "node-dev": "^2.3.0",
     "node-inspector": "^0.7.4",

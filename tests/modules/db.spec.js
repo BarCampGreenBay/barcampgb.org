@@ -7,7 +7,8 @@ var db = proxyquire('../../src/modules/db', {
 		},
 		db: {
 			host: 'host',
-			name: 'name'
+			name: 'name',
+			port: 'port'
 		}
 	}
 });
@@ -19,9 +20,9 @@ describe('Db module', function() {
 	it('should export connect', function() {
 		expect(db.connect).toBeDefined();
 	});
-	it('should connect to db with host and name', function() {
+	it('should connect to db with host, name, and port', function() {
 		spyOn(db.connection, 'open');
 		db.connect();
-		expect(db.connection.open).toHaveBeenCalledWith('host', 'name');
+		expect(db.connection.open).toHaveBeenCalledWith('host', 'name', 'port');
 	});
 });

@@ -4,7 +4,7 @@ var http = require('http');
 describe('Server module', function() {
 	it('should start a server', function() {
 		var listenSpy = jasmine.createSpy('listen');
-		spyOn(http, 'createServer').andReturn({
+		spyOn(http, 'createServer').and.returnValue({
 			listen: listenSpy,
 			address: function() {
 				return {};
