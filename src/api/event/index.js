@@ -8,6 +8,11 @@ var schema = mongoose.Schema({
 		state: String,
 		url: String
 	},
+	sponsors: [{
+		name: String,
+		logoUrl: String,
+		url: String
+	}],
 	registrants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	proposals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Proposal' }],
 	active: Boolean

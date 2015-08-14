@@ -38,6 +38,11 @@ exports.db = function(db) {
 			state: 'WI',
 			url: 'http://maps.google.com'
 		},
+		sponsors: [{
+			name: 'Test Sponsor',
+			logoUrl: 'http://placehold.it/150x100',
+			url: 'http://google.com'
+		}],
 		registrants: [testUser._id],
 		active: true
 	});
