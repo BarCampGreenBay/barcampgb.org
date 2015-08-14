@@ -144,7 +144,6 @@ hr {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	opacity: 0;
 	background: url(../assets/images/pattern.jpg);
 	background-size: 120%;
 	background-position: 50% 0%;
@@ -293,7 +292,7 @@ hr {
  */
 
 .jumbotron {
-	padding: 0;
+	padding: 6rem 0 2rem 0;
 	text-align: center;
 	margin-top: -1.3rem;
 	color: #FFF;
@@ -425,7 +424,7 @@ section {
 	background-color: #025BAC;
 	background: url(../assets/images/pattern.jpg);
 	background-size: 120%;
-	background-position: 50% 0%;
+	background-position: 50% 100%;
 }
 @media (min-width: 768px) {
 	.section-pattern {

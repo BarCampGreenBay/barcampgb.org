@@ -1,7 +1,7 @@
 {% extends "templates/layout.html" %}
 
 {% block body %}
-<div class="jumbotron" id="video_container">
+<div class="jumbotron section-pattern">
 	<div id="text">
 		<h1>A day of open source&nbsp;knowledge</h1>
 		<p>{{ event.date | date('dddd, MMMM Do YYYY') }}<br>
@@ -24,9 +24,6 @@
 			</p>
 		{% endif %}
 	</div>
-	<div id="cover_all"></div>
-	<div id="main-image"></div>
-	<div id="wistia_9q2mvpusg8" class="wistia_embed backgroundVideo" style="width:920px;height:518px;"></div>
 </div>
 {% include "partials/register-modal.html" %}
 
@@ -211,8 +208,4 @@
 	</div>
 </section>
 
-{% endblock %}
-
-{% block scripts %}
-<script src="/js/client.js"></script>
 {% endblock %}
