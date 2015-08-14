@@ -21,6 +21,8 @@ module.exports = function(app, passport, db, email) {
 	app.route('/proposal/:id').get(getProposal()).put(putProposal()).delete(deleteProposal());
 	app.post('/proposal/:id/vote', postProposalVote());
 
+	app.get('/coc', getCoc());
+
 	function getIndex () {
 		return [
 			findActiveEvent(),
@@ -243,6 +245,12 @@ module.exports = function(app, passport, db, email) {
 				return '/proposal/' + req.proposal.id;
 			})
 		];
+	}
+
+	function getCoc () {
+		return function (req, res) {
+			res.render('views/coc.html');
+		}
 	}
 
 	function render (view, context) {
