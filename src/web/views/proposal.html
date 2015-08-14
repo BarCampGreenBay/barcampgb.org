@@ -29,7 +29,9 @@
 						</div>
 					</form>
 				</div>
-				<a href="/proposals">See all proposals</a>
+				<p>
+					<a href="/proposals">See all proposals</a>
+				</p>
 			{% elif not proposal %}
 				<a class="btn btn-primary btn-wide" href="/login">
 					Login to propose sessions.
@@ -39,9 +41,11 @@
 					{% include "partials/proposal-display.html" %}
 				</div>
 				<hr>
-				<a class="btn btn-primary btn-wide" href="/proposals">
-					See all proposals
-				</a>
+				<p>
+					<a class="btn btn-primary btn-wide" href="/proposals">
+						See all proposals
+					</a>
+				</p>
 			{% endif %}
 		</div>
 	</div>

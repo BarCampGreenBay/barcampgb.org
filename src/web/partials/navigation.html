@@ -39,9 +39,9 @@
 					</a>
 				</li>
 				{% if user %}
-					<li><a href="/logout"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+					<li><a href="/logout?returnUrl={{ url }}"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
 				{% else %}
-					<li><a href="/login"><i class="fa fa-sign-in"></i><span>Login</span></a></li>
+					<li><a href="/login?returnUrl={{ url }}"><i class="fa fa-sign-in"></i><span>Login</span></a></li>
 				{% endif %}
 				{% if (not user and event.registrationOpen) or (user and user.canRegisterForEvent(event)) %}
 					<li class="nav-wide"><a href="/register" class="btn btn-default navbar-btn"><i class="fa fa-pencil-square-o"></i> Register!</a></li>

@@ -80,7 +80,7 @@ schema.methods.isRegisteredForEvent = function(event) {
 }
 
 schema.methods.canRegisterForEvent = function(event) {
-	return (event.registrationOpen && !this.isRegisteredForEvent(event));
+	return (event && event.registrationOpen && !this.isRegisteredForEvent(event));
 }
 
 module.exports = function(db) {
