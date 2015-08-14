@@ -63,7 +63,6 @@ module.exports = function(app, passport, db, email) {
 						req.flash('form', req.body);
 						return next(err);
 					}
-					email.sendRegistrationConfirmation(user.email, { user: user });
 					next();
 				});
 			},
@@ -78,7 +77,12 @@ module.exports = function(app, passport, db, email) {
 					}
 					event.registrants.push(req.user._id);
 					event.save(next);
+					req.event = event;
 				});
+			},
+			function sendConfirmation (req, res, next) {
+				email.sendRegistrationConfirmation(req.user.email, { user: req.user, event: req.event });
+				next();
 			},
 			flash('success', 'Thanks for registering. You\'re all set!'),
 			redirect('/'),

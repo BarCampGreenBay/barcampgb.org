@@ -41,7 +41,7 @@
 				{% if user %}
 					<li><a href="/logout"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
 				{% endif %}
-				{% if event.registrationOpen %}
+				{% if (not user and event.registrationOpen) or (user and user.canRegisterForEvent(event)) %}
 					<li class="nav-wide"><a href="/register" class="btn btn-default navbar-btn"><i class="fa fa-pencil-square-o"></i> Register!</a></li>
 				{% endif %}
 			</ul>

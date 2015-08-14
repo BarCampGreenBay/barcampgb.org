@@ -1,28 +1,30 @@
-<form class="form" method="post">
-	{% if user %}
-		<input type="hidden" name="existingUser" value="yes" />
-		<h1 class="text-center">You're already registered!</h1>
-		<a class="btn btn-primary btn-wide" href="/proposals">Check out the proposals or submit your own.</a>
-	{% else %}
+{% if not event or event.registrationOpen %}
+	<form class="form" method="post">
 		<h1 class="text-center">Register for {{ event.name }}</h1>
-		<div class="form-group">
-			<input class="form-control" type="text" id="login-name" placeholder="Name" name="name" value="{{ form.name }}" />
-		</div>
-		<div class="form-group">
-			<input class="form-control" type="text" id="login-email" placeholder="Email" name="email" value="{{ form.email }}" />
-		</div>
-		<div class="form-group">
-			<input class="form-control" type="password" id="login-password" placeholder="Password" name="password" />
-		</div>
-		<div class="form-group">
-			<select class="form-control" id="register-shirt-size" name="shirtSize">
-				<option value="">Select T-shirt size...</option>
-				{% for size in shirtSizes %}
-				<option value="{{ size }}" {% if form.size == size %}selected{% endif %}>{{ size }}</option>
-				{% endfor %}
-			</select>
-		</div>
+		{% if user and not user.isRegisteredForEvent(event) %}
+			<input type="hidden" name="existingUser" value="yes" />
+		{% else %}
+			<div class="form-group">
+				<input class="form-control" type="text" id="login-name" placeholder="Name" name="name" value="{{ form.name }}" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" id="login-email" placeholder="Email" name="email" value="{{ form.email }}" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" id="login-password" placeholder="Password" name="password" />
+			</div>
+			<div class="form-group">
+				<select class="form-control" id="register-shirt-size" name="shirtSize">
+					<option value="">Select T-shirt size...</option>
+					{% for size in shirtSizes %}
+					<option value="{{ size }}" {% if form.size == size %}selected{% endif %}>{{ size }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		{% endif %}
 		<input type="hidden" name="event" value="{{ event.id }}" />
-		<button type="submit" class="btn btn-primary btn-wide">Register</button>
-	{% endif %}
-</form>
+		<button type="submit" class="btn btn-primary btn-wide">Sign me up!</button>
+	</form>
+{% else %}
+	<h1>Registration is not open :(</h1>
+{% endif %}

@@ -73,6 +73,16 @@ schema.methods.hasVotedForProposal = function(proposal) {
 	}.bind(this));
 };
 
+schema.methods.isRegisteredForEvent = function(event) {
+	return event.registrants.some(function(userId) {
+		return (userId.toString() === this.id);
+	}.bind(this));
+}
+
+schema.methods.canRegisterForEvent = function(event) {
+	return (event.registrationOpen && !this.isRegisteredForEvent(event));
+}
+
 module.exports = function(db) {
 	return db.connection.model('User', schema);
 };

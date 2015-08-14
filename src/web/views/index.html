@@ -12,7 +12,7 @@
 		</p>
 		{% if event.registrationOpen %}
 			<p>
-				{% if user %}
+				{% if user and user.isRegisteredForEvent(event) %}
 					<a type="button" class="btn btn-secondary" href="/proposals">
 						View proposals
 					</a>
@@ -171,7 +171,7 @@
 				You're awesome, and we glad you helped make our event special.
 			</p>
 			<p>
-				Didn't make it to {{ event.name }}? Join us next year! Same place on the first Saturday of November!
+				Didn't make it to {{ event.name }}? Join us next year on the first Saturday of November!
 			</p>
 		</div>
 	</div>

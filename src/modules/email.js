@@ -12,11 +12,11 @@ module.exports = function(nunjucks) {
 	}
 
 	transport = nodemailer.createTransport({
-	    service: 'Mailgun',
-	    auth: {
-	        user: config.email.user,
-	        pass: config.email.password
-	    }
+		service: 'Mailgun',
+		auth: {
+			user: config.email.user,
+			pass: config.email.password
+		}
 	});
 
 	function send (opts, cb) {

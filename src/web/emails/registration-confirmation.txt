@@ -1,3 +1,9 @@
 Hi {{ user.name }}!
 
-You now have an account at barcampgb.org!
+Thanks for registering for {{ event.name }}.
+
+Remember to show up at {{ event.location.name }} on {{ event.date | date('dddd, MMMM Do YYYY') }}.
+
+Here's a handy map so you don't get lost! {{ event.location.url }}
+
+- the sentient BarCamp Green Bay Email Bot
