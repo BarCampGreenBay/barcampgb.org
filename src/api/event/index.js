@@ -13,6 +13,7 @@ var schema = mongoose.Schema({
 		logoUrl: String,
 		url: String
 	}],
+	donateUrl: String,
 	registrants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	proposals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Proposal' }],
 	active: Boolean

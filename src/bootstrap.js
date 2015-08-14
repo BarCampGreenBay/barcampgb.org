@@ -43,6 +43,7 @@ exports.db = function(db) {
 			logoUrl: 'http://placehold.it/150x100',
 			url: 'http://google.com'
 		}],
+		donateUrl: 'http://payit2.com',
 		registrants: [testUser._id],
 		active: true
 	});
