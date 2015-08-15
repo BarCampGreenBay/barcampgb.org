@@ -173,10 +173,23 @@ module.exports = function(app, passport, db, email) {
 			handleError({
 				redirect: '/proposals'
 			}),
+			function redirectToLogin (req, res, next) {
+				if (!req.user && !req.proposal) {
+					return res.redirect('/login?returnUrl=/proposal');
+				}
+				next();
+			},
+			function redirectToRegister (req, res, next) {
+				if (req.user && !req.user.isRegisteredForEvent(req.event)) {
+					return res.redirect('/register?returnUrl=/proposal');
+				}
+				next();
+			},
 			render('proposal.html')
 		];
 		if (opts.isNew) {
-			actions.splice(0, 2);
+			// don't try to find proposal
+			actions.splice(1, 1);
 		}
 		return actions;
 	}
@@ -336,7 +349,7 @@ module.exports = function(app, passport, db, email) {
 			Event.findActive().then(function(activeEvent) {
 				req.event = activeEvent;
 				res.locals.event = activeEvent;
-				res.locals.shirtSizes = User.schema.path('shirtSize').enumValues
+				res.locals.shirtSizes = User.schema.path('shirtSize').enumValues;
 				next();
 			}, next);
 		};
