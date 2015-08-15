@@ -203,6 +203,9 @@ module.exports = function(app, passport, db, email) {
 					title: req.body.title,
 					description: req.body.description
 				});
+				if (!req.user.isRegisteredForEvent(req.event)) {
+					return next(new Error('User not registered for event!'));
+				}
 				req.event.addProposal(proposal, function(err) {
 					next(err);
 				});
