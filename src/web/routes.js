@@ -83,7 +83,11 @@ module.exports = function(app, passport, db, email) {
 				});
 			},
 			function sendConfirmation (req, res, next) {
-				email.sendRegistrationConfirmation(req.user.email, { user: req.user, event: req.event });
+				email.sendRegistrationConfirmation(req.user.email, { user: req.user, event: req.event }, function (err) {
+					if (err) {
+						log.error(err);
+					}
+				});
 				next();
 			},
 			flash('success', 'Thanks for registering. You\'re all set!'),
