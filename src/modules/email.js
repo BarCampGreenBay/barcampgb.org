@@ -1,4 +1,5 @@
 var nodemailer = require('nodemailer');
+var mailgun = require('nodemailer-mailgun-transport');
 var log = require('./log');
 var config = require('../config');
 
@@ -6,18 +7,17 @@ module.exports = function(nunjucks) {
 	var shouldSend = true;
 	var transport;
 
-	if (!config.email.user || !config.email.password) {
-		log.error('Email: no username or password.');
+	if (!config.email.apiKey || !config.email.domain) {
+		log.error('Email: no api key or domain.');
 		shouldSend = false;
 	}
 
-	transport = nodemailer.createTransport({
-		service: 'Mailgun',
+	transport = nodemailer.createTransport(mailgun({
 		auth: {
-			user: config.email.user,
-			pass: config.email.password
+			api_key: config.email.apiKey,
+			domain: config.email.domain
 		}
-	});
+	}));
 
 	function send (opts, cb) {
 		if (!opts.from) {

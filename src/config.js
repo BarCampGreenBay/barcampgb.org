@@ -5,8 +5,8 @@ var config = {
 		port: process.env.MONGOD_PORT || 27017
 	},
 	email: {
-		user: process.env.SMTP_USER,
-		password: process.env.SMTP_PASSWORD
+		apiKey: process.env.MAILGUN_APIKEY,
+		domain: process.env.MAILGUN_DOMAIN
 	},
 	env: {
 		dev: (process.env.NODE_ENV !== 'production'),

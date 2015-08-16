@@ -1,11 +1,12 @@
 var proxyquire = require('proxyquire');
 var nunjucksSpy = jasmine.createSpyObj('nunjucks', ['render']);
 var nodemailerSpy = jasmine.createSpyObj('nodemailer', ['createTransport']);
+var mailgunSpy = jasmine.createSpy('mailgun').and.returnValue('mailgun');
 var email = proxyquire('../../src/modules/email', {
 	'../config': {
 		email: {
-			user: 'user',
-			password: 'password'
+			apiKey: 'apiKey',
+			domain: 'domain'
 		},
 		web: {
 			getUrl: function() {
@@ -13,7 +14,8 @@ var email = proxyquire('../../src/modules/email', {
 			}
 		}
 	},
-	nodemailer: nodemailerSpy
+	nodemailer: nodemailerSpy,
+	'nodemailer-mailgun-transport': mailgunSpy
 });
 var sendMailSpy;
 var mailer;
@@ -26,14 +28,11 @@ describe('Email module', function() {
 		});
 		mailer = email(nunjucksSpy);
 	});
+	it('should configure mailgun transport', function () {
+		expect(mailgunSpy);
+	});
 	it('should create a nodemailer transport', function() {
-		expect(nodemailerSpy.createTransport).toHaveBeenCalledWith({
-			service: 'Mailgun',
-			auth: {
-				user: 'user',
-				pass: 'password'
-			}
-		});
+		expect(nodemailerSpy.createTransport).toHaveBeenCalledWith('mailgun');
 	});
 	it('should send registration confirmation', function() {
 		var user = {};
