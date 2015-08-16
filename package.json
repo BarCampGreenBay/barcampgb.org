@@ -37,7 +37,8 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^0.3.0",
     "react": "^0.12.0",
-    "reactify": "^0.15.2"
+    "reactify": "^0.15.2",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "browserify": "^6.2.0",

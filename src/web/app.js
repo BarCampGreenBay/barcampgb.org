@@ -12,6 +12,7 @@ var session = require('cookie-session');
 var methodOverride = require('method-override');
 var browserify = require('browserify-middleware');
 var nunjucksDate = require('nunjucks-date');
+var favicon = require('serve-favicon');
 
 module.exports = app;
 
@@ -45,6 +46,7 @@ app.use(function(req, res, next) {
 
 routes(app, passport, db, email);
 
+app.use(favicon(__dirname + '/assets/favicon.ico'));
 app.use('/assets', express.static(__dirname + '/assets'));
 app.use('/js/client.js', browserify(__dirname + '/assets/js/client.jsx', {
 	transform: ['reactify']
