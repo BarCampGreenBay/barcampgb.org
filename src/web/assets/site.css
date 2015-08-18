@@ -558,8 +558,6 @@ section {
 	display: inline-block;
 }
 .form-control {
-	padding-top: 24px;
-	padding-bottom: 24px;
 	box-shadow: none;
 }
 form #proposal-description {
