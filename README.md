@@ -9,10 +9,3 @@ BarCamp Green Bay app code.
 2. `npm install`
 3. `npm run dev` for web server, runs on 8000
 4. `npm test` to run the tests
-
-## TODO
-
-- [x] set up polymer
-- [x] document existing features
-- [ ] ???
-- [ ] profit!
