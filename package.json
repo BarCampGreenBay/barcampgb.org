@@ -11,7 +11,8 @@
     "test": "JASMINE_CONFIG_PATH=jasmine.json jasmine",
     "dev": "node-dev src/web/server.js | bunyan -l debug -o short",
     "debug": "node-debug src/web/server.js",
-    "prod": "NODE_ENV=production node src/web/server.js"
+    "prod": "NODE_ENV=production node src/web/server.js",
+    "start": "npm run prod"
   },
   "author": "",
   "license": "MIT",
