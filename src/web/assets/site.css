@@ -177,6 +177,13 @@ hr {
 .navbar-default .navbar-nav li a:hover {
 	color: #3191CE;
 }
+@media (min-width: 768px) {
+	.navbar-default .navbar-nav li a {
+		color: #FFF;
+		font-weight: bold;
+		border: 0;
+	}
+}
 .navbar-default .navbar-nav li a .fa {
 	margin-right: 5px;
 }
@@ -196,6 +203,12 @@ hr {
 	background-color: #3191CE;
 	color: #FFF;
 	border-color: #3191CE;
+}
+@media (min-width: 768px) {
+	.navbar-default .navbar-nav li .navbar-btn {
+		color: #3191CE;
+		background-color: #FFF;
+	}
 }
 .navbar-default .navbar-nav li .navbar-btn:hover {
 	background-color: #21AE42;
