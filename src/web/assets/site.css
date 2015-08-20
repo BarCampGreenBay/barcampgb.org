@@ -126,36 +126,14 @@ hr {
 .navbar-default {
 	margin-bottom: 0;
 	border-bottom: none;
-	background: transparent;
+	background-color: rgba(255,255,255,.9);
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+					box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
 }
 @media (min-width: 768px) {
 	.navbar-default {
 		max-height: 50px;
 	}
-}
-
-/* An extra hacky div to display a background image in the navbar */
-
-.navbar-background {
-	z-index: -1;
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: url(../assets/images/pattern.jpg);
-	background-size: 120%;
-	background-position: 50% 0%;
-	transition: opacity .3s;
-}
-@media (min-width: 768px) {
-	.navbar-background {
-		background-size: 80%;
-	}
-}
-.interior .navbar-background {
-	opacity: 1;
 }
 .navbar-default .navbar-header {
 	z-index: 9999;
@@ -192,11 +170,19 @@ hr {
 	}
 }
 .navbar-default .navbar-nav li a {
-	color: #FFF;
+	color: #3191CE;
 	font-weight: bold;
+	border: 0;
 }
 .navbar-default .navbar-nav li a:hover {
-	color: #FFF;
+	color: #3191CE;
+}
+@media (min-width: 768px) {
+	.navbar-default .navbar-nav li a {
+		color: #FFF;
+		font-weight: bold;
+		border: 0;
+	}
 }
 .navbar-default .navbar-nav li a .fa {
 	margin-right: 5px;
@@ -214,9 +200,15 @@ hr {
 	margin-left: 15px;
 	margin-right: 15px;
 	font-weight: bold;
-	background-color: #FFF;
-	color: #3191CE;
+	background-color: #3191CE;
+	color: #FFF;
 	border-color: #3191CE;
+}
+@media (min-width: 768px) {
+	.navbar-default .navbar-nav li .navbar-btn {
+		color: #3191CE;
+		background-color: #FFF;
+	}
 }
 .navbar-default .navbar-nav li .navbar-btn:hover {
 	background-color: #21AE42;
@@ -294,9 +286,10 @@ hr {
 .jumbotron {
 	padding: 6rem 0 2rem 0;
 	text-align: center;
-	margin-top: -1.3rem;
 	color: #FFF;
 	background-color: #FFF;
+	background: url(../assets/images/jumbotron-background.jpg);
+	background-size: cover;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
 	margin-bottom: 0;
 }
@@ -594,7 +587,7 @@ footer {
 	z-index: 1040;
 }
 #about {
-	padding-top: 5rem;
+	padding-top: 3rem;
 }
 
 
