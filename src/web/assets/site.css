@@ -596,3 +596,8 @@ footer {
 #about {
 	padding-top: 5rem;
 }
+
+
+.flex {
+	display: flex;
+}
