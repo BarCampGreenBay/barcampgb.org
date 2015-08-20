@@ -126,7 +126,7 @@ hr {
 .navbar-default {
 	margin-bottom: 0;
 	border-bottom: none;
-	background-color: rgba(255,255,255,.8);
+	background-color: rgba(255,255,255,.9);
 	-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
 					box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
 }
@@ -170,11 +170,12 @@ hr {
 	}
 }
 .navbar-default .navbar-nav li a {
-	color: #FFF;
+	color: #3191CE;
 	font-weight: bold;
+	border: 0;
 }
 .navbar-default .navbar-nav li a:hover {
-	color: #FFF;
+	color: #3191CE;
 }
 .navbar-default .navbar-nav li a .fa {
 	margin-right: 5px;
@@ -192,8 +193,8 @@ hr {
 	margin-left: 15px;
 	margin-right: 15px;
 	font-weight: bold;
-	background-color: #FFF;
-	color: #3191CE;
+	background-color: #3191CE;
+	color: #FFF;
 	border-color: #3191CE;
 }
 .navbar-default .navbar-nav li .navbar-btn:hover {
