@@ -6,4 +6,6 @@ Remember to show up at {{ event.location.name }} on {{ event.date | date('dddd, 
 
 Here's a handy map so you don't get lost! {{ event.location.url }}
 
+Also be aware that we are committed to providing a harassment-free conference experience for everyone. Please read our Code of Conduct here: http://www.barcampgb.org/coc
+
 - the sentient BarCamp Green Bay Email Bot
