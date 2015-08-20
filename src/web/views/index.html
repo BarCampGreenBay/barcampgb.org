@@ -1,7 +1,7 @@
 {% extends "templates/layout.html" %}
 
 {% block body %}
-<div class="jumbotron section-pattern">
+<div class="jumbotron">
 	<div id="text">
 		<h1>A day of open source&nbsp;knowledge</h1>
 		<p>{{ event.date | date('dddd, MMMM Do YYYY') }}<br>
@@ -203,4 +203,8 @@
 	</div>
 </section>
 
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/client.jsx"></script>
 {% endblock %}
