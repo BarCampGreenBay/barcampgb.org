@@ -590,7 +590,8 @@ footer {
 	padding-top: 3rem;
 }
 
-
-.flex {
-	display: flex;
+@media (min-width: 992px) {
+	.flex {
+		display: flex;
+	}
 }
