@@ -1,6 +1,8 @@
 BarCamp Green Bay App
 =====================
 
+[![Build Status](https://travis-ci.org/BarCampGreenBay/barcampgb.org.svg?branch=master)](https://travis-ci.org/BarCampGreenBay/barcampgb.org)
+
 BarCamp Green Bay app code.
 
 ## Development
