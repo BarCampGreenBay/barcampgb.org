@@ -1,3 +1,4 @@
+var fs = require('fs');
 var nunjucks = require('nunjucks');
 var express = require('express');
 var passport = require('passport');
@@ -13,6 +14,8 @@ var methodOverride = require('method-override');
 var browserify = require('browserify-middleware');
 var nunjucksDate = require('nunjucks-date');
 var favicon = require('serve-favicon');
+var error404 = fs.readFileSync(__dirname + '/assets/404.html');
+var error500 = fs.readFileSync(__dirname + '/assets/500.html');
 
 module.exports = app;
 
@@ -39,7 +42,7 @@ app.use(flash());
 // catch db connection errors
 app.use(function(req, res, next) {
 	if (db.connection.readyState !== 1 && config.env.prod) {
-		return res.status(500).send('No database connection.');
+		return res.status(500).end(error500);
 	}
 	next();
 });
@@ -51,3 +54,7 @@ app.use('/assets', express.static(__dirname + '/assets'));
 app.use('/js/client.js', browserify(__dirname + '/assets/js/client.jsx', {
 	transform: ['reactify']
 }));
+
+app.use(function(req, res) {
+	res.status(404).end(error404);
+});
