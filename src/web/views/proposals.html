@@ -16,9 +16,13 @@
 				</p>
 				{% endif %}
 
+				<div class="row">
 				{% for proposal in proposals %}
-					{% include "partials/proposal-display.html" %}
+					<div class="col-lg-6">
+						{% include "partials/proposal-display.html" %}
+					</div>
 				{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>

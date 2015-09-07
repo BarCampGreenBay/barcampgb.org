@@ -64,7 +64,7 @@ schema.methods.resetPassword = function(password, cb) {
 };
 
 schema.methods.canEditProposal = function(proposal) {
-	return (proposal.owner.toString() === this.id);
+	return (proposal.owner.id === this.id);
 };
 
 schema.methods.hasVotedForProposal = function(proposal) {

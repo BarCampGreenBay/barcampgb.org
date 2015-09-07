@@ -61,8 +61,8 @@ exports.db = function(db) {
 	});
 	activeEvent.addProposal(new Proposal({
 		owner: testUser2._id,
-		title: 'Proposal title 2',
-		description: 'Proposal description 2'
+		title: 'Bacon ipsum dolor amet shankle spare ribs ribeye',
+		description: 'Bacon ipsum dolor amet shankle spare ribs ribeye, short ribs prosciutto venison hamburger pork chop brisket kielbasa short loin sirloin beef andouille capicola. Salami cow boudin tail chuck brisket. Shoulder doner strip steak spare ribs. Venison pork chop cupim, picanha leberkas kevin chicken turducken meatloaf jowl ham pastrami ribeye pork belly. Strip steak salami ball tip hamburger porchetta swine, turkey tri-tip tenderloin pork chop ribeye pig tail ham flank. Shankle biltong capicola jowl tri-tip.'
 	}), function() {
 		log.info('Test proposal created.');
 	});
