@@ -9,7 +9,11 @@
 	<div class="row">
 		<div class="col-md-7 center-block">
 			{% if user and (not proposal or user.canEditProposal(proposal)) %}
-				<h1>Submit a proposal</h1>
+				{% if proposal and user.canEditProposal(proposal) %}
+					<h1>Edit proposal</h1>
+				{% else %}
+					<h1>Submit a proposal</h1>
+				{% endif %}
 				<div class="card card-secondary">
 					<form class="form" {% if proposal %}action="?_method=PUT"{% endif %} method="post">
 						<div class="form-group">
@@ -37,7 +41,7 @@
 					Login to propose sessions.
 				</a>
 			{% else %}
-				<div style="margin-top: 2rem;">
+				<div class="single-post">
 					{% include "partials/proposal-display.html" %}
 				</div>
 				<hr>

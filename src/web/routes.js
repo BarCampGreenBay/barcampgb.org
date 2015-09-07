@@ -1,3 +1,4 @@
+var crypto = require('crypto');
 var log = require('../modules/log');
 var merge = require('merge');
 var filterObject = require('filter-object');
@@ -162,6 +163,11 @@ module.exports = function(app, passport, db, email) {
 			function(req, res, next) {
 				Proposal.findByEvent(req.event).then(function(proposals) {
 					res.locals.proposals = proposals;
+					res.locals.proposals.forEach(function(item) {
+						var hash = parseInt(crypto.createHash('md5').update(item.title).digest('hex'), 16);
+						var sign = (Number(hash.toString(10)[0]) % 2) ? -1 : 1;
+						item.rotate = (1 - hash / 1e39) * sign;
+					});
 					next();
 				});
 			},

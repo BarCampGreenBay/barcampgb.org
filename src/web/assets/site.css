@@ -506,8 +506,8 @@ section {
 
 .post {
 	background-image:
-		linear-gradient(180deg, white 3rem, #F0A4A4 calc(3rem), #F0A4A4 calc(3rem + 2px), transparent 1px),
-		repeating-linear-gradient(0deg, transparent, transparent 1.5rem, #DDD 1px, #DDD calc(1.5rem + 1px));
+		linear-gradient(180deg, white 3rem, #F0A4A4 3rem, #F0A4A4 calc(3rem + 2px), transparent 1px),
+		repeating-linear-gradient(0deg, transparent, transparent 1.5rem, #DDD 1px, #DDD 1.6rem);
 	box-shadow: 1px 1px 3px rgba(0,0,0,.25);
 	height: 14rem;
 	max-width: 28rem;
@@ -533,6 +533,7 @@ section {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	line-height: 1.4;
 }
 .post-title a {
 	border: 0;
@@ -540,12 +541,12 @@ section {
 .post-meta {
 	color: #7E7E7E;
 	font-weight: normal;
-	margin-top: 0.65rem;
+	margin-top: 0.2rem;
 	margin-bottom: 0;
 }
 .post-body {
-	line-height: 1.55;
-	margin-top: 0.5rem;
+	line-height: 1.6;
+	margin-top: 0.3rem;
 	height: 6rem;
 	overflow: hidden;
 }
@@ -559,6 +560,19 @@ section {
 	bottom: 0;
 	left: 1rem;
 	right: 1rem;
+}
+
+.single-post {
+	margin-top: 2rem;
+}
+
+.single-post .post {
+	max-width: none;
+	height: 22rem;
+}
+
+.single-post .post-body {
+	height: 14rem;
 }
 
 /*
