@@ -35,30 +35,38 @@
 			</div>
 			<div class="col-md-8 center-block">
 				<div class="row flex">
-					<div class="col-md-6 flex">
-						<div class="well">
-							<h1>Participant-led</h1>
-							<p>Everyone is invited to propose a session topic, and everyone helps make the day goes smoothly. This is your chance to share that thing you love.</p>
+					<div class="col-lg-6 flex">
+						<div class="card post post-tape-left" style="transform: rotate(-1deg)">
+							<h1 class="post-title">Participant-Led</h1>
+							<div class="post-body post-body-full">
+								<p>Everyone is invited to propose a session topic, and everyone helps make the day goes smoothly. This is your chance to share that thing you love.</p>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-6 flex">
-						<div class="well">
-							<h1>Diverse</h1>
-							<p>Any topic is welcome – it's all about sharing knowledge. Past topics include artificial intelligence, retro gaming, emotional intelligence, and web development.</p>
+					<div class="col-lg-6 flex">
+						<div class="card post" style="transform: rotate(0.5deg)">
+							<h1 class="post-title">Diverse</h1>
+							<div class="post-body post-body-full">
+								<p>Any topic is welcome – it's all about sharing knowledge. Past topics include artificial intelligence, retro gaming, emotional intelligence, and web development.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row flex">
-					<div class="col-md-6 flex">
-						<div class="well">
-							<h1>Safe</h1>
-							<p>BarCamp Green Bay is dedicated to a harassment-free conference experience for everyone. Please read our <a href="/coc">code of conduct</a>.</p>
+					<div class="col-lg-6 flex">
+						<div class="card post post-tape-left" style="transform: rotate(-0.3deg)">
+							<h1 class="post-title">Safe</h1>
+							<div class="post-body post-body-full">
+								<p>BarCamp Green Bay is dedicated to a harassment-free conference experience for everyone. Please read our <a href="/coc">code of conduct</a>.</p>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-6 flex">
-						<div class="well">
-							<h1>Family-Friendly</h1>
-							<p>Every year we organize a <strong>KidsCamp</strong> with fun things for children to do so bring yours along and encourage them to present too!</p>
+					<div class="col-lg-6 flex">
+						<div class="card post" style="transform: rotate(0.4deg)">
+							<h1 class="post-title">Family-Friendly</h1>
+							<div class="post-body post-body-full">
+								<p>Every year we organize a <strong>KidsCamp</strong> with fun things for children to do so bring yours along and encourage them to present too!</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -216,4 +224,8 @@
 	</div>
 </section>
 
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/client.jsx"></script>
 {% endblock %}
