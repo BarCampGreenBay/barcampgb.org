@@ -2,6 +2,7 @@
     "extends": "defaults/configurations/eslint",
     "env": {
         "browser": true,
-        "node": true
+        "node": true,
+        "jasmine": true
     }
 }
