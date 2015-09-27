@@ -1,5 +1,8 @@
 {
     "extends": "defaults/configurations/eslint",
+    "rules": {
+        "semi": [2, "always"]
+    },
     "env": {
         "browser": true,
         "node": true,

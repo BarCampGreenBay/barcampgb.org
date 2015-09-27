@@ -51,6 +51,7 @@
     "mockgoose": "^2.0.3",
     "node-dev": "^2.3.0",
     "node-inspector": "^0.7.4",
-    "proxyquire": "^1.0.1"
+    "proxyquire": "^1.0.1",
+    "supertest": "^1.1.0"
   }
 }
