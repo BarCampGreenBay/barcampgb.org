@@ -12,7 +12,8 @@
     "dev": "node-dev src/web/server.js | bunyan --level debug --output short",
     "debug": "node-debug src/web/server.js",
     "prod": "NODE_ENV=production node src/web/server.js",
-    "start": "npm run prod"
+    "start": "npm run prod",
+    "lint": "eslint src tests"
   },
   "author": "",
   "license": "MIT",
@@ -44,6 +45,8 @@
   },
   "devDependencies": {
     "browserify": "^6.2.0",
+    "eslint": "^1.5.1",
+    "eslint-config-defaults": "^6.0.0",
     "jasmine": "^2.3.2",
     "mockgoose": "^2.0.3",
     "node-dev": "^2.3.0",

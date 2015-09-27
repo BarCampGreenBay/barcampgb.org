@@ -1,0 +1,7 @@
+{
+    "extends": "defaults/configurations/eslint",
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}
