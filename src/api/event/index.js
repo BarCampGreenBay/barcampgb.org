@@ -38,6 +38,16 @@ schema.statics.findActive = function(cb) {
 	return this.findOne({ active: true }).sort({ date: -1 }).exec(cb);
 };
 
+schema.statics.findByYear = function(year, cb) {
+	var start = new Date(year, 0, 1);
+	var end = new Date(year, 11, 32);
+	var query = this.findOne({ date: { $gte: start, $lt: end } });
+	if (cb) {
+		return query.exec(cb);
+	}
+	return query;
+};
+
 schema.methods.addProposal = function(proposal, cb) {
 	this.proposals.push(proposal.id);
 	proposal.save(function(err) {

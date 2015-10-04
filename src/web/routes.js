@@ -24,6 +24,9 @@ module.exports = function(app, passport, db, email) {
 
 	app.get('/coc', getCoc());
 
+	// TODO: break admin out
+	app.get('/export/:eventYear/attendees', getExportAttendees());
+
 	function getIndex () {
 		return [
 			findActiveEvent(),
@@ -276,7 +279,24 @@ module.exports = function(app, passport, db, email) {
 	function getCoc () {
 		return function (req, res) {
 			res.render('views/coc.html');
-		}
+		};
+	}
+
+	function getExportAttendees () {
+		return [
+			authorized(),
+			function exportAttendees (req, res, next) {
+				Event.findByYear(req.params.eventYear).populate('registrants').exec(function (err, event) {
+					if (err) {
+						return next(err);
+					}
+					event.registrants.forEach(function(registrant) {
+						res.write([registrant.name, registrant.email, registrant.shirtSize].join(',') + '\n');
+					});
+					res.end();
+				});
+			}
+		];
 	}
 
 	function render (view, context) {
@@ -322,7 +342,7 @@ module.exports = function(app, passport, db, email) {
 
 	function authorized () {
 		return function(req, res, next) {
-			if (!req.user) {
+			if (!req.user || !req.user.admin) {
 				res.status(403);
 				return next(new Error('Not authorized!'));
 			}
