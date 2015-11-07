@@ -124,6 +124,27 @@
 	</div>
 </section>
 
+{% else %}
+
+<section class="section-pattern bg-primary">
+	<div class="container">
+		<div class="col-md-8 center-block">
+			<h1>
+				Thanks for joining us at {{ event.name }}!
+				<i class="fa fa-thumbs-up"></i>
+			</h1>
+			<p>
+				You're awesome, and we glad you helped make our event special.
+			</p>
+			<p>
+				Didn't make it to {{ event.name }}? Join us next year on the first Saturday of November!
+			</p>
+		</div>
+	</div>
+</section>
+
+{% endif %}
+
 <section id="schedule" class="section-divider">
 	<div class="container">
 		<div class="col-md-8 center-block">
@@ -177,27 +198,6 @@
 		</div>
 	</div>
 </section>
-
-{% else %}
-
-<section class="section-pattern bg-primary">
-	<div class="container">
-		<div class="col-md-8 center-block">
-			<h1>
-				Thanks for joining us at {{ event.name }}!
-				<i class="fa fa-thumbs-up"></i>
-			</h1>
-			<p>
-				You're awesome, and we glad you helped make our event special.
-			</p>
-			<p>
-				Didn't make it to {{ event.name }}? Join us next year on the first Saturday of November!
-			</p>
-		</div>
-	</div>
-</section>
-
-{% endif %}
 
 <section>
 	<div class="container">
