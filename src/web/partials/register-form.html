@@ -2,7 +2,7 @@
 	{% if user and user.isRegisteredForEvent(event) %}
 		<h1>You're already registered :)</h1>
 	{% else %}
-		<form class="form" method="post" action="/register">
+		<form id="login" class="form" method="post" action="/register">
 			<h1 class="text-center">Register for {{ event.name }}</h1>
 			{% if user and user.canRegisterForEvent(event) %}
 				<input type="hidden" name="existingUser" value="yes" />
@@ -29,6 +29,7 @@
 				</div>
 			{% endif %}
 			<input type="hidden" name="event" value="{{ event.id }}" />
+			<div class="g-recaptcha" data-sitekey="6LdJihATAAAAAGrn1LJDio_IcR-eUc9n9DygTrJo"></div>
 			<button type="submit" class="btn btn-primary btn-wide">Sign me up!</button>
 		</form>
 	{% endif %}
