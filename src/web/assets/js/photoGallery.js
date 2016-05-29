@@ -72,8 +72,5 @@
         event.preventDefault();
         $(this).ekkoLightbox();
     });
-    if( viewport.is('>=sm') ) {
-         console.log("its true");
-     }
 
 }());
