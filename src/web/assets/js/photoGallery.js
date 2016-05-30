@@ -8,11 +8,10 @@
 (function() {
     'use strict';
     var numOfPhotos = 2; //USER DEFINED - photos per "gallery," ** auto updates bs column width below
-
-        //links from: https://photos.google.com/share/AF1QipOpe6d2s8l_8DcsHxw4P65QGIo_EiLwWVES6lDvEsIh4Pl0_iUYO0pTf_zDkX7zVA?key=b0hLLU5UajczUjBOakY0TVBYVk5GdngtQW1QYU1R
-        //description - inserted as alt and modal title
     var photos = [
         [
+            //links: https://photos.google.com/share/AF1QipOpe6d2s8l_8DcsHxw4P65QGIo_EiLwWVES6lDvEsIh4Pl0_iUYO0pTf_zDkX7zVA?key=b0hLLU5UajczUjBOakY0TVBYVk5GdngtQW1QYU1R
+            //description: inserted as alt and modal title
             "https://lh3.googleusercontent.com/hnApGApYkCYsiKLQInQQ3yNZpnYt8PPnHP5m8vu6NE2V5m_Eatj6B0RWwgOLqsUOqQaZbpuop3SNUYXPH3v0CJHmJj6LPZDfCXJXxtiQDbUotnmZ8VDPvcV9PBTqJmcW8EUUR8cdpZMLCUUs_21Svvm55zMB6xZa_qKBDkdpB1UFCz6XGL5VCXCzICy7EH1mQMWDkXpdoJKnszmDSH7B0CAqRP7a5iH32auCGtMnmKVGrZ4zVKkIzEb7t9Al_vQNq9wi7Rhk5XjQQNVoMcLCJsB8VKmwh3dtuC6nHLMO3E25b_O_OZBw4aPQVZ9-XMcJzlg2S1gyyDbZ0gmLdgAY07zz-FgTUU8NRLHv7imF3kfDFtcNEYvYjFHzW28M03Vew4f3ShHT3cwH5zJI-DxsiuKDDOoWFMDfbU9YM2YmqX2pOuOi9DBgebigMqEaQJSEmIkTqW55osZQMJvhwNNuqGj_T-Si7fCA8sfuIalupxhnLFwdjlW8egZZdy--UI4_GFU6I7RPSvjmWytfQkXvUH7uqpOjDmxG1es_-j3rYRExe2efMTDL8lGK1uUTxHF6I_w47btXCIwoPu8rSf4F9SAby5IN8Mo=w1167-h778-no",
             "Welcome to BarcampGB"
         ],[
@@ -36,20 +35,17 @@
         ],[
             "https://lh3.googleusercontent.com/BjHxy1hbfuk_Pz1IG90W62hfx8dMwetLBM2XWdyZiLVRbwjlkReX56GHOUzlShS69oljefufyVRcAdKW2R_FhU8LeKjYHtJl-chS6fwOIdzeQxgjcyJR9kXDi75qBo0c1rqf6emuN5SQVEwkUQO-qAYhSX-myqZis4lGtwxUv3e5fvsLbKGC9OX1eTiJD8epLNelSQ1m8ptkEkaLc2vpSeOsh9E0O2TYc2Z2IEqRbIbT1kG0poe_dLactwcE6OiGRjzHMmaVqG8KbqMQoA1cLuUa1EhMyNquAjS6jhsLD_wkblfz47IvFQbibBp1eiFHBcsuhrcga9ciVFfKsNKRyCcmAVMDO6Ybrh6f_nZoCKfBgcj1OOV1mbcAvypPZm4ptN5lvqA1__mbilPTuq5pJCRhYGraVjsXdiBS7pwr6rsyVVS8eDQraECmovlJimVE1IKq0a5VWUaiUx3Vk7kSRQoXiww1x3s56-GVB3s3OvoArVxISFu6SCrb8pL1dfCVHbBEWgKv5O-aQqV7iGyrwVq3NFRMrZs-UGoKhR2gxyt_z32ZfOQNjNG42b6Ct9fIFkBBGoPC0TUHKRz7djdyIN_NBxOhBkQ=w519-h778-no",
             ""
-        ]
+        ],[
+            "https://lh3.googleusercontent.com/CdBajYQ_Cjzd3THX_ZDV_C_x9B9iftaAds5hJQ-7o77wCyBYS1tdjYWfY8cHUth9-ajT5CxW0_aaFhanmY4flS0fHx0Wfxybp0tcIO7-NH5eVOHo_frBFNHA1OmJVPZieSTj6eCqx1DWlQZkTpeo6trB_q3zPoCY74PTiLYdCea1b8zJ5wlOkiGktM-5r20TwtjugdXG4t0bEDjNfPwrood2ftnPzjBJ-SrYJDtneQzGdtAk2I2zks7N-EPO_iA39I3NXdMa0zv3D3PlJNo_6YqYMOYNvDuDaP8s41S13AsXOfsk2cDHg_5nzoYy_4p7lIos16PbArlpJKoEPlq19MvKZ-uQzH69ycmQV6EL70v2Om2OLWhQojGETSQ9AFW6bh7p8IgJHrUsUW_xy9cDhwYsAbGnGmu3rEb_6RbnEei-zoAmkdFtbbdE_JCgX5NShm8aMbdL2UvOjholdPFHmzeBrpjC6llcaCGOIwxYtIdQjX6Zts6W4XIm5fIEe-9Wbi2LHdq_ARO44Y0eueLmLacIJ1Z-PHBb9_jp1VNIFBXpl5h5q7gAwMpcf5JctMKfuSF-q3tUofebFy_-xqhHcU9g2BDoP-4=w519-h778-no",
+            ""
+        ],
     ];
     var imageIndex = 0; //tracks current index of displayed photos when inserting each image into DOM
 
-    function addPhotoToGallery(_this,hiddenDiv,imageSrc,imageTitle) { //add photos to THIS gallery
+    function addPhotoToGallery(_this,hiddenDiv) { //add photos to THIS gallery
+        var incomingThis = _this;
         var imageSrc = photos[imageIndex][0];
         var imageTitle = photos[imageIndex][1];
-        var hiddenDiv = (function() { //if the window is not large, diplay only one image. Still navigates all images in array
-            if ($(window).width() < 1170 && count > 0){ //if more than one image is loaded, the rest are hidden
-                return "hidden";
-            } else {
-                return "";
-            }
-        }());
 
         $(_this).append(" \
             <div class='" + hiddenDiv + " col-lg-" + (12/numOfPhotos) + " flex'> \
@@ -58,8 +54,11 @@
                 </a> \
             </div> \
         ");
+
+        imageIndex++; //imageIndex cycles through photos array
+        if (imageIndex === photos.length){imageIndex = 0} //loop index if it reaches the end and start over
     }
-    
+
     $('section:not(".section-pattern") > div').each(function(){ //create a gallery for each section that matches
         $(this).prepend(" \
             <div class='row'> \
@@ -76,16 +75,25 @@
 
         for (var i = 0; i < numOfPhotos; i++) {
 
+            var hiddenDiv = (function() { //if the window is not large, diplay only one image. Still navigates all images in array
+                if ($(window).width() < 1170 && count > 0){ //if more than one image is loaded, the rest are hidden
+                    return "hidden";
+                } else {
+                    return "";
+                }
+            }());
 
-            addPhotoToGallery(this,hiddenDiv,imageSrc,imageTitle); //function to insert in DOM
-
-            imageIndex++; //imageIndex cycles through photos array
+            addPhotoToGallery(this,hiddenDiv); //function to insert in DOM
             count++;
-            if (imageIndex === photos.length){imageIndex = 0} //loop index if it reaches the end and start over
         }
     });
 
+    $('section:last').append(function(){ //create a phantom gallery. It doesnt display, but user can cycle through in modal mode
+        for (var i = imageIndex; i < photos.length; i++) {
+            addPhotoToGallery(this,"hidden")
+        }
 
+    })
 
     $(document).on('click', '[data-toggle="lightbox"]', function (event) { //initiate lightbox
         event.preventDefault();
