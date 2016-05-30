@@ -40,6 +40,26 @@
     ];
     var imageIndex = 0; //tracks current index of displayed photos when inserting each image into DOM
 
+    function addPhotoToGallery(_this,hiddenDiv,imageSrc,imageTitle) { //add photos to THIS gallery
+        var imageSrc = photos[imageIndex][0];
+        var imageTitle = photos[imageIndex][1];
+        var hiddenDiv = (function() { //if the window is not large, diplay only one image. Still navigates all images in array
+            if ($(window).width() < 1170 && count > 0){ //if more than one image is loaded, the rest are hidden
+                return "hidden";
+            } else {
+                return "";
+            }
+        }());
+
+        $(_this).append(" \
+            <div class='" + hiddenDiv + " col-lg-" + (12/numOfPhotos) + " flex'> \
+                <a href='" + imageSrc + "' data-toggle='lightbox' data-type='image' data-gallery='barcampGallery' data-title='" + imageTitle + "'> \
+                    <img src='" + imageSrc + "' alt='" + imageTitle + "' class='img-responsive photoGallery'> \
+                </a> \
+            </div> \
+        ");
+    }
+    
     $('section:not(".section-pattern") > div').each(function(){ //create a gallery for each section that matches
         $(this).prepend(" \
             <div class='row'> \
@@ -52,21 +72,20 @@
     });
 
     $('.photoGallery').each(function(){ //for each "gallery" generated, append a number of images (set variable above)
-        if ($(window).width() < 1170) {numOfPhotos = 1} //if on a small screen, only display one image
+        var count = 0; //number of images append to DOM
+
         for (var i = 0; i < numOfPhotos; i++) {
-            var imageSrc = photos[imageIndex][0];
-            var imageTitle = photos[imageIndex][1];
-            $(this).append(" \
-                <div class='col-lg-" + (12/numOfPhotos) + " flex'> \
-                    <a href='" + imageSrc + "' data-toggle='lightbox' data-type='image' data-gallery='barcampGallery' data-title='" + imageTitle + "'> \
-                        <img src='" + imageSrc + "' alt='" + imageTitle + "' class='img-responsive photoGallery'> \
-                    </a> \
-                </div> \
-            ")
-            imageIndex++;
+
+
+            addPhotoToGallery(this,hiddenDiv,imageSrc,imageTitle); //function to insert in DOM
+
+            imageIndex++; //imageIndex cycles through photos array
+            count++;
             if (imageIndex === photos.length){imageIndex = 0} //loop index if it reaches the end and start over
         }
     });
+
+
 
     $(document).on('click', '[data-toggle="lightbox"]', function (event) { //initiate lightbox
         event.preventDefault();
