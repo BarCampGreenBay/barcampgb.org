@@ -43,7 +43,6 @@
     var imageIndex = 0; //tracks current index of displayed photos when inserting each image into DOM
 
     function addPhotoToGallery(_this,hiddenDiv) { //add photos to THIS gallery
-        var incomingThis = _this;
         var imageSrc = photos[imageIndex][0];
         var imageTitle = photos[imageIndex][1];
 
