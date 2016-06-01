@@ -89,7 +89,6 @@
         for (var i = imageIndex; i < photos.length; i++) {
             addPhotoToGallery(this,"hidden")
         }
-
     })
 
     $(document).on('click', '[data-toggle="lightbox"]', function (event) { //initiate lightbox
