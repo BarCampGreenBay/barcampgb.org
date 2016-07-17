@@ -390,8 +390,7 @@ module.exports = function(app, passport, db, email) {
 			event.then(function(activeEvent) {
 				if (!activeEvent) {
 					res.status(404);
-					req.flash('error', 'No event found!');
-					return res.redirect('/');
+					return next(new Error('Event not found!'));
 				}
 				req.event = activeEvent;
 				res.locals.event = activeEvent;
