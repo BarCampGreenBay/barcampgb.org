@@ -18,6 +18,7 @@ module.exports = function(app, passport, db, email) {
 	app.get('/logout', getLogout());
 
 	app.get('/proposals', getProposals());
+	app.get('/proposals/:year', getProposals());
 	app.route('/proposal').get(getProposal({ isNew: true })).post(postProposal());
 	app.route('/proposal/:id').get(getProposal()).put(putProposal()).delete(deleteProposal());
 	app.post('/proposal/:id/vote', postProposalVote());
@@ -379,7 +380,19 @@ module.exports = function(app, passport, db, email) {
 
 	function findActiveEvent () {
 		return function(req, res, next) {
-			Event.findActive().then(function(activeEvent) {
+			var event;
+			if (req.params.year) {
+				event = Event.findByYear(req.params.year).exec();
+			}
+			else {
+				event = Event.findActive();
+			}
+			event.then(function(activeEvent) {
+				if (!activeEvent) {
+					res.status(404);
+					req.flash('error', 'No event found!');
+					return res.redirect('/');
+				}
 				req.event = activeEvent;
 				res.locals.event = activeEvent;
 				res.locals.shirtSizes = User.schema.path('shirtSize').enumValues;
