@@ -35,7 +35,7 @@ schema.path('registrants').validate(function(arr) {
 }, 'Duplicate user');
 
 schema.statics.findActive = function(cb) {
-	return this.findOne({ active: true }).sort({ date: -1 }).exec(cb);
+	return this.findOne({ active: true }).sort({ date: 1 }).exec(cb);
 };
 
 schema.statics.findByYear = function(year, cb) {
