@@ -10,9 +10,7 @@
   "scripts": {
     "test": "JASMINE_CONFIG_PATH=jasmine.json jasmine",
     "dev": "node-dev src/web/server.js | bunyan --level debug --output short",
-    "debug": "node-debug src/web/server.js",
-    "prod": "NODE_ENV=production node src/web/server.js",
-    "start": "npm run prod",
+    "start": "node src/web/server.js",
     "lint": "eslint src tests"
   },
   "author": "",
@@ -27,11 +25,10 @@
     "filter-object": "^2.0.0",
     "merge": "^1.2.0",
     "method-override": "^2.3.0",
-    "mongoose": "~3.8.13",
+    "mongoose": "^4.5.8",
     "mongoose-token": "^1.0.1",
     "nodemailer": "^1.0.4",
     "nodemailer-mailgun-transport": "^1.0.1",
-    "nodemailer-wellknown": "^0.1.2",
     "nunjucks": "^1.3.4",
     "nunjucks-date": "^1.1.2",
     "passport": "~0.2.0",
@@ -43,9 +40,7 @@
     "eslint": "^1.5.1",
     "eslint-config-defaults": "^6.0.0",
     "jasmine": "^2.3.2",
-    "mockgoose": "~2.0.3",
     "node-dev": "^2.3.0",
-    "node-inspector": "^0.7.4",
     "proxyquire": "^1.0.1",
     "supertest": "^1.1.0"
   }

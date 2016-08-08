@@ -2,15 +2,11 @@ var mongoose = require('mongoose');
 var config = require('../config');
 var log = require('../modules/log');
 
-if (config.env.dev) {
-	require('mockgoose')(mongoose);
-}
+mongoose.Promise = global.Promise;
 var db = mongoose.createConnection();
 
 function connect () {
-	if (config.env.prod) {
-		db.open(config.db.host, config.db.name, config.db.port);
-	}
+	db.open(config.db.host, config.db.name, config.db.port);
 	db.on('error', log.error.bind(log, 'mongodb connection error:'));
 }
 

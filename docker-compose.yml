@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  db:
+    image: mongo:3.2
+    volumes:
+      - /data/db
+  web:
+    build: .
+    command: sh -c "npm install --only=dev && npm run dev"
+    ports:
+      - 8000:8000
+    links:
+      - db
+    volumes:
+      - .:/src
+    environment:
+      - NODE_ENV=development
+      - MONGOD_HOST=db
