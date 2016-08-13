@@ -23,14 +23,4 @@ describe('App Module', function() {
 			.get('/pathThatWill404')
 			.expect(404, file, done);
 	});
-	it('should show jinja template', function (done) {
-		var nunjucks = require('nunjucks');
-		var nunjucksDate = require('nunjucks-date');
-		var env = nunjucks.configure(__dirname + '/../../src/web/');
-		nunjucksDate.install(env);
-		var index = nunjucks.render('views/index.html');
-		supertest(app)
-			.get('/')
-			.expect(200, index, done);
-	});
 });
