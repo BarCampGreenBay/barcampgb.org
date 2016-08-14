@@ -11,7 +11,8 @@
     "test": "JASMINE_CONFIG_PATH=jasmine.json jasmine",
     "dev": "node-dev src/web/server.js | bunyan --level debug --output short",
     "start": "node src/web/server.js",
-    "lint": "eslint src tests"
+    "lint": "eslint src tests",
+    "seed": "node src/bootstrap"
   },
   "author": "",
   "license": "MIT",

@@ -24,9 +24,6 @@ var nunjucksEnv = nunjucks.configure(__dirname, {
 nunjucksDate.install(nunjucksEnv);
 
 db.connect();
-if (config.env.dev) {
-	require('../bootstrap').db(db);
-}
 
 app.use(session({ secret: config.web.sessionSecret }));
 app.use(methodOverride('_method'));
