@@ -24,6 +24,7 @@ module.exports = function(app, passport, db, email) {
 	app.post('/proposal/:id/vote', postProposalVote());
 
 	app.get('/coc', getCoc());
+	app.get('/healthcheck', getHealthcheck());
 
 	// TODO: break admin out
 	app.get('/export/:eventYear/attendees', getExportAttendees());
@@ -281,6 +282,12 @@ module.exports = function(app, passport, db, email) {
 		return function (req, res) {
 			res.render('views/coc.html');
 		};
+	}
+
+	function getHealthcheck () {
+		return function (req, res) {
+			res.end('Healthy!');
+		}
 	}
 
 	function getExportAttendees () {
