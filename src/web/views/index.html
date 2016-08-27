@@ -196,9 +196,6 @@
 		<div class="col-md-8 center-block">
 			<h1>Sponsors</h1>
 			{% if event.registrationOpen %}
-			<p>Be part of something amazing.</p>
-			<p>Consider sponsoring $50-$200 and we will list you on this site and give you a shout-out during the event.</p>
-			<p>If you have any questions, send an email over to <a href="mailto:info@mg.barcampgb.org">info@mg.barcampgb.org</a>.
 			{% endif %}
 			<div class="row">
 			{% for sponsor in event.sponsors %}
@@ -209,9 +206,13 @@
 				</div>
 			{% endfor %}
 			</div>
+			<p>Be part of something amazing.</p>
+			<p>Consider sponsoring $50-$200 and we will list you on this site and give you a shout-out during the event.</p>
+			<p>If you have any questions, send an email over to <a href="mailto:info@mg.barcampgb.org">info@mg.barcampgb.org</a>.
 			{% if event.registrationOpen %}
-
-			<a class="btn btn-success btn-wide" href="{{ event.donateUrl }}">Sponsor BarCamp Green Bay!</a>
+			<p>
+				<a class="btn btn-success btn-wide" href="{{ event.donateUrl }}">Sponsor BarCamp Green Bay!</a>
+			</p>
 			{% endif %}
 		</div>
 	</div>
