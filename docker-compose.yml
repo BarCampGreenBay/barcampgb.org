@@ -14,6 +14,7 @@ services:
       - db
     volumes:
       - .:/src
+      - /src/node_modules/
     environment:
       - NODE_ENV=development
       - MONGOD_HOST=db
