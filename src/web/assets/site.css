@@ -49,12 +49,6 @@ body {
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
-img {
-	width: 100%;
-	height: auto;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-}
 
 /*
  * Typography
@@ -115,8 +109,8 @@ hr {
 }
 .lead {
 	font-size: 1.5rem;
-	margin-bottom: 3.5rem;
 	color: #3191CE;
+	margin-bottom: 3rem;
 }
 
 /*
@@ -225,9 +219,10 @@ hr {
 	border: 0;
 }
 .navbar-brand img {
-	margin-top: 0;
-	margin-bottom: 0;
+	width: 100%;
+	height: auto;
 }
+
 @media (min-width: 768px) {
 	.navbar-default .navbar-nav {
 		margin-top: 0;

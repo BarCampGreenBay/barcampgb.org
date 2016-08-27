@@ -1,10 +1,11 @@
 {% extends "templates/layout.html" %}
+{% from "partials/gallery.html" import gallery as gallery %}
 
 {% block body %}
 <div class="jumbotron">
 	<div id="text">
-		<h1>A day of open source&nbsp;knowledge</h1>
-		<p>{{ event.date | date('dddd, MMMM Do YYYY') }}<br>
+		<h1>{{ event.name }}</h1>
+		<p>{{ event.date | date('dddd, MMMM Do') }}<br>
 			<a target="_blank" href="{{ event.location.url }}">
 				{{ event.location.name }}
 				<i class="fa fa-arrow-circle-right"></i>
@@ -31,7 +32,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 center-block">
-				<p class="lead text-center">BarCamp Green Bay is a participant-led day of talks, discussions, and activities for sharing knowledge. There's no cost to attend.</p>
+				<p class="lead text-center">
+					BarCamp Green Bay is a participant-led day of talks, discussions, and activities for sharing knowledge. There's no cost to attend.
+				</p>
 			</div>
 			<div class="col-md-8 center-block">
 				<div class="row flex">
@@ -39,7 +42,7 @@
 						<div class="card post post-tape-left" style="transform: rotate(-1deg)">
 							<h1 class="post-title">Participant-Led</h1>
 							<div class="post-body post-body-full">
-								<p>Everyone is invited to propose a session topic, and everyone helps make the day goes smoothly. This is your chance to share that thing you love.</p>
+								<p>Everyone is invited to propose a session topic, and everyone helps make the day run smoothly. This is your chance to share that thing you love.</p>
 							</div>
 						</div>
 					</div>
@@ -47,7 +50,7 @@
 						<div class="card post" style="transform: rotate(0.5deg)">
 							<h1 class="post-title">Diverse</h1>
 							<div class="post-body post-body-full">
-								<p>Any topic is welcome – it's all about sharing knowledge. Past topics include artificial intelligence, retro gaming, emotional intelligence, and web development. Have a look at <a href="proposals/2015">last year's proposals</a>.</p>
+								<p>Any topic is welcome – it's all about sharing knowledge. Past topics include how to crochet a cube, retro gaming, emotional intelligence, and web development. Have a look at <a href="proposals/2015">last year's proposals</a>.</p>
 							</div>
 						</div>
 					</div>
@@ -81,6 +84,7 @@
 	<div class="container">
 		<div class="col-md-8 center-block">
 			<h1 id="how-it-works">How it works</h1>
+			{{ gallery('main-carousel', ['assets/images/gallery1.jpg', 'assets/images/gallery2.jpg', 'assets/images/gallery5.jpg', 'assets/images/gallery3.jpg', 'assets/images/gallery6.jpg', 'assets/images/gallery4.jpg', 'assets/images/gallery7.jpg', 'assets/images/gallery8.jpg']) }}
 			<div class="card-list">
 				<div class="card">
 					<div class="card-tag hidden-xs">
@@ -96,7 +100,7 @@
 						<div class="vertical-center">2</div>
 					</div>
 					<h1 class="text-center">Help out</h1>
-					<p>Spread the word, assist with setup during the event, or <a href="https://trello.com/b/sFYk8vrC/barcamp-green-bay" target="_blank">check out the Trello board</a> to see how you can help.</p>
+					<p>Get the word out, assist with setup, or <a href="https://trello.com/b/sFYk8vrC/barcamp-green-bay" target="_blank">check out the Trello board</a> to see how you can help.</p>
 				</div>
 				<div class="card">
 					<div class="card-tag hidden-xs">
@@ -111,13 +115,6 @@
 					</div>
 					<h1 class="text-center">Join us on {{ event.date | date('MMMM Do') }}</h1>
 					<p>We’ll plan the day’s schedule as a group and get going!</p>
-				</div>
-				<div class="card">
-					<div class="card-tag hidden-xs">
-						<div class="vertical-center">5</div>
-					</div>
-					<h1 class="text-center">Learn awesome new things!</h1>
-					<p>Learn awesome new things, share your favorite things, and make great connections.</p>
 				</div>
 			</div>
 		</div>
@@ -134,7 +131,7 @@
 				<i class="fa fa-thumbs-up"></i>
 			</h1>
 			<p>
-				You're awesome, and we glad you helped make our event special.
+				You're awesome, and we're glad you helped make our event special.
 			</p>
 			<p>
 				Didn't make it to {{ event.name }}? Join us next year on the first Saturday of November!
@@ -206,13 +203,14 @@
 			<div class="row">
 			{% for sponsor in event.sponsors %}
 				<div class="col-md-4">
-					<a href="{{ sponsor.url }}">
+					<a href="{{ sponsor.url }}" class="thumbnail">
 						<img src="{{ sponsor.logoUrl }}" alt="{{ sponsor.name }}" />
 					</a>
 				</div>
 			{% endfor %}
 			</div>
 			{% if event.registrationOpen %}
+
 			<a class="btn btn-success btn-wide" href="{{ event.donateUrl }}">Sponsor BarCamp Green Bay!</a>
 			{% endif %}
 		</div>
@@ -223,5 +221,4 @@
 
 {% block scripts %}
 <script src="/assets/js/client.js"></script>
-<script src="/assets/js/photoGallery.js"></script>
 {% endblock %}
