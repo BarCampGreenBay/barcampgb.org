@@ -2,3 +2,9 @@ language: node_js
 node_js:
   - "5"
 sudo: false
+deploy:
+  provider: script
+  script: curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/chrisjaure/barcampgb.org/trigger/$DOCKER_HUB_TOKEN/
+  on:
+    branch: master
+
