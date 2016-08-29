@@ -4,6 +4,6 @@ node_js:
 sudo: false
 deploy:
   provider: script
-  script: "curl -H 'Content-Type: application/json' --data '{\"build\": true}' -X POST https://registry.hub.docker.com/u/chrisjaure/barcampgb.org/trigger/$DOCKER_HUB_TOKEN/"
+  script: "curl -H 'Content-Type: application/json' --data '{\"build\": true}' -X POST https://registry.hub.docker.com/u/barcampgreenbay/barcampgb.org/trigger/$DOCKER_HUB_TOKEN/"
   on:
     branch: master
